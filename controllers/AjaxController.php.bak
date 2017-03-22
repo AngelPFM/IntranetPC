@@ -1,0 +1,348 @@
+<?php
+
+class AjaxController extends Controller {
+
+    public function actionActu_EstadoPedido() {
+        $idPedido = $_POST["idPedido"];
+        $idEstado = $_POST["idEstado"];
+
+        $estadoLote = DocumentoVenta::model()->findByAttributes(array("idNTC_DocumentoVenta" => $idPedido));
+        $estadoLote->fkNTC_TipoEstadoPedido = $idEstado;
+
+        $retorno = true;
+        if (!$estadoLote->saveAttributes(array("fkNTC_TipoEstadoPedido"))) {
+            $retorno = false;
+        }
+
+        return $retorno;
+    }
+
+    public function actionActu_tramitar() {
+        $idPedido = $_POST["idPedido"];
+        $retorno = true;
+        $estadoLote = DocumentoVenta::model()->findByAttributes(array("idNTC_DocumentoVenta" => $idPedido));
+        $estadoLote->Enviado = 1;
+        if (!$estadoLote->saveAttributes(array("Enviado"))) {
+            $retorno = false;
+        }
+
+        // calculamos todas las lineas de pedido para el grafico
+
+        $lin_peds = LineaVenta::model()->findAllByAttributes(array("fkNTC_DocumentoVenta" => $idPedido));
+        $estadoLote->EnviadoCompletamente = sizeof($lin_peds);
+        $estadoLote->EnvioParcial = 0;
+
+        if (!$estadoLote->saveAttributes(array("EnviadoCompletamente"))) {
+            $retorno = false;
+            die("Completo " . F::pre($estadoLote));
+        }
+        if (!$estadoLote->saveAttributes(array("EnvioParcial"))) {
+            $retorno = false;
+            die("parcial " . F::pre($estadoLote));
+        }
+
+        return $retorno;
+    }
+
+    public function actionActu_tramitar_array() {
+        $formulario = json_decode($_POST["array_peds"]);
+        $retorno = true;
+        foreach ($formulario as $cosa => $valor) {
+            $idPedido = $valor;
+            $estadoLote = DocumentoVenta::model()->findByAttributes(array("idNTC_DocumentoVenta" => $idPedido));
+            $estadoLote->Enviado = 1;
+            if (!$estadoLote->saveAttributes(array("Enviado"))) {
+                $retorno = false;
+            }
+            // calculamos todas las lineas de pedido para el grafico
+            $lin_peds = LineaVenta::model()->findAllByAttributes(array("fkNTC_DocumentoVenta" => $idPedido));
+            //die("***".sizeof($lin_peds));
+            $estadoLote->EnviadoCompletamente = sizeof($lin_peds);
+            $estadoLote->EnvioParcial = 0;
+
+            if (!$estadoLote->saveAttributes(array("EnviadoCompletamente"))) {
+                $retorno = false;
+                die("Completo " . F::pre($estadoLote));
+            }
+
+            if (!$estadoLote->saveAttributes(array("EnvioParcial"))) {
+                $retorno = false;
+                die("Parcial " . F::pre($estadoLote));
+            }
+        }
+
+        return $retorno;
+    }
+
+    public function actionActu_destramitar() {
+        $idPedido = $_POST["idPedido"];
+        $retorno = true;
+        $estadoLote = DocumentoVenta::model()->findByAttributes(array("idNTC_DocumentoVenta" => $idPedido));
+        $estadoLote->Enviado = 0;
+        if (!$estadoLote->saveAttributes(array("Enviado"))) {
+            $retorno = false;
+        }
+
+
+        return $retorno;
+    }
+
+    public function actionActu_destramitar_array() {
+        $formulario = json_decode($_POST["array_peds"]);
+
+        $retorno = true;
+        foreach ($formulario as $cosa => $valor) {
+            $idPedido = $valor;
+            $estadoLote = DocumentoVenta::model()->findByAttributes(array("idNTC_DocumentoVenta" => $idPedido));
+            $estadoLote->Enviado = 0;
+            if (!$estadoLote->saveAttributes(array("Enviado"))) {
+                $retorno = false;
+            }
+        }
+
+        return $retorno;
+    }
+
+    public function actionActu_linea_tramitar() {
+        // calculamos todas las lineas de pedido para el grafico
+        $retorno = true;
+        $idPedido = $_POST["idPedido"];
+
+        $lin_peds = LineaVenta::model()->findByAttributes(array("idNTC_LineaVenta" => $idPedido));
+        $pedido = DocumentoVenta::model()->findByAttributes(array("idNTC_DocumentoVenta" => $lin_peds->fkNTC_DocumentoVenta));
+
+        if ($_POST["valor"] == "on") {
+            $pedido->EnvioParcial = ($pedido->EnvioParcial) + 1;
+            $lin_peds->CantidadEnviada = 1;
+        } else {
+            $pedido->EnvioParcial = ($pedido->EnvioParcial) - 1;
+            if ($pedido->EnvioParcial < 0) {
+                $pedido->EnvioParcial = 0;
+            }
+            $lin_peds->CantidadEnviada = 0;
+        }
+        if ($lin_peds->saveAttributes(array("CantidadEnviada"))) {
+            //    die(F::pre($pedido));
+            if (!$pedido->saveAttributes(array("EnvioParcial"))) {
+                $retorno = false;
+            }
+            if ($pedido->EnvioParcial > 0 && $retorno) {
+                $porcent = round(($pedido->EnvioParcial / $pedido->EnviadoCompletamente) * 100);
+            } else {
+                $porcent = 0;
+            }
+        }
+
+        //echo $porcent;
+        echo CJSON::encode(array("porcent" => $porcent, "pedido" => $pedido->idNTC_DocumentoVenta));
+    }
+
+    public function actionGenerarCsv() {
+        ob_start();
+        $formulario = json_decode($_POST["array_peds"]); // se nos pasa un array con los ids de las lineas que se desean importar
+        $retorno = true;
+        $almacenes_listado = $lineas_ped = array();
+        // recuperamos las lineas de pedido que quiere el cliente
+        $lineas_ped[$almacen_act]["linsped"] = "";
+        $lineas_ped[$almacen_act]["canti_pares"] += 0;
+        $lineas_ped[$almacen_act]["precio_tot"] += 0;
+        $lineas_ped[$almacen_act]["tot_cajas"] += 0;
+        
+        foreach ($formulario as $cosa => $valor) {
+          
+            $idPedido = $valor;
+            $estadoLote = DocumentoVenta::model()->findByAttributes(array("idNTC_DocumentoVenta" => $idPedido));
+            $lin_peds = LineaVenta::model()->findAllByAttributes(array("fkNTC_DocumentoVenta" => $estadoLote->idNTC_DocumentoVenta));
+
+            
+            // sacamos los detalles para montar el excel de cada pedido
+            foreach ($lin_peds as $lin_ped) {
+                $canti_pares = 0;
+                $lotArt = LoteArticulo::model()->findByAttributes(array("fkNTC_Lote" => $lin_ped->fkNTC_Lote));
+
+                $almacen_act = $lotArt->Articulo->fkNTC_Almacen;
+
+                // comprobamos si esta en el array de almacenes de este pedido, si no, lo insertamos
+                if (!in_array($almacen_act, $almacenes_listado)) {
+                    $almacenes_listado[] = $almacen_act;
+                    $alm = Almacen::model()->findByPk($almacen_act);
+                    $lineas_ped[$almacen_act]["nom_alm"] = $alm->Nombre;
+                    $lineas_ped[$almacen_act]["dire_alm"] = $alm->Direccion;
+                    $lineas_ped[$almacen_act]["tel_alm"] = $alm->Telefono;
+                    $lineas_ped[$almacen_act]["email_alm"] = $alm->Email;
+                } // end if !inarray
+                // SACAMOS LOS DETALLES DE LA LINEA
+                $articulo = $lotArt->fkNTC_Articulo;
+                $Art = Articulo::model()->findByAttributes(array("idNTC_Articulo" => $articulo));
+                $LoteArt = LoteArticulo::model()->findByAttributes(array("fkNTC_Articulo" => $articulo));
+                $Lote = Lote::model()->findByAttributes(array("idNTC_Lote" => $LoteArt->fkNTC_Lote));
+                $articulosLote = Lote::model()->obtenerTodosArticulosDeUnLote($LoteArt->fkNTC_Lote);
+/*
+ *              $coloresLote = Lote::model()->obtenerTodosColoresDeUnLote($articulo);
+                $tallasLote = Lote::model()->tallas($articulo);
+ * 
+ */
+                $tallasLote =Lote::model()->tallas($LoteArt->fkNTC_Lote);
+                $coloresLote=Lote::model()->colores($LoteArt->fkNTC_Lote);
+                $fichero = Fichero::model()->findByAttributes(array("fkNTC_Articulo" => $LoteArt->fkNTC_Articulo));
+                $precio = TarifaVenta::model()->findByAttributes(array("fkNTC_Articulo" => $LoteArt->fkNTC_Articulo));
+                $precioDesc = DescuentoVenta::model()->findByAttributes(array("fkNTC_Articulo" => $LoteArt->fkNTC_Articulo));
+                $Almac = Almacen::model()->findByAttributes(array("idNTC_Almacen" => $Art->fkNTC_Almacen));
+
+                $data = Array();
+                $data["idLote"] = $LoteArt->fkNTC_Lote;
+                $data["artic"] = $LoteArt->fkNTC_Articulo;
+                $data["NombreLote"] = $Art->Descripcion;
+                $data["surtido_libre"] = $Lote->surtido_libre;
+                $surtiti = "";
+                if ($articulosLote[0]["surtido_libre"] == 1){
+                   $surtiti = MetodosComunes::sacar_tallas_lote_csv($data["idLote"]);
+                }
+                $data["Fichero"] = $fichero->Fichero;
+                $data["PrecioVenta"] = $precio->PrecioVenta;
+                $data["ImporteDescuento"] = $precioDesc->ImporteDescuento;
+                $data["Referencia"] = $Art->Referencia;
+                $data["ReferenciaColor"] = $Art->ReferenciaColor;
+                $Proveedor = $articulosLote[0]["Proveedor"];
+                $prove = Almacen::model()->findByAttributes(array("idNTC_Almacen" => $Proveedor));
+                $data["NombreProveedor"] = $Almac->Nombre;
+                $data["Colores"] = $coloresLote;
+                $data["surtidoLibre"] = $articulosLote[0]["surtido_libre"];
+                // recorro el array con todos los datos y los organizo para la tabla de tallas
+                foreach ($articulosLote as $arts) {
+                    switch ($arts["Etiqueta"]) {
+                        case "Tallaje":
+                            break;
+                    }
+                }
+
+                /********* PESO *********/
+                $Pesos = ValorAtributo::model()->findByAttributes(array("fkNTC_Articulo" => $Art->idNTC_Articulo, "fkNTC_Atributo" => "6"));
+                $pesAux = explode(",", $Pesos->Valor);
+                for ($i = 0; $i < count($pesAux); $i++) {
+                    $suelts[] = explode("\"", $pesAux[$i]);
+                }
+
+                $peso = $suelts[3][3] . "." . $suelts[4][0];
+                /* tambien calculamos el cubicaje para el envio */
+                $alto = $suelts[0][3];
+                $alto = str_replace("cm", "", $alto);
+                $ancho = $suelts[1][3];
+                $ancho = str_replace("cm", "", $ancho);
+                $profundo = $suelts[2][3];
+                $profundo = str_replace("cm", "", $profundo);
+
+                //echo "<pre>".print_r($ancho,1 )."</pre>";			
+                $cubicaje = $cubicaje + ($alto / 100) * ($ancho / 100) * ($profundo / 100) * 110;
+                $data["Peso"] = $cubicaje;
+                $data["alto"] = $alto;
+                $data["ancho"] = $ancho;
+                $data["profundo"] = $profundo;
+               
+                
+                for ($i = 0; $i < sizeof($coloresLote); $i++) {
+                    for ($j = 0; $j < sizeof($tallasLote); $j++) {
+                        if ($j == 0) {
+                            $rango_tallas = $tallasLote[$j] . " - ";
+                        } else if ($j == sizeof($tallasLote) - 1) {
+                            $rango_tallas.=$tallasLote[$j];
+                        }
+                        $canti[] = Lote::model()->cantidades($data["idLote"], $tallasLote[$j], $coloresLote[$i]);
+                        $canti_pares = $canti_pares + $canti[$j][0]["Cantidad"];
+                    }
+                }
+                
+                $precioReal = 0;
+                
+                if ($data["ImporteDescuento"] != "" ) {
+                    $precioReal = $canti_pares * $data["ImporteDescuento"];
+                } else {
+                    $precioReal = $canti_pares * $data["PrecioVenta"];
+                }
+                if ($articulosLote[0]["surtido_libre"] == 0){
+                    $canti_pares = 0; 
+               }
+
+                // MONTAMOS LAS LINEAS DE PEDIDO
+                $lineas_ped[$almacen_act]["linsped"] .= '"'
+                        . $estadoLote->EnvioAtencionA . '","'
+                        . $data["alto"] . ' x ' . $data["ancho"] . ' x ' . $data["profundo"] . '", "'
+                        . $surtiti . '", "'
+                        . Yii::app()->baseUrl . '/uploads/' . $data["Fichero"] . '", "'
+                        . $data["Referencia"] . '", "'
+                        . $data["ReferenciaColor"] . '", "'
+                        . $lin_ped->Cantidad . '", "'
+                        . ($canti_pares*$lin_ped->Cantidad) . '", "'
+                        . $precioReal . '", "'
+                        . ($precioReal*$lin_ped->Cantidad) . '" 
+'
+                ;
+                // DATOS DEL ALMACEN
+
+                
+                $lineas_ped[$almacen_act]["canti_pares"] += $canti_pares*$lin_ped->Cantidad;
+                $lineas_ped[$almacen_act]["precio_tot"] += ($precioReal*$lin_ped->Cantidad);
+                $lineas_ped[$almacen_act]["tot_cajas"] += $lin_ped->Cantidad;
+
+            } // end foreach linpeds
+        } // end foreach formulario
+
+
+        foreach ($almacenes_listado as $almacen) {            
+            $var_csv = '
+Almacen,"@ALMACEN@",,,,,,,,
+Marcas,"@MARCAS@",,,,,,,,
+Calle ,"@CALLE@",,,,,,,,
+Telefono,"@TELEFONO@",,,,,,,,
+Email,"@EMAIL@",,,,,,,,
+,,,,,,,,,
+CLIENTE,MEDIDAS CAJA,SURTIDO,FOTO,REF. PROVEEDOR,PROV.COLOR,CAJAS,PARES/CAJA,PRECIO COMPRA,TOTAL
+@LINALISTADO@
+,,,,,,,,,@TOTALCANTIDAD@
+,,,,,,,,,
+,,,,,,,,,
+Total Cajas,@TOTALCAJAS@,,,,,,,,
+Total Pares Sueltos,@TOTALPARES@,,,,,,,,
+';
+
+            //F::pre($lineas_ped);
+            $stores = array();
+            $criteria = new CDbCriteria();
+            //$criteria->select = "Nombre";
+            $criteria->condition = "Quitar = 0";
+            $marcasAl = MarcaAlmacen::model()->findAllByAttributes(array("fkNTC_Almacen" => $almacen));
+            foreach ($marcasAl as $marcaAl) {
+                if ($marcaAl->Marca->Quitar == 0) {
+                    $stores[] = $marcaAl->Marca->Nombre;
+                }
+            }
+
+            $list_stores = implode(", ", $stores);
+
+            $var_csv = str_replace("@ALMACEN@", $lineas_ped[$almacen]["nom_alm"], $var_csv);
+            $var_csv = str_replace("@MARCAS@", $list_stores, $var_csv);
+            $var_csv = str_replace("@CALLE@", $lineas_ped[$almacen]["dire_alm"], $var_csv);
+            $var_csv = str_replace("@TELEFONO@", $lineas_ped[$almacen]["tel_alm"], $var_csv);
+            $var_csv = str_replace("@EMAIL@", $lineas_ped[$almacen]["email_alm"], $var_csv);
+            $var_csv = str_replace("@TOTALCAJAS@", $lineas_ped[$almacen]["tot_cajas"], $var_csv);
+            $var_csv = str_replace("@LINALISTADO@", $lineas_ped[$almacen]["linsped"], $var_csv); // sustituimos los lotes
+            $var_csv = str_replace("@TOTALPARES@", $lineas_ped[$almacen]["canti_pares"], $var_csv);
+            $var_csv = str_replace("@TOTALCANTIDAD@", $lineas_ped[$almacen]["precio_tot"], $var_csv);
+
+            //echo $var_csv;
+            $nombre_csv = date("YmdHis").MetodosComunes::urlize($lineas_ped[$almacen]["nom_alm"]);
+            $array_nombres["nombre"][] = $nombre_csv;
+            $root = $_SERVER['DOCUMENT_ROOT'] . "/uploads/";
+            $out = fopen($root . $nombre_csv . '.csv', 'a+');
+            fwrite($out, $var_csv);
+            fclose($out);
+        } // foreach almacenes
+        ob_end_clean();
+        echo CJSON::encode($array_nombres);
+        // return $retorno;
+    }
+
+// end function CSV
+}
+
+// end controller
