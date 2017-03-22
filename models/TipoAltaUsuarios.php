@@ -12,7 +12,7 @@ use Yii;
  *
  * @property NTCConfiguracion[] $nTCConfiguracions
  */
-class NTCTipoAltaUsuarios extends \yii\db\ActiveRecord
+class TipoAltaUsuarios extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

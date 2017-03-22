@@ -22,7 +22,7 @@ use Yii;
  * @property NTCUsuarioWeb $fkNTCUsuarioWeb
  * @property NTCCliente $fkNTCCliente
  */
-class NTCSuscripcion extends \yii\db\ActiveRecord
+class Suscripcion extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

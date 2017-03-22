@@ -16,7 +16,7 @@ use Yii;
  * @property NTCUnidadMedida $fkNTCUdMedida1
  * @property NTCUnidadMedida $fkNTCUdMedida2
  */
-class NTCRelacionUdMedida extends \yii\db\ActiveRecord
+class RelacionUdMedida extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

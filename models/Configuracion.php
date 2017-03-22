@@ -45,7 +45,7 @@ use Yii;
  * @property NTCMetodoEnvio $fkNTCMetodoEnvio
  * @property NTCGrupoPrecioCliente $fkNTCGrupoPrecioCliente
  */
-class NTCConfiguracion extends \yii\db\ActiveRecord
+class Configuracion extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

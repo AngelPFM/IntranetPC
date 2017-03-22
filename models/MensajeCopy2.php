@@ -12,7 +12,7 @@ use Yii;
  * @property string $Language
  * @property string $Translation
  */
-class NTCMensajeCopy2 extends \yii\db\ActiveRecord
+class MensajeCopy2 extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

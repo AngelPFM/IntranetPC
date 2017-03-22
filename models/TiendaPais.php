@@ -12,7 +12,7 @@ use Yii;
  * @property integer $fkNTC_Pais
  * @property integer $Quitar
  */
-class NTCTiendaPais extends \yii\db\ActiveRecord
+class TiendaPais extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

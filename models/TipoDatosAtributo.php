@@ -13,7 +13,7 @@ use Yii;
  *
  * @property NTCAtributo[] $nTCAtributos
  */
-class NTCTipoDatosAtributo extends \yii\db\ActiveRecord
+class TipoDatosAtributo extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

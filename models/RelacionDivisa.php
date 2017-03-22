@@ -18,7 +18,7 @@ use Yii;
  * @property NTCDivisa $fkNTCDivisa1
  * @property NTCDivisa $fkNTCDivisa2
  */
-class NTCRelacionDivisa extends \yii\db\ActiveRecord
+class RelacionDivisa extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

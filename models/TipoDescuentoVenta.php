@@ -13,7 +13,7 @@ use Yii;
  *
  * @property NTCCuponDescuento[] $nTCCuponDescuentos
  */
-class NTCTipoDescuentoVenta extends \yii\db\ActiveRecord
+class TipoDescuentoVenta extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

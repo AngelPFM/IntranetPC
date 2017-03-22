@@ -10,7 +10,7 @@ use Yii;
  * @property integer $idNTC_FusionPedidos
  * @property string $Fecha
  */
-class NTCFusionPedidos extends \yii\db\ActiveRecord
+class FusionPedidos extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

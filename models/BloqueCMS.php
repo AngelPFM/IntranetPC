@@ -20,7 +20,7 @@ use Yii;
  *
  * @property NTCMenu $fkNTCMenu
  */
-class NTCBloqueCMS extends \yii\db\ActiveRecord
+class BloqueCMS extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -19,7 +19,7 @@ use Yii;
  * @property NTCPais $fkNTCPais
  * @property NTCSuscripcion[] $nTCSuscripcions
  */
-class NTCGetResponseConfig extends \yii\db\ActiveRecord
+class GetResponseConfig extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

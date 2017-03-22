@@ -15,7 +15,7 @@ use Yii;
  * @property string $Url
  * @property integer $Quitar
  */
-class NTCDescarga extends \yii\db\ActiveRecord
+class Descarga extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

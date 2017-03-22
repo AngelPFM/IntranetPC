@@ -15,7 +15,7 @@ use Yii;
  * @property NTCAtributoConjunto[] $nTCAtributoConjuntos
  * @property NTCAtributo[] $fkNTCAtributos
  */
-class NTCConjuntoAtributos extends \yii\db\ActiveRecord
+class ConjuntoAtributos extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

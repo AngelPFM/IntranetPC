@@ -21,7 +21,7 @@ use Yii;
  *
  * @property NTCEmpresa $fkNTCEmpresa
  */
-class NTCConfiguracionIntranet extends \yii\db\ActiveRecord
+class ConfiguracionIntranet extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

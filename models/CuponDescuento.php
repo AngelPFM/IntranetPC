@@ -58,7 +58,7 @@ use Yii;
  * @property NTCLineaVenta[] $fkNTCLineaVentas
  * @property NTCSeleccionCupon[] $nTCSeleccionCupons
  */
-class NTCCuponDescuento extends \yii\db\ActiveRecord
+class CuponDescuento extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -28,7 +28,7 @@ use Yii;
  * @property string $FechaAlta
  * @property string $IpContacto
  */
-class NTCContactoProfesional extends \yii\db\ActiveRecord
+class ContactoProfesional extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

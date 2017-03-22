@@ -1,35 +1,29 @@
-<?php /* @var $this Controller */ ?>
 <?php $this->beginContent('//layouts/main'); ?>
-<div class="span-24">
-	<div id="content" style="padding:0px 20px;">
-		<?php echo $content; ?>
-	</div><!-- content -->
-</div>
-<div class="span-5 last">
-	<div id="sidebar">
-	<?php
-		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'Operations',
-		));
-		$this->widget('zii.widgets.CMenu', array(
-			'items'=>$this->menu,
-			'htmlOptions'=>array('class'=>'operations'),
-		));
-		$this->endWidget();
-		
-		//Yii::log(print_r($this->menu,1) . "\n\n" . print_r($this->sublistados,1));
-		
-		if( isset($this->sublistados) ){
-			$this->beginWidget('zii.widgets.CPortlet', array(
-					'title'=>'SubListados',
-			));
+<section id="cuerpo">
+	
+	<section id="bloque_contenido">
+		<section id="contenido">
+		<?php 
+			echo $content; 
+		?>
+		</section>
+	</section>
+	<?php 
+	if( isset($this->sublistados) ){
+	?>
+	<section id="menus_sublistados">
+		<section id="dentro_menus_sublistados">
+		<?php
 			$this->widget('zii.widgets.CMenu', array(
 					'items'=>$this->sublistados,
 					'htmlOptions'=>array('class'=>'operations'),
 			));
-			$this->endWidget();
-		}
+		?>
+		</section>
+	</section>
+	<section id="contiene_sublistado" style="border-top:1px solid #6FACCF; margin-top:20px; padding-top:20px;"></section>
+	<?php 
+	}
 	?>
-	</div><!-- sidebar -->
-</div>
+</section>
 <?php $this->endContent(); ?>

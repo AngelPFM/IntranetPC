@@ -14,7 +14,7 @@ use Yii;
  *
  * @property NTCOrigenMensajeIntranet $fkNTCOrigenMensajeIntranet
  */
-class NTCMensajeIntranet extends \yii\db\ActiveRecord
+class MensajeIntranet extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

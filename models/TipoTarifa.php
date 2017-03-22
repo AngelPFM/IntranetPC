@@ -14,7 +14,7 @@ use Yii;
  *
  * @property NTCMetodoEnvio[] $nTCMetodoEnvios
  */
-class NTCTipoTarifa extends \yii\db\ActiveRecord
+class TipoTarifa extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

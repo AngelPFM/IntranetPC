@@ -12,7 +12,7 @@ use Yii;
  *
  * @property NTCDocumentoVenta[] $nTCDocumentoVentas
  */
-class NTCTipoEstadoPedido extends \yii\db\ActiveRecord
+class TipoEstadoPedido extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

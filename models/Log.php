@@ -13,7 +13,7 @@ use Yii;
  * @property string $Files
  * @property string $Fecha
  */
-class NTCLog extends \yii\db\ActiveRecord
+class Log extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

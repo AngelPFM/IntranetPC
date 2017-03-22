@@ -28,7 +28,7 @@ use Yii;
  * @property NTCLineaVenta $fkNTCLineaVenta
  * @property NTCLineaFacturaVenta[] $nTCLineaFacturaVentas
  */
-class NTCLineaAlbaranVenta extends \yii\db\ActiveRecord
+class LineaAlbaranVenta extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

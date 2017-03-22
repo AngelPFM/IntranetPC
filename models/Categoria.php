@@ -34,7 +34,7 @@ use Yii;
  * @property NTCCategoria[] $nTCCategorias
  * @property NTCEscaparate[] $nTCEscaparates
  */
-class NTCCategoria extends \yii\db\ActiveRecord
+class Categoria extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

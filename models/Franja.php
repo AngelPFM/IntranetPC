@@ -12,7 +12,7 @@ use Yii;
  * @property double $Incremento
  * @property integer $Quitar
  */
-class NTCFranja extends \yii\db\ActiveRecord
+class Franja extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -24,7 +24,7 @@ use Yii;
  * @property string $Porte
  * @property string $Estado
  */
-class NTCInformeVentas extends \yii\db\ActiveRecord
+class InformeVentas extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

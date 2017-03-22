@@ -11,7 +11,7 @@ use Yii;
  * @property string $Nombre
  * @property string $GoogleChartsType
  */
-class NTCChartType extends \yii\db\ActiveRecord
+class ChartType extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

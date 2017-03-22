@@ -23,7 +23,7 @@ use Yii;
  * @property string $FechaFinal
  * @property integer $Quitar
  */
-class NTCDescuentoVentaCopy extends \yii\db\ActiveRecord
+class DescuentoVentaCopy extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

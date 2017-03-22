@@ -113,24 +113,37 @@ class SiteController extends Controller {
     /**
      * Displays the login page
      */
-    public function actionLogin()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+    public function actionLogin() {
+// 		Yii::log("EL USUARIO: " . print_r( Yii::app()->user->getUsuario(), 1) . "\n\nSESSION " . print_r($_SESSION,1) );
+        $model = new IntranetLoginForm;
+        //$aplicaciones = Aplicacion::model()->findAll();
+        // if it is ajax validation request
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
         }
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goHome();
-        } else {
-            $this->layout = '/login';
-            return $this->render('login', [
-                'model' => $model,
-            ]);
+// 		Yii::log("llego1.0 " . print_r($_POST,1));
+        //Yii::app()->end();
+        // collect user input data
+        if (isset($_POST['IntranetLoginForm'])) {
+            $model->attributes = $_POST['IntranetLoginForm'];
+            // validate user input and redirect to the previous page if valid
+            if ($model->validate() && $model->login()) {
+// 				Yii::log("llego2.0 " . print_r($_POST,1));
+                $this->redirect(Yii::app()->user->returnUrl);
+            }
         }
+        $this->layout = '//layouts/login';
+
+// 		echo "<pre>" . print_r($aplicaciones,1) . "</pre>";
+        // Muestra la vista login(/protected/views) usando el layout/login(theme/gambrro/layouts/login)
+        $this->render(
+                'login', array(
+            'model' => $model,
+                )
+        );
     }
-    
-    
 
     /**
      * Logs out the current user and redirect to homepage.

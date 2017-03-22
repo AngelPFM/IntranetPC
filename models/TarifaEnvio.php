@@ -30,7 +30,7 @@ use Yii;
  * @property NTCProvincia $fkNTCProvincia
  * @property NTCDivisa $fkNTCDivisa
  */
-class NTCTarifaEnvio extends \yii\db\ActiveRecord
+class TarifaEnvio extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

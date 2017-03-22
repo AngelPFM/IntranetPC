@@ -32,7 +32,8 @@ use Yii;
  * @property integer $DateControls
  * @property integer $Orden
  */
-class NTCReport extends \yii\db\ActiveRecord
+
+class Report extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

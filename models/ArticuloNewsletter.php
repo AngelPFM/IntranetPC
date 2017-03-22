@@ -18,7 +18,7 @@ use Yii;
  * @property NTCVariante $fkNTCVariante
  * @property NTCNewsletter $fkNTCNewsletter
  */
-class NTCArticuloNewsletter extends \yii\db\ActiveRecord
+class ArticuloNewsletter extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

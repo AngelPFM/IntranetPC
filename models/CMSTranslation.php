@@ -14,7 +14,7 @@ use Yii;
  * @property string $Language
  * @property string $Translation
  */
-class NTCCMSTranslation extends \yii\db\ActiveRecord
+class CMSTranslation extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

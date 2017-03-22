@@ -23,7 +23,7 @@ use Yii;
  * @property NTCAlmacen $fkNTCAlmacen
  * @property NTCVariante $fkNTCVariante
  */
-class NTCLineaDevolucionVenta extends \yii\db\ActiveRecord
+class LineaDevolucionVenta extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

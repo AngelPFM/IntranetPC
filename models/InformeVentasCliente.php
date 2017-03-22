@@ -16,7 +16,7 @@ use Yii;
  * @property double $MediaCompra
  * @property double $Total
  */
-class NTCInformeVentasCliente extends \yii\db\ActiveRecord
+class InformeVentasCliente extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

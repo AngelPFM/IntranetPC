@@ -12,7 +12,7 @@ use Yii;
  *
  * @property NTCFichero[] $nTCFicheroes
  */
-class NTCArchivos extends \yii\db\ActiveRecord
+class Archivos extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

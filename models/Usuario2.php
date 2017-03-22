@@ -19,7 +19,7 @@ use Yii;
  *
  * @property NTCDiarioProducto[] $nTCDiarioProductos
  */
-class NTCUsuario2 extends \yii\db\ActiveRecord
+class Usuario2 extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

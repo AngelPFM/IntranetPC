@@ -14,7 +14,7 @@ use Yii;
  * @property string $Texto
  * @property integer $Quitar
  */
-class NTCPortes extends \yii\db\ActiveRecord
+class Portes extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -25,7 +25,7 @@ use Yii;
  * @property NTCPuntosVenta[] $nTCPuntosVentas
  * @property NTCTienda[] $nTCTiendas
  */
-class NTCLocalidad extends \yii\db\ActiveRecord
+class Localidad extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

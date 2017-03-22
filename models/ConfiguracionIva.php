@@ -20,7 +20,7 @@ use Yii;
  * @property NTCTipoIvaNegocio $fkNTCTipoIVANegocio
  * @property NTCTipoCalculoIva $fkNTCTipoCalculoIVA
  */
-class NTCConfiguracionIva extends \yii\db\ActiveRecord
+class ConfiguracionIva extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

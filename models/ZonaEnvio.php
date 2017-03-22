@@ -12,7 +12,7 @@ use Yii;
  *
  * @property NTCTarifaEnvio[] $nTCTarifaEnvios
  */
-class NTCZonaEnvio extends \yii\db\ActiveRecord
+class ZonaEnvio extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -29,7 +29,7 @@ use Yii;
  * @property NTCArticulo $fkNTCArticulo
  * @property NTCVariante $fkNTCVariante
  */
-class NTCMovProducto extends \yii\db\ActiveRecord
+class MovProducto extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

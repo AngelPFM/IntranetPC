@@ -15,7 +15,7 @@ use Yii;
  *
  * @property NTCVariante $fkNTCVariante
  */
-class NTCDetalleVariante extends \yii\db\ActiveRecord
+class DetalleVariante extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

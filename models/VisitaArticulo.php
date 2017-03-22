@@ -14,7 +14,7 @@ use Yii;
  * @property string $Fecha
  * @property integer $Quitar
  */
-class NTCVisitaArticulo extends \yii\db\ActiveRecord
+class VisitaArticulo extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

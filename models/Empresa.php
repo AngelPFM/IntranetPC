@@ -39,7 +39,7 @@ use Yii;
  * @property NTCFichero[] $nTCFicheroes
  * @property NTCRedSocial[] $nTCRedSocials
  */
-class NTCEmpresa extends \yii\db\ActiveRecord
+class Empresa extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

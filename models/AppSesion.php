@@ -11,7 +11,7 @@ use Yii;
  * @property integer $Codigo
  * @property string $Mac
  */
-class NTCAppSesion extends \yii\db\ActiveRecord
+class AppSesion extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

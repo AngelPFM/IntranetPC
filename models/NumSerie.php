@@ -20,7 +20,7 @@ use Yii;
  * @property NTCCabFacturaVenta[] $nTCCabFacturaVentas
  * @property NTCDocumentoVenta[] $nTCDocumentoVentas
  */
-class NTCNumSerie extends \yii\db\ActiveRecord
+class NumSerie extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -15,7 +15,7 @@ use Yii;
  * @property string $Parameters
  * @property string $ExecutionResult
  */
-class NTCCronJob extends \yii\db\ActiveRecord
+class CronJob extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -30,7 +30,7 @@ use Yii;
  * @property NTCVariante $fkNTCVariante
  * @property NTCAlmacen $fkNTCAlmacen
  */
-class NTCDiarioProducto extends \yii\db\ActiveRecord
+class DiarioProducto extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

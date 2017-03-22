@@ -19,7 +19,7 @@ use Yii;
  * @property NTCArticuloColor[] $nTCArticuloColors
  * @property NTCAtributo $fkNTCAtributo
  */
-class NTCOpcionAtributo extends \yii\db\ActiveRecord
+class OpcionAtributo extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

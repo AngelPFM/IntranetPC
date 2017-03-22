@@ -41,7 +41,7 @@ use Yii;
  * @property NTCTienda[] $nTCTiendas
  * @property NTCTiendaAlmacen[] $nTCTiendaAlmacens
  */
-class NTCAlmacen extends \yii\db\ActiveRecord
+class Almacen extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

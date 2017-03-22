@@ -11,7 +11,7 @@ use Yii;
  * @property integer $fkNTC_ZonaEnvio
  * @property integer $fkNTC_Pais
  */
-class NTCZonaEnvioPais extends \yii\db\ActiveRecord
+class ZonaEnvioPais extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

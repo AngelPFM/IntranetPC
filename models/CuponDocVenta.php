@@ -14,7 +14,7 @@ use Yii;
  * @property NTCDocumentoVenta $fkNTCDocumentoVenta
  * @property NTCCuponDescuento $fkNTCCuponDescuento
  */
-class NTCCuponDocVenta extends \yii\db\ActiveRecord
+class CuponDocVenta extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

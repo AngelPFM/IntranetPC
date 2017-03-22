@@ -20,7 +20,7 @@ use Yii;
  * @property integer $midHeight
  * @property integer $EsImagen
  */
-class NTCTipoFichero extends \yii\db\ActiveRecord
+class TipoFichero extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -29,7 +29,7 @@ use Yii;
  * @property NTCProvincia $fkNTCProvincia
  * @property NTCPais $fkNTCPais
  */
-class NTCPuntosVenta extends \yii\db\ActiveRecord
+class PuntosVenta extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

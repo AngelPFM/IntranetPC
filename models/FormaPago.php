@@ -33,7 +33,7 @@ use Yii;
  * @property NTCTerminoPago $fkNTCTerminoPago
  * @property NTCOperacion[] $nTCOperacions
  */
-class NTCFormaPago extends \yii\db\ActiveRecord
+class FormaPago extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

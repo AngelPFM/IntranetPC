@@ -17,7 +17,7 @@ use Yii;
  *
  * @property NTCElementoColeccion[] $nTCElementoColeccions
  */
-class NTCColeccion extends \yii\db\ActiveRecord
+class Coleccion extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

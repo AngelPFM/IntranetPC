@@ -13,7 +13,7 @@ use Yii;
  * @property NTCDiarioProducto[] $nTCDiarioProductos
  * @property NTCMovProducto[] $nTCMovProductos
  */
-class NTCTipoMovProducto extends \yii\db\ActiveRecord
+class TipoMovProducto extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -46,7 +46,7 @@ use Yii;
  * @property NTCGrupoPrecioCliente $fkNTCGrupoPrecioCliente
  * @property NTCLineaAbonoVenta[] $nTCLineaAbonoVentas
  */
-class NTCCabAbonoVenta extends \yii\db\ActiveRecord
+class CabAbonoVenta extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

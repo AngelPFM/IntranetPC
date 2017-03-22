@@ -66,7 +66,7 @@ use Yii;
  * @property NTCMovProducto[] $nTCMovProductos
  * @property NTCTarifaVenta[] $nTCTarifaVentas
  */
-class NTCArticulo extends \yii\db\ActiveRecord
+class Articulo extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

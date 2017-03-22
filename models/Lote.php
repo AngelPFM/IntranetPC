@@ -23,7 +23,7 @@ use Yii;
  * @property NTCLineaVenta[] $nTCLineaVentas
  * @property NTCLoteArticulo[] $nTCLoteArticulos
  */
-class NTCLote extends \yii\db\ActiveRecord
+class Lote extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

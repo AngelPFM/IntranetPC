@@ -12,7 +12,7 @@ use Yii;
  *
  * @property NTCConfiguracionIva[] $nTCConfiguracionIvas
  */
-class NTCTipoCalculoIva extends \yii\db\ActiveRecord
+class TipoCalculoIva extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -21,7 +21,7 @@ use Yii;
  * @property NTCArticulo $fkNTCArticulo
  * @property NTCCategoria $fkNTCCategoria
  */
-class NTCEscaparate extends \yii\db\ActiveRecord
+class Escaparate extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

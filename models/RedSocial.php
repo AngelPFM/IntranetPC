@@ -16,7 +16,7 @@ use Yii;
  *
  * @property NTCEmpresa $fkNTCEmpresa
  */
-class NTCRedSocial extends \yii\db\ActiveRecord
+class RedSocial extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

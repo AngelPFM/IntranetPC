@@ -17,7 +17,7 @@ use Yii;
  * @property integer $Quitar
  * @property string $Email
  */
-class NTCUsuario extends \yii\db\ActiveRecord
+class Usuario extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

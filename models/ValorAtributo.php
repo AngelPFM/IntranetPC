@@ -13,7 +13,7 @@ use Yii;
  * @property integer $fkNTC_Articulo
  * @property integer $fkNTC_OpcionAtributo
  */
-class NTCValorAtributo extends \yii\db\ActiveRecord
+class ValorAtributo extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -32,7 +32,7 @@ use Yii;
  * @property NTCTipoCalculo $fkNTCTipoCalculo
  * @property NTCTipoTarifa $fkNTCTipoTarifa
  */
-class NTCMetodoEnvio extends \yii\db\ActiveRecord
+class MetodoEnvio extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

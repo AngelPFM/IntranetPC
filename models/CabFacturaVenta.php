@@ -48,7 +48,7 @@ use Yii;
  * @property NTCGrupoPrecioCliente $fkNTCGrupoPrecioCliente
  * @property NTCLineaFacturaVenta[] $nTCLineaFacturaVentas
  */
-class NTCCabFacturaVenta extends \yii\db\ActiveRecord
+class CabFacturaVenta extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -17,7 +17,7 @@ use Yii;
  *
  * @property NTCModulo $fkNTCModulo
  */
-class NTCCampo extends \yii\db\ActiveRecord
+class Campo extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

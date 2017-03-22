@@ -14,7 +14,7 @@ use Yii;
  *
  * @property NTCCliente $fkNTCCliente
  */
-class NTCLoginAs extends \yii\db\ActiveRecord
+class LoginAs extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

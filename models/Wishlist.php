@@ -15,7 +15,7 @@ use Yii;
  * @property integer $Comprado
  * @property double $PrecioVenta
  */
-class NTCWishlist extends \yii\db\ActiveRecord
+class Wishlist extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

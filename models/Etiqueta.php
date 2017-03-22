@@ -14,7 +14,7 @@ use Yii;
  *
  * @property NTCArticuloEtiqueta[] $nTCArticuloEtiquetas
  */
-class NTCEtiqueta extends \yii\db\ActiveRecord
+class Etiqueta extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

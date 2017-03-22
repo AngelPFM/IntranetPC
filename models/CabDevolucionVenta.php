@@ -32,7 +32,7 @@ use Yii;
  * @property NTCDivisa $fkNTCDivisa
  * @property NTCLineaDevolucionVenta[] $nTCLineaDevolucionVentas
  */
-class NTCCabDevolucionVenta extends \yii\db\ActiveRecord
+class CabDevolucionVenta extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

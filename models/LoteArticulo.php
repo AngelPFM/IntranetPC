@@ -18,7 +18,7 @@ use Yii;
  * @property NTCLote $fkNTCLote
  * @property NTCVariante $fkNTCVariante
  */
-class NTCLoteArticulo extends \yii\db\ActiveRecord
+class LoteArticulo extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -71,7 +71,7 @@ use Yii;
  * @property NTCOperacion[] $nTCOperacions
  * @property NTCSuscripcion[] $nTCSuscripcions
  */
-class NTCCliente extends \yii\db\ActiveRecord
+class Cliente extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

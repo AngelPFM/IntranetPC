@@ -24,7 +24,7 @@ use Yii;
  * @property NTCAccion[] $nTCAccions
  * @property NTCCampo[] $nTCCampos
  */
-class NTCModulo extends \yii\db\ActiveRecord
+class Modulo extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

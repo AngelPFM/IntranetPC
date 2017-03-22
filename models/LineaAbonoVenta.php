@@ -21,7 +21,7 @@ use Yii;
  * @property NTCArticulo $fkNTCArticulo
  * @property NTCVariante $fkNTCVariante
  */
-class NTCLineaAbonoVenta extends \yii\db\ActiveRecord
+class LineaAbonoVenta extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

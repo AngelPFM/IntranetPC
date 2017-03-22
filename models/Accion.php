@@ -16,7 +16,7 @@ use Yii;
  * @property NTCModulo $fkNTCModulo
  * @property NTCRol $fkNTCRol
  */
-class NTCAccion extends \yii\db\ActiveRecord
+class Accion extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

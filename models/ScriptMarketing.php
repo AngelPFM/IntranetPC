@@ -23,7 +23,7 @@ use Yii;
  * @property NTCIdioma $fkNTCIdioma
  * @property NTCPais $fkNTCPais
  */
-class NTCScriptMarketing extends \yii\db\ActiveRecord
+class ScriptMarketing extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

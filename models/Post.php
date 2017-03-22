@@ -26,7 +26,7 @@ use Yii;
  *
  * @property NTCTipoPost $fkNTCTipoPost
  */
-class NTCPost extends \yii\db\ActiveRecord
+class Post extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

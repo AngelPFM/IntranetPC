@@ -37,7 +37,7 @@ use Yii;
  *
  * @property NTCBloqueCMS[] $nTCBloqueCMSs
  */
-class NTCMenu extends \yii\db\ActiveRecord
+class Menu extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

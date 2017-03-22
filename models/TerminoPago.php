@@ -17,7 +17,7 @@ use Yii;
  * @property NTCDocumentoVenta[] $nTCDocumentoVentas
  * @property NTCFormaPago[] $nTCFormaPagos
  */
-class NTCTerminoPago extends \yii\db\ActiveRecord
+class TerminoPago extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

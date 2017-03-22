@@ -14,7 +14,7 @@ use Yii;
  * @property integer $surtido_libre
  * @property string $Nombre
  */
-class NTCInformeProductos extends \yii\db\ActiveRecord
+class InformeProductos extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -11,7 +11,7 @@ use Yii;
  * @property string $Nombre
  * @property integer $Quitar
  */
-class NTCTipoMenu extends \yii\db\ActiveRecord
+class TipoMenu extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

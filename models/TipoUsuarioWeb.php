@@ -11,7 +11,7 @@ use Yii;
  * @property string $TipoUsuarioWeb
  * @property integer $Profesional
  */
-class NTCTipoUsuarioWeb extends \yii\db\ActiveRecord
+class TipoUsuarioWeb extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

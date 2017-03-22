@@ -17,7 +17,7 @@ use Yii;
  *
  * @property NTCFichero $fkNTCFichero
  */
-class NTCEnlaceFichero extends \yii\db\ActiveRecord
+class EnlaceFichero extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

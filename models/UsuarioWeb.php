@@ -38,7 +38,7 @@ use Yii;
  * @property NTCCarrito[] $nTCCarritos
  * @property NTCSuscripcion[] $nTCSuscripcions
  */
-class NTCUsuarioWeb extends \yii\db\ActiveRecord
+class UsuarioWeb extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -14,7 +14,7 @@ use Yii;
  * @property NTCModuloEnvioProvincia[] $nTCModuloEnvioProvincias
  * @property NTCTarifaEnvio[] $nTCTarifaEnvios
  */
-class NTCModuloEnvio extends \yii\db\ActiveRecord
+class ModuloEnvio extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

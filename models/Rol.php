@@ -13,7 +13,7 @@ use Yii;
  *
  * @property NTCAccion[] $nTCAccions
  */
-class NTCRol extends \yii\db\ActiveRecord
+class Rol extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

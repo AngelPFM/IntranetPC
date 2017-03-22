@@ -13,7 +13,7 @@ use Yii;
  * @property string $Nombre
  * @property string $Descripcion
  */
-class NTCTipoArticulo extends \yii\db\ActiveRecord
+class TipoArticulo extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

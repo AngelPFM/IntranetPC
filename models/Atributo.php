@@ -31,7 +31,7 @@ use Yii;
  * @property NTCConjuntoAtributos[] $fkNTCConjuntoAtributos
  * @property NTCOpcionAtributo[] $nTCOpcionAtributos
  */
-class NTCAtributo extends \yii\db\ActiveRecord
+class Atributo extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

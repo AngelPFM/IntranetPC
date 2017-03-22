@@ -15,7 +15,7 @@ use Yii;
  *
  * @property NTCArticuloColorFiltro[] $nTCArticuloColorFiltros
  */
-class NTCColorFiltro extends \yii\db\ActiveRecord
+class ColorFiltro extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

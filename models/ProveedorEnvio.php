@@ -23,7 +23,7 @@ use Yii;
  * @property NTCMetodoEnvio[] $nTCMetodoEnvios
  * @property NTCTarifaEnvio[] $nTCTarifaEnvios
  */
-class NTCProveedorEnvio extends \yii\db\ActiveRecord
+class ProveedorEnvio extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

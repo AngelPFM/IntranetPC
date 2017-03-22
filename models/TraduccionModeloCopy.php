@@ -14,7 +14,7 @@ use Yii;
  * @property string $Campo
  * @property string $Traduccion
  */
-class NTCTraduccionModeloCopy extends \yii\db\ActiveRecord
+class TraduccionModeloCopy extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

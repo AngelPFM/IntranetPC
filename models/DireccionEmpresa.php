@@ -35,7 +35,7 @@ use Yii;
  * @property NTCProvincia $fkNTCProvincia
  * @property NTCPais $fkNTCPais
  */
-class NTCDireccionEmpresa extends \yii\db\ActiveRecord
+class DireccionEmpresa extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

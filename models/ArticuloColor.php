@@ -15,7 +15,7 @@ use Yii;
  * @property NTCArticulo $fkNTCArticulo
  * @property NTCOpcionAtributo $fkNTCOpcionAtributo
  */
-class NTCArticuloColor extends \yii\db\ActiveRecord
+class ArticuloColor extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -31,7 +31,7 @@ use Yii;
  * @property NTCRelacionDivisa[] $nTCRelacionDivisas0
  * @property NTCTarifaEnvio[] $nTCTarifaEnvios
  */
-class NTCDivisa extends \yii\db\ActiveRecord
+class Divisa extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -11,7 +11,7 @@ use Yii;
  * @property string $Category
  * @property string $Message
  */
-class NTCOrigenMensaje extends \yii\db\ActiveRecord
+class OrigenMensaje extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

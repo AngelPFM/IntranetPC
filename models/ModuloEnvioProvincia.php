@@ -14,7 +14,7 @@ use Yii;
  * @property NTCModuloEnvio $fkNTCModuloEnvio
  * @property NTCProvincia $fkNTCProvincia
  */
-class NTCModuloEnvioProvincia extends \yii\db\ActiveRecord
+class ModuloEnvioProvincia extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

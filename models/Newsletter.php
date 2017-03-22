@@ -16,7 +16,7 @@ use Yii;
  *
  * @property NTCArticuloNewsletter[] $nTCArticuloNewsletters
  */
-class NTCNewsletter extends \yii\db\ActiveRecord
+class Newsletter extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

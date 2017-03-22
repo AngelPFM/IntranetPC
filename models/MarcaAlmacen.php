@@ -14,7 +14,7 @@ use Yii;
  * @property NTCAlmacen $fkNTCAlmacen
  * @property NTCMarca $fkNTCMarca
  */
-class NTCMarcaAlmacen extends \yii\db\ActiveRecord
+class MarcaAlmacen extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

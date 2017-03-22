@@ -16,7 +16,7 @@ use Yii;
  * @property string $Articulo
  * @property string $Referencia
  */
-class NTCInformeCarritos extends \yii\db\ActiveRecord
+class InformeCarritos extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

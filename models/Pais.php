@@ -34,7 +34,7 @@ use Yii;
  * @property NTCTarifaEnvio[] $nTCTarifaEnvios
  * @property NTCTienda[] $nTCTiendas
  */
-class NTCPais extends \yii\db\ActiveRecord
+class Pais extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

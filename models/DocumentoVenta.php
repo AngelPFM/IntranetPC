@@ -102,7 +102,7 @@ use Yii;
  * @property NTCLineaVenta[] $nTCLineaVentas
  * @property NTCOperacion[] $nTCOperacions
  */
-class NTCDocumentoVenta extends \yii\db\ActiveRecord
+class DocumentoVenta extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

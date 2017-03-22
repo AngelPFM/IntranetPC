@@ -18,7 +18,7 @@ use Yii;
  * @property NTCPais[] $nTCPais
  * @property NTCScriptMarketing[] $nTCScriptMarketings
  */
-class NTCIdioma extends \yii\db\ActiveRecord
+class Idioma extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

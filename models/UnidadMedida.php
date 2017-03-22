@@ -14,7 +14,7 @@ use Yii;
  * @property NTCRelacionUdMedida[] $nTCRelacionUdMedidas
  * @property NTCRelacionUdMedida[] $nTCRelacionUdMedidas0
  */
-class NTCUnidadMedida extends \yii\db\ActiveRecord
+class UnidadMedida extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

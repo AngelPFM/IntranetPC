@@ -24,7 +24,7 @@ use Yii;
  * @property NTCLoteArticulo[] $nTCLoteArticulos
  * @property NTCMovProducto[] $nTCMovProductos
  */
-class NTCVariante extends \yii\db\ActiveRecord
+class Variante extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

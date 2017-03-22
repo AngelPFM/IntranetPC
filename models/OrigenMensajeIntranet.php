@@ -13,7 +13,7 @@ use Yii;
  *
  * @property NTCMensajeIntranet[] $nTCMensajeIntranets
  */
-class NTCOrigenMensajeIntranet extends \yii\db\ActiveRecord
+class OrigenMensajeIntranet extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

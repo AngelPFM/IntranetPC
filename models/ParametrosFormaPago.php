@@ -13,7 +13,7 @@ use Yii;
  * @property string $Valor
  * @property integer $Quitar
  */
-class NTCParametrosFormaPago extends \yii\db\ActiveRecord
+class ParametrosFormaPago extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -22,7 +22,7 @@ use Yii;
  *
  * @property NTCIdioma $fkNTCIdioma
  */
-class NTCEstaticosCMS extends \yii\db\ActiveRecord
+class EstaticosCMS extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

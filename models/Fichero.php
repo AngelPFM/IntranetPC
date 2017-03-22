@@ -31,7 +31,7 @@ use Yii;
  * @property NTCEmpresa $fkNTCEmpresa
  * @property NTCMarca $fkNTCMarca
  */
-class NTCFichero extends \yii\db\ActiveRecord
+class Fichero extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

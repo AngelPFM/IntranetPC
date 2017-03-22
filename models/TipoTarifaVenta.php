@@ -11,7 +11,7 @@ use Yii;
  * @property string $Nombre
  * @property integer $Quitar
  */
-class NTCTipoTarifaVenta extends \yii\db\ActiveRecord
+class TipoTarifaVenta extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

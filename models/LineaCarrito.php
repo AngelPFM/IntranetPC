@@ -25,7 +25,7 @@ use Yii;
  * @property NTCVariante $fkNTCVariante
  * @property NTCLineaVenta $fkNTCLineaVenta
  */
-class NTCLineaCarrito extends \yii\db\ActiveRecord
+class LineaCarrito extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
