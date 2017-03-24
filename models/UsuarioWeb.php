@@ -102,17 +102,17 @@ class UsuarioWeb extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCAlmacens()
+    public function getAlmacenes()
     {
-        return $this->hasMany(NTCAlmacen::className(), ['fkNTC_UsuarioWeb' => 'idNTC_UsuarioWeb']);
+        return $this->hasMany(Almacen::className(), ['fkNTC_UsuarioWeb' => 'idNTC_UsuarioWeb']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCarritos()
+    public function getCarritos()
     {
-        return $this->hasMany(NTCCarrito::className(), ['fkNTC_UsuarioWeb' => 'idNTC_UsuarioWeb']);
+        return $this->hasMany(Carrito::className(), ['fkNTC_UsuarioWeb' => 'idNTC_UsuarioWeb']);
     }
 
     /**

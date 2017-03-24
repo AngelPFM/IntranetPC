@@ -5,26 +5,20 @@
 
 use app\assets\AppAsset;
 use app\models\Usuario;
+use yii\helpers\Html;
 
 
 AppAsset::register($this);
 
 
-////$cs->registerScriptFile(Yii::$app->theme->baseUrl.'/js/prefixfree.min.js');
-//$this->registerJsFile('/js/jquery.fancybox.pack.js', CClientScript::POS_END);
-//$cs->registerScriptFile(Yii::$app->theme->baseUrl . '/js/interclick.php', CClientScript::POS_END);
-//$cs->registerCssFile(Yii::$app->theme->baseUrl . '/css/main.css');
-//$cs->registerCssFile(Yii::$app->theme->baseUrl . '/css/detailview.css');
-//$cs->registerCssFile(Yii::$app->theme->baseUrl . '/css/jquery.fancybox.css');
-////$cs->registerCssFile('http://blueimp.github.com/cdn/css/bootstrap.min.css');
-//$cs->registerCoreScript('jquery');
-$usuario = app\models\User::find()->where(['id'=>Yii::$app->user->id])->one();
 ?>
+<?php $this->beginPage() ?>
 <!doctype html>  
-<html>  
+<html lang="<?= Yii::$app->language ?>">  
     <head>
         <meta charset="utf-8" />
-        <meta name="language" content="en" />
+        <?= Html::csrfMetaTags() ?>
+        <meta name="language" content="<?= Yii::$app->language ?>" />
         <link rel="stylesheet" type="text/css" href='//fonts.googleapis.com/css?family=Maven+Pro:400,700,500'/>	
         <meta name="robots" content="noindex, nofollow">
         <!-- blueprint CSS framework -->
@@ -36,12 +30,14 @@ $usuario = app\models\User::find()->where(['id'=>Yii::$app->user->id])->one();
         <link rel="stylesheet" type="text/css" href="<?=  \yii\helpers\Url::base()?>/css/ie.css" media="screen, projection" />
         <![endif]-->
         <script type="text/javascript">
-            var ruta = "<?=  \yii\helpers\Url::base()?>";
+            var ruta = "<?php echo  \yii\helpers\Url::base()?>";
         </script>
         <?php //echo Yii::log("PARAMS: ".print_r(Yii::$app->params,1));?>
-        <title><?php echo Yii::$app->name ?></title>
+  
+        <?php $this->head() ?>
     </head>
     <body>
+        <?php $this->beginBody() ?>
         <section id="contenedor_principal" style="display:table; width:100%;">
             <section id="parte_izquierda" class="<?php echo isset(Yii::$app->session['menu']) && Yii::$app->session['menu'] == 'flotante' ? 'menu-flotante' : 'menu-fijo'; ?>" style="width:270px;">
                 <script type="text/javascript">
@@ -57,7 +53,7 @@ $usuario = app\models\User::find()->where(['id'=>Yii::$app->user->id])->one();
 
                         $.post('<?php echo Yii::$app->urlManager->createAbsoluteUrl('site/cambiaMenu'); ?>',
                                 {},
-                                function (data) {
+                               function (data) {
                                 },
                                 'json'
                                 );
@@ -104,31 +100,35 @@ $usuario = app\models\User::find()->where(['id'=>Yii::$app->user->id])->one();
                     <section id="accesos_modulos">
                         <ul>					
                             <?php
+                            
                             if ($this->beginCache("menu_" . Yii::$app->user->id)) {
                                 $usuario = new Usuario();
                                 $modulos = $usuario->menuPrincipal();
-
+                                   $usuario = app\models\User::findOne(["id"=>  Yii::$app->user->id]);
                                 foreach ($modulos as $modulo) {
-                                    $menuPrincipal = Yii::$app->user->obtieneBotonesMenuPrincipal($this->modelName, $modulo->idNTC_Modulo);
+                                    $menuPrincipal = $usuario->obtieneBotonesMenuPrincipal("Intranet", 1);
                                     if (sizeof($menuPrincipal["items"]) > 0) {
                                         ?>
                                         <li class="principal_nav">
                                             <h5><span class="ico-menu menu-<?= $modulo->idNTC_Modulo ?>"></span>
                                                 <?php
-                                                echo CHtml::link(
+                                                echo \yii\helpers\Html::a(
                                                         $modulo->Nombre, 'javascript:despliegaMenus("' . $modulo->idNTC_Modulo . '");void(0);'
                                                 );
                                                 ?>
                                                 <span class="menu-row"></span>
                                             </h5>
                                             <div class="menu_nav" style="display:none;" id="menu_nav_<?= $modulo->idNTC_Modulo ?>">
-                                                <?php $this->widget('zii.widgets.CMenu', $menuPrincipal); ?>
+                                                <?php
+                                                \yii\widgets\Menu::widget($menuPrincipal);
+                                                 ?>
                                             </div>
                                         </li>
                                         <?php
                                     }
                                 }
                                 $this->endCache();
+                               
                             }
                             ?>
                         </ul>
@@ -137,10 +137,13 @@ $usuario = app\models\User::find()->where(['id'=>Yii::$app->user->id])->one();
             </section>
             <section id="parte_derecha" style="width:auto;">			
                 <div class="sep_derecha">
-                        <!-- <header><?php echo $this->pageTitle; ?></header>-->
+                       
                     <?php echo $content; ?>
                 </div>
             </section>	
         </section>
+        <?php $this->endBody() ?>
     </body>
 </html>
+<?php $this->endPage();
+        ?>

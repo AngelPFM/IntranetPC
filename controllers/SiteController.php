@@ -70,8 +70,9 @@ class SiteController extends Controller {
               die(); */
             $this->redirect("site/login");
         } else {
+           
             $reports = Report::find()->orderBY('Orden ASC')->all();
-            $this->render('index', array("reports" => $reports));
+            return $this->render('index', array("reports" => $reports));
         }
     }
 
@@ -115,6 +116,7 @@ class SiteController extends Controller {
      */
     public function actionLogin()
     {
+        
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -128,6 +130,7 @@ class SiteController extends Controller {
                 'model' => $model,
             ]);
         }
+        
     }
     
     

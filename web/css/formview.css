@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+
+table.detail-view tr.odd {
+	background:inherit;
+}
+
+table.detail-view th {
+	height: 44px;
+	text-align: right;
+	vertical-align: middle;
+	width: 160px;
+}
+
+table.detail-view th, table.detail-view td {
+	border: 1px white solid;
+	font-size: 0.9em;	
+	padding: 0.3em 0.6em;
+	vertical-align: middle;
+}

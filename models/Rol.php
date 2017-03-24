@@ -49,8 +49,11 @@ class Rol extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCAccions()
+    public function getAcciones()
     {
-        return $this->hasMany(NTCAccion::className(), ['fkNTC_Rol' => 'idNTC_Rol']);
+        return $this->hasMany(Accion::className(), ['fkNTC_Rol' => 'idNTC_Rol']);
+    }
+    public function getUsers(){
+        return $this->hasMany(User::className(),['fkNTC_Rol' =>'idNTC_Usuario']);
     }
 }
