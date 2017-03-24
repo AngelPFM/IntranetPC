@@ -191,7 +191,7 @@
 
                     echo '<td><input type="checkbox" id="pedido_' . $pedido->idNTC_DocumentoVenta . '" name="pedido_' . $pedido->idNTC_DocumentoVenta . '" /></td>';
                     if ($pedido->Look > 0) {
-                        $equiv = '<img src="' . Yii::app()->getTheme()->getBaseUrl() . '/images/valido.png" />';
+                        $equiv = '<img src="' . Yii::$app->getTheme()->getBaseUrl() . '/images/valido.png" />';
                     } else {
                         $equiv = '';
                     }
@@ -211,7 +211,7 @@
                     echo '<td>' . $pedido->NombreCliente . '</td>';
                     $equivc = $pedido->clienteVenta;
                     if ($equivc->fkNTC_ConfiguracionIva == 3) {
-                        $equiv = '<img src="' . Yii::app()->getTheme()->getBaseUrl() . '/images/valido.png" />';
+                        $equiv = '<img src="' . Yii::$app->getTheme()->getBaseUrl() . '/images/valido.png" />';
                     } else {
                         $equiv = '';
                     }
@@ -286,7 +286,7 @@
         };
         $.ajax({
             data: parametroscar,
-            url: '<?php echo Yii::app()->request->baseUrl ?>/es-ES/ajax/actu_EstadoPedido',
+            url: '<?php echo Yii::$app->request->baseUrl ?>/es-ES/ajax/actu_EstadoPedido',
             type: 'post',
             beforeSend: function () {
             },
@@ -305,7 +305,7 @@
         };
         $.ajax({
             data: parametroscar,
-            url: '<?php echo Yii::app()->baseUrl ?>/es-ES/ajax/actu_destramitar',
+            url: '<?php echo Yii::$app->baseUrl ?>/es-ES/ajax/actu_destramitar',
             type: 'post',
             beforeSend: function () {
             },
@@ -347,7 +347,7 @@
         };
         $.ajax({
             data: parametroscar,
-            url: '<?php echo Yii::app()->baseUrl ?>/es-ES/ajax/actu_destramitar_array',
+            url: '<?php echo Yii::$app->baseUrl ?>/es-ES/ajax/actu_destramitar_array',
             type: 'post',
             success: function (response) {
                 $("input:checkbox:checked").each(function () {
@@ -390,14 +390,14 @@
         };
         $.ajax({
             data: parametroscar,
-            url: '<?php echo Yii::app()->baseUrl ?>/es-ES/ajax/generarCsv',
+            url: '<?php echo Yii::$app->baseUrl ?>/es-ES/ajax/generarCsv',
             type: 'post',
             dataType: "json",
             success: function (data) {
                 if (data.nombre != null) {
                     //Inserta los valores recuperados en la lista desplegable
                     $.each(data.nombre, function (i, value) {
-                        window.open("<?php echo Yii::app()->baseUrl ?>/../download/?file=" + value + ".csv", "_blank");
+                        window.open("<?php echo Yii::$app->baseUrl ?>/../download/?file=" + value + ".csv", "_blank");
                     });
                 } // end if data
             }// end if success
@@ -435,14 +435,14 @@
         };
         $.ajax({
             data: parametroscar,
-            url: '<?php echo Yii::app()->baseUrl ?>/es-ES/ajax/generarCsvFF',
+            url: '<?php echo Yii::$app->baseUrl ?>/es-ES/ajax/generarCsvFF',
             type: 'post',
             dataType: "json",
             success: function (data) {
                 if (data.nombre != null) {
                     //Inserta los valores recuperados en la lista desplegable
                     $.each(data.nombre, function (i, value) {
-                        window.open("<?php echo Yii::app()->baseUrl ?>/../download/?file=" + value + ".csv", "_blank");
+                        window.open("<?php echo Yii::$app->baseUrl ?>/../download/?file=" + value + ".csv", "_blank");
                     });
                 } // end if data
             }// end if success
@@ -460,7 +460,7 @@
     function mostrarplus(idped) {
         $.ajax({
             data: {id: idped},
-            url: '<?php Yii::app()->getBaseUrl()?>/intranet/es-ES/ajax/DetallePedido',
+            url: '<?php Yii::$app->getBaseUrl()?>/intranet/es-ES/ajax/DetallePedido',
             type: 'post',
             beforeSend: function () {
             },
@@ -491,7 +491,7 @@
                     };
                     $.ajax({
                         data: parametroscar,
-                        url: '<?php echo Yii::app()->baseUrl ?>/es-ES/ajax/actu_linea_tramitar',
+                        url: '<?php echo Yii::$app->baseUrl ?>/es-ES/ajax/actu_linea_tramitar',
                         type: 'post',
                         beforeSend: function () {
                         },

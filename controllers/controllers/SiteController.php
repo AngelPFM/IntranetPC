@@ -79,8 +79,8 @@ class SiteController extends Controller {
      * This is the action to handle external exceptions.
      */
     public function actionError() {
-        if ($error = Yii::app()->errorHandler->error) {
-            if (Yii::app()->request->isAjaxRequest)
+        if ($error = Yii::$app->errorHandler->error) {
+            if (Yii::$app->request->isAjaxRequest)
                 echo 'ERROR: ' . $error['message'];
             else
                 $this->render('error', $error);
@@ -102,8 +102,8 @@ class SiteController extends Controller {
                         "MIME-Version: 1.0\r\n" .
                         "Content-type: text/plain; charset=UTF-8";
 
-                mail(Yii::app()->params['adminEmail'], $subject, $model->body, $headers);
-                Yii::app()->user->setFlash('contact', 'Thank you for contacting us. We will respond to you as soon as possible.');
+                mail(Yii::$app->params['adminEmail'], $subject, $model->body, $headers);
+                Yii::$app->user->setFlash('contact', 'Thank you for contacting us. We will respond to you as soon as possible.');
                 $this->refresh();
             }
         }
@@ -114,24 +114,24 @@ class SiteController extends Controller {
      * Displays the login page
      */
     public function actionLogin() {
-// 		Yii::log("EL USUARIO: " . print_r( Yii::app()->user->getUsuario(), 1) . "\n\nSESSION " . print_r($_SESSION,1) );
+// 		Yii::log("EL USUARIO: " . print_r( Yii::$app->user->getUsuario(), 1) . "\n\nSESSION " . print_r($_SESSION,1) );
         $model = new IntranetLoginForm;
         //$aplicaciones = Aplicacion::model()->findAll();
         // if it is ajax validation request
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
             echo CActiveForm::validate($model);
-            Yii::app()->end();
+            Yii::$app->end();
         }
 
 // 		Yii::log("llego1.0 " . print_r($_POST,1));
-        //Yii::app()->end();
+        //Yii::$app->end();
         // collect user input data
         if (isset($_POST['IntranetLoginForm'])) {
             $model->attributes = $_POST['IntranetLoginForm'];
             // validate user input and redirect to the previous page if valid
             if ($model->validate() && $model->login()) {
 // 				Yii::log("llego2.0 " . print_r($_POST,1));
-                $this->redirect(Yii::app()->user->returnUrl);
+                $this->redirect(Yii::$app->user->returnUrl);
             }
         }
         $this->layout = '//layouts/login';
@@ -149,12 +149,12 @@ class SiteController extends Controller {
      * Logs out the current user and redirect to homepage.
      */
     public function actionLogout() {
-        Yii::app()->user->logout();
-        $this->redirect(Yii::app()->homeUrl);
+        Yii::$app->user->logout();
+        $this->redirect(Yii::$app->homeUrl);
     }
     
     public function actionLoginAs($id){
-		$sesion = Yii::app()->session->sessionId;
+		$sesion = Yii::$app->session->sessionId;
 		$loginAs = LoginAs::model()->findByAttributes(array("Quitar"=>0, "Session"=>$sesion, "fk".F::miApp()."Cliente"=>$id));
 		if($loginAs){
 			$usuario = $loginAs->Cliente->usuarioWeb;
@@ -170,6 +170,6 @@ class SiteController extends Controller {
 			}
 		}
 		
-		Yii::app()->request->redirect(Yii::app()->createAbsoluteUrl("/"));
+		Yii::$app->request->redirect(Yii::$app->createAbsoluteUrl("/"));
 	}
 }

@@ -268,7 +268,7 @@ class AjaxController extends Controller {
                         . $estadoLote->EnvioAtencionA . '","'
                         . $data["alto"] . ' x ' . $data["ancho"] . ' x ' . $data["profundo"] . '", "'
                         . $surtiti . '", "'
-                        . Yii::app()->baseUrl . '/uploads/' . $data["Fichero"] . '", "'
+                        . Yii::$app->baseUrl . '/uploads/' . $data["Fichero"] . '", "'
                         . $data["Referencia"] . '", "'
                         . $data["ReferenciaColor"] . '", "'
                         . $lin_ped->Cantidad . '", "'

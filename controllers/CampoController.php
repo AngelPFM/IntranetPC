@@ -65,8 +65,8 @@ class CampoController extends GenericController
 		foreach($arrNombreCampo as $nombreCampo)
 		{
 			if($nombreCampo != ""){
-				$campos = Campo::model()->findAllByAttributes(array("fk".Yii::app()->params["prefijoTablasBd"]."Modulo"=>$idModulo,
-															"fk".Yii::app()->params["prefijoTablasBd"]."Rol"=>$idRol, 
+				$campos = Campo::model()->findAllByAttributes(array("fk".Yii::$app->params["prefijoTablasBd"]."Modulo"=>$idModulo,
+															"fk".Yii::$app->params["prefijoTablasBd"]."Rol"=>$idRol, 
 															"Nombre"=>$nombreCampo));
 				
 				$arrExcenarios = array("view", "index", "update", "create", "search");
@@ -86,9 +86,9 @@ class CampoController extends GenericController
 				 foreach($vectorRestantes as $escenario){
 				 	$campoNuevo = new Campo();
 				 	
-				 	$nombreModulo = "fk".Yii::app()->params["prefijoTablasBd"]."Modulo";
+				 	$nombreModulo = "fk".Yii::$app->params["prefijoTablasBd"]."Modulo";
 				 	$campoNuevo->$nombreModulo = $idModulo;
-				 	$nombreRol = "fk".Yii::app()->params["prefijoTablasBd"]."Rol";
+				 	$nombreRol = "fk".Yii::$app->params["prefijoTablasBd"]."Rol";
 				 	$campoNuevo->$nombreRol = $idRol;
 				 	$campoNuevo->Nombre = $nombreCampo;
 				 	$campoNuevo->Quitar = 1;

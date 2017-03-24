@@ -14,9 +14,9 @@ class PedidosController extends GenericController {
     }
 
     public function filterControlAcceso($filterChain) {
-        if (Yii::app()->user->isGuest) {
+        if (Yii::$app->user->isGuest) {
             $url = $this->createUrl("site/login");
-            Yii::app()->request->redirect($url);
+            Yii::$app->request->redirect($url);
         }
 
         $filterChain->run();

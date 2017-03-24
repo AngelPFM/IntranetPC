@@ -24,7 +24,7 @@
 				</tr>
 				<tr>
 				<td style="font-size: 14pt; color: #9E9F9E">
-					<?php echo Yii::t('report', 'titulo_{modelo}', array('{model}'=>get_class($model)), 'messages', Yii::app()->language) ?>
+					<?php echo Yii::t('report', 'titulo_{modelo}', array('{model}'=>get_class($model)), 'messages', Yii::$app->language) ?>
 				</td>
 				</tr>
 			</table>

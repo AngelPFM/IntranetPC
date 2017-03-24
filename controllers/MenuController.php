@@ -30,7 +30,7 @@ class MenuController extends GenericController
 	}	
 	
 	public function actionMove(){
-		if(Yii::app()->request->isAjaxRequest && isset($_POST['moved']) && isset($_POST['to']) && isset($_POST['pos']) && isset($_POST['parent'])){
+		if(Yii::$app->request->isAjaxRequest && isset($_POST['moved']) && isset($_POST['to']) && isset($_POST['pos']) && isset($_POST['parent'])){
 // 			Yii::log('MOVER MENU '.$_POST['moved'].' a '.$_POST['to'].' posicion: '.$_POST['pos'].' padre: '.$_POST['parent']);
 			$to = $_POST['to'];
 			$pos = $_POST['pos'];				

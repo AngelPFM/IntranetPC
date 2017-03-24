@@ -15,10 +15,10 @@
 	if($arrTraduccion){
 		echo "<table class=\"detail-view tabla-traduccion\"><tbody>";
 		//foreach ($arrTraduccion as $idiomaTraduccion=>$campos){
-			echo "<tr class='cabecera-idioma'><td></td><td>".Idioma::model()->findByPk(Yii::app()->sourceLanguage)->Nombre."</td>";
+			echo "<tr class='cabecera-idioma'><td></td><td>".Idioma::model()->findByPk(Yii::$app->sourceLanguage)->Nombre."</td>";
 			
 			foreach($arrTraduccion["idiomas"] as $idioma){
-				if($idioma != Yii::app()->sourceLanguage){
+				if($idioma != Yii::$app->sourceLanguage){
 					echo "<td>".Idioma::model()->findByPk($idioma)->Nombre."</td>";
 				}
 			}
@@ -27,13 +27,13 @@
 			
 			if($model->GetModelName() == "Categoria"){
 				echo "<tr><th>Url</th>";
-				$urlAbsoluta = Yii::app()->getBaseUrl(true);
+				$urlAbsoluta = Yii::$app->getBaseUrl(true);
 				$arrUrl = explode("intranet", $urlAbsoluta);
 				$urlAbsoluta = array_shift($arrUrl);
 				
 				echo "<td>".$urlAbsoluta.$campos["Nombre"]."</td>";
 				foreach($arrTraduccion["idiomas"] as $idioma){
-					if($idioma != Yii::app()->sourceLanguage){
+					if($idioma != Yii::$app->sourceLanguage){
 						echo "<td>".$urlAbsoluta.$arrTraduccion[$idioma]["camposIdioma"]["Nombre"]."</td>";
 					}
 				}
@@ -49,7 +49,7 @@
 						echo "<tr class='$parimpar'><th>".$atributos[$c]["label"]."</th><td>".$campo."</td>";
 						
 						foreach($arrTraduccion["idiomas"] as $idioma){
-							if($idioma != Yii::app()->sourceLanguage){
+							if($idioma != Yii::$app->sourceLanguage){
 								echo "<td>".$arrTraduccion[$idioma]["camposIdioma"][$nombreCampo]."</td>";
 							}
 						}
@@ -62,7 +62,7 @@
 		echo "</tbody></table>";
 	}else{
 		if($model->GetModelName() == "Categoria"){
-			$urlAbsoluta = Yii::app()->getBaseUrl(true);
+			$urlAbsoluta = Yii::$app->getBaseUrl(true);
 			$arrUrlAbsoluta = explode("intranet", $urlAbsoluta);
 			$urlAbsoluta = array_shift($arrUrlAbsoluta);
 		
@@ -87,7 +87,7 @@
  * modulos, acciones de modulo y campos de modulo.
  * Cargamos la vista de permisos que es la que tiene toda esta movida
  */
-if( $model->getModelName() == "Rol" && Yii::app()->user->getUsuario()->fkNTC_Rol == 1 )
+if( $model->getModelName() == "Rol" && Yii::$app->user->getUsuario()->fkNTC_Rol == 1 )
 {
 	?>
 <section id="permisos">

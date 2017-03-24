@@ -10,7 +10,7 @@ class ArticuloController extends GenericController
 	}
 	
 	public function actionChange(){
-		if(Yii::app()->request->isAjaxRequest && isset($_GET['id']) && isset($_GET['model'])){
+		if(Yii::$app->request->isAjaxRequest && isset($_GET['id']) && isset($_GET['model'])){
 			$id = $_GET['id'];
 			$modelName = $_GET['model'];
 			$articulo = Articulo::model()->findByPk($id);
@@ -29,11 +29,11 @@ class ArticuloController extends GenericController
 				}
 			}
 		}
-		Yii::app()->end();
+		Yii::$app->end();
 	}
 	
 	public function actionGetColores(){
-		if(Yii::app()->request->isAjaxRequest && isset($_GET['id'])){
+		if(Yii::$app->request->isAjaxRequest && isset($_GET['id'])){
 			
 			$id = $_GET['id'];
 			$articulo = Articulo::model()->findByPk($id);
@@ -59,7 +59,7 @@ class ArticuloController extends GenericController
 				
 			}
 		}
-		Yii::app()->end();
+		Yii::$app->end();
 	}
 	
 	

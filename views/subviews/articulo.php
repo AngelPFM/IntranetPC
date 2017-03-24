@@ -79,10 +79,10 @@
             var i;
             for (i = 1; i <= 4; i++) { 
                $("#"+idAlt+i).prop("checked", false);
-               $("#"+idAlt+i+"_img").prop("src", "<?php echo Yii::app()->baseUrl?>/themes/interclick/images/check_off.png");
+               $("#"+idAlt+i+"_img").prop("src", "<?php echo Yii::$app->baseUrl?>/themes/interclick/images/check_off.png");
             }
             $("#"+id).prop("checked", true);
-            obj.prop("src", "<?php echo Yii::app()->baseUrl?>/themes/interclick/images/check_on.png");
+            obj.prop("src", "<?php echo Yii::$app->baseUrl?>/themes/interclick/images/check_on.png");
             
             var materiales = {"Empeine":[
                                             $( "input:checkbox[name=empeine_cos_1]:checked" ).val(),
@@ -106,7 +106,7 @@
                 }
                 $.ajax({
                     data: parametroscar,
-                    url: '<?php echo Yii::app()->baseUrl?>/es-ES/ajax/update_material',
+                    url: '<?php echo Yii::$app->baseUrl?>/es-ES/ajax/update_material',
                     type: 'post',
                     success: function(response) {
                          if (response.length > 0){
@@ -148,7 +148,7 @@
                 };
                 $.ajax({
                     data: parametroscar,
-                    url: '<?php echo Yii::app()->baseUrl?>/es-ES/ajax/actu_tramitar_array',
+                    url: '<?php echo Yii::$app->baseUrl?>/es-ES/ajax/actu_tramitar_array',
                     type: 'post',
                     success: function(response) {
                         $("input:checkbox:checked").each(function(){

@@ -4,7 +4,7 @@
 </div>
 <div class="row" style="margin-bottom:20px;">
     <div class="field-row">
-        <a href='<?= Yii::app()->getBaseUrl(false)."/textos/exportar";?>' target='_blank'><input type='button' value='Exportar' /></a>
+        <a href='<?= Yii::$app->getBaseUrl(false)."/textos/exportar";?>' target='_blank'><input type='button' value='Exportar' /></a>
        
     </div>
 </div>

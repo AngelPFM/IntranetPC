@@ -118,7 +118,7 @@ class DiarioProductoController extends GenericController
 				'type'=>'raw',
 				'htmlOptions'=>array('style'=>'width: 20px;'),
 		);
-		Yii::app()->clientScript->registerScript('diarioProductos',
+		Yii::$app->clientScript->registerScript('diarioProductos',
 				'var numLine = 0;
 				$("#DiarioProducto-edit-form table td.empty").remove();
 				$("#add-line-link").on("click", function(event){
@@ -165,7 +165,7 @@ class DiarioProductoController extends GenericController
 						$.ajax({
 							type: "GET",
 							dataType: "html",
-							url: "'.Yii::app()->createAbsoluteUrl('/'.Articulo.'/change').'/?id="+$(this).val()+"&model=Variante",
+							url: "'.Yii::$app->createAbsoluteUrl('/'.Articulo.'/change').'/?id="+$(this).val()+"&model=Variante",
 							success: function(data){
 								$("#"+campo).html($(data).children("option"));
 							}

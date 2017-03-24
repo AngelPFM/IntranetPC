@@ -1,11 +1,12 @@
 <?php 
-	$baseUrl = Yii::app()->theme->baseUrl;
-	$cs = Yii::app()->getClientScript();
-	$cs->registerScriptFile($baseUrl.'/js/supersized.3.2.6.js');
-	$cs->registerCssFile($baseUrl.'/css/supersized.css');
-	$cs->registerCssFile($baseUrl.'/css/login.css');
+use yii\web\View;
+
+	$baseUrl = \yii\helpers\Url::base();
+	$this->registerJSFile($baseUrl.'/js/supersized.3.2.6.js');
+	$this->registerCssFile($baseUrl.'/css/supersized.css');
+	$this->registerCssFile($baseUrl.'/css/login.css');
 	
-	Yii::app()->clientScript->registerScript('supersized',
+	$this->registerJS('supersized',
 	'var fondos = eval("[{image:\'' . $baseUrl . '/images/fondo.jpg\', title : \'\', fid:\'\' }]");
 			$(function(){
 			    $.supersized({
@@ -19,46 +20,47 @@
 			        slide_links				:	   0,
 			        thumbnail_navigation    :      0});
 			});',
-			CClientScript::POS_HEAD
+                View::POS_HEAD
 	);
 ?>
 <div class="login">
 	<div class="logo-empresa"></div>
 	<div class="form">
-		<?php $form=$this->beginWidget('CActiveForm', array(
-			'id'=>'login-form',
-			'enableClientValidation'=>true,
-			'clientOptions'=>array(
-				'validateOnSubmit'=>true,
-			),
-		)); 
-		?>
+        <?php
+                      
+                use yii\helpers\Html;
+                use yii\widgets\ActiveForm;
+
+                  $form = ActiveForm::begin([
+                  'id' => 'login-form',
+                  'options' => ['class' => 'form-horizontal'],
+])          ?>
+                  
+
+
 		
 		<div class="row campos">
-			<?php echo $form->labelEx($model,'username'); ?>
-			<?php echo $form->textField($model,'username'); ?>
+			<?= $form->field($model, 'username')->label('Usuario') ?>
+                  
 		</div>
 	
 		<div class="row campos">
-			<?php echo $form->labelEx($model,'password'); ?>
-			<?php echo $form->passwordField($model,'password'); ?>
+			
+                  <?= $form->field($model, 'password')->passwordInput()->label('Contraseña') ?>
 		</div>
 	
 		<div class="row rememberMe">
 			
-			<?php echo $form->checkBox($model,'rememberMe'); ?>
-			<label class="check" for="IntranetLoginForm_rememberMe"></label>
-			<?php echo $form->label($model,'rememberMe'); ?>
+			 <?= $form->field($model, 'rememberMe')->checkbox([
+            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
+        ]) ?>
+
 		</div>
-		<div class="contenedor-errores">
-			<?php echo $form->error($model,'username'); ?>
-			<?php echo $form->error($model,'password'); ?>
-			<?php echo $form->error($model,'rememberMe'); ?>
-		</div>
+
 		<div class="row buttons">
-			<?php echo CHtml::submitButton('Entrar'); ?>
+			<?= Html::submitButton('Entrar', ['class' => 'btn btn-primary']) ?>
 		</div>
 	
-		<?php $this->endWidget();?>
+		<?php ActiveForm::end() ?> 
 	</div><!-- form -->
 </div>

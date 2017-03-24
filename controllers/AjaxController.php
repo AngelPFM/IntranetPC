@@ -14,7 +14,7 @@ class AjaxController extends Controller {
 
     public function actionDetallePedido() {
         $pedid = $_POST['id'];
-        if (Yii::app()->user->usuario) {
+        if (Yii::$app->user->usuario) {
             $venta = DocumentoVenta::model()->findByPk($pedid);
           
             $cabecera = $lineas = '';
@@ -63,7 +63,7 @@ class AjaxController extends Controller {
 
                 $cubiaux = 0;
                 $sql = "select sum(cantidad) as Cantidad from NTC_LoteArticulo where fkntc_lote=" . $idLote . " and Quitar = 0 group by fkntc_lote";
-                $command = Yii::app()->db->createCommand($sql);
+                $command = Yii::$app->db->createCommand($sql);
                 $resultsql = $command->queryRow();
                 $cubiaux = ($alto / 100) * ($ancho / 100) * ($profundo / 100) * 110 * $lote->Cantidad;
                 if ($loteaux->surtido_libre) {
@@ -538,7 +538,7 @@ Total Pares,@TOTALPARES@,,,,,,,,,
                 $CantArts = LoteArticulo::model()->findAllByAttributes(array("fkNTC_Lote" => $LoteArt->fkNTC_Lote));
 
                 // COMPOSICION
-                $composiciones = ValorAtributo::model()->findByAttributes(array("fk" . Yii::app()->params['prefijoTablasBd'] . "Articulo" => $articulo, "fk" . Yii::app()->params['prefijoTablasBd'] . "Atributo" => 5));
+                $composiciones = ValorAtributo::model()->findByAttributes(array("fk" . Yii::$app->params['prefijoTablasBd'] . "Articulo" => $articulo, "fk" . Yii::$app->params['prefijoTablasBd'] . "Atributo" => 5));
                 $compo_zapa = $composiciones->Valor;
                 $composicion = explode("\"", $compo_zapa);
                 $empeine = array();

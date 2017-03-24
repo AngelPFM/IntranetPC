@@ -224,7 +224,7 @@
                       echo '<td><span class="boton fondo-azul" onclick="window.location=\'' . "http://" . $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI] . "/" . $pedido->idNTC_DocumentoVenta . '\'"><a href="#">Detalle</a></span></td>';
 
                       if ($pedido->Look>0) {
-                      $equiv = '<img src="' . Yii::app()->getTheme()->getBaseUrl() . '/images/valido.png" />';
+                      $equiv = '<img src="' . Yii::$app->getTheme()->getBaseUrl() . '/images/valido.png" />';
                       } else {
                       $equiv = '';
                       }
@@ -246,7 +246,7 @@
                       $teluw = $pedido->clienteVenta->usuarioWeb;
                       echo '<td>' . $teluw->Telefono . '</td>';
                       if ($equivc->fkNTC_ConfiguracionIva == 3) {
-                      $equiv = '<img src="' . Yii::app()->getTheme()->getBaseUrl() . '/images/valido.png" />';
+                      $equiv = '<img src="' . Yii::$app->getTheme()->getBaseUrl() . '/images/valido.png" />';
                       } else {
                       $equiv = '';
                       }
@@ -296,7 +296,7 @@
         };
         $.ajax({
             data: parametroscar,
-            url: '<?php echo Yii::app()->request->baseUrl ?>/es-ES/ajax/actu_EstadoPedido',
+            url: '<?php echo Yii::$app->request->baseUrl ?>/es-ES/ajax/actu_EstadoPedido',
             type: 'post',
             beforeSend: function () {
             },
@@ -314,7 +314,7 @@
         };
         $.ajax({
             data: parametroscar,
-            url: '<?php echo Yii::app()->baseUrl ?>/es-ES/ajax/actu_tramitar',
+            url: '<?php echo Yii::$app->baseUrl ?>/es-ES/ajax/actu_tramitar',
             type: 'post',
             beforeSend: function () {
             },
@@ -353,7 +353,7 @@
         };
         $.ajax({
             data: parametroscar,
-            url: '<?php echo Yii::app()->baseUrl ?>/es-ES/ajax/actu_tramitar_array',
+            url: '<?php echo Yii::$app->baseUrl ?>/es-ES/ajax/actu_tramitar_array',
             type: 'post',
             success: function (response) {
                 $("input:checkbox:checked").each(function () {
@@ -368,7 +368,7 @@
     function mostrarplus(idped) {
         $.ajax({
             data: {id: idped},
-            url: '<?php Yii::app()->getBaseUrl()?>/intranet/es-ES/ajax/DetallePedido',
+            url: '<?php Yii::$app->getBaseUrl()?>/intranet/es-ES/ajax/DetallePedido',
             type: 'post',
             beforeSend: function () {
             },

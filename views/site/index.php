@@ -1,7 +1,7 @@
 <?php
 /* @var $this SiteController */
 
-$this->pageTitle = Yii::app()->name;
+$this->title = Yii::$app->name;
 ?>
     <?php if (true) { ?>
     <section id="cuerpo">
@@ -26,28 +26,28 @@ $this->pageTitle = Yii::app()->name;
                             $ejeH = 'hAxis';
                         }
                         ?>			
-                        <?php
-                        $arrColumnas = explode(',', $report->Columnas);
-                        $this->widget('ext.googleCharts.components.widgets.GoogleChart', array('type' => $report->fkChartType,
-                            'report' => $report->getPkValue(),
-                            'containerId' => 'chart' . $thisChart,
-// 																						'model'=>$report->Modelo,
-// 																						'columns'=>$report->Columnas,
-// 																						'condition'=>$report->Condition,
-// 																						'order'=>$report->Order,
-// 																						'group'=>$report->Group,
-// 																						'having'=>$report->Having,
-// 																						'limit'=>$report->Limit,
-// 																						'offset'=>$report->Offset, 
-                            'options' => array($ejeV => array('title' => GoogleChartsHelper::removeCamelCase(($arrColumnas[0])),
-                                    'titleTextStyle' => array('color' => 'red', 'lineheight: 20px;')),
-                                $ejeH => array('title' => GoogleChartsHelper::removeCamelCase(($arrColumnas[1])),
-                                    'titleTextStyle' => array('color' => 'red')),
-                                'width' => $report->Ancho,
-                                'height' => $report->Alto,
-                                'allowHtml' => (($report->AllowHtml) ? 'true' : 'false'),
-                        )));
-                        ?>
+                        //<?php
+//                        $arrColumnas = explode(',', $report->Columnas);
+//                        $this->widget('ext.googleCharts.components.widgets.GoogleChart', array('type' => $report->fkChartType,
+//                            'report' => $report->getPkValue(),
+//                            'containerId' => 'chart' . $thisChart,
+//// 																						'model'=>$report->Modelo,
+//// 																						'columns'=>$report->Columnas,
+//// 																						'condition'=>$report->Condition,
+//// 																						'order'=>$report->Order,
+//// 																						'group'=>$report->Group,
+//// 																						'having'=>$report->Having,
+//// 																						'limit'=>$report->Limit,
+//// 																						'offset'=>$report->Offset, 
+//                            'options' => array($ejeV => array('title' => GoogleChartsHelper::removeCamelCase(($arrColumnas[0])),
+//                                    'titleTextStyle' => array('color' => 'red', 'lineheight: 20px;')),
+//                                $ejeH => array('title' => GoogleChartsHelper::removeCamelCase(($arrColumnas[1])),
+//                                    'titleTextStyle' => array('color' => 'red')),
+//                                'width' => $report->Ancho,
+//                                'height' => $report->Alto,
+//                                'allowHtml' => (($report->AllowHtml) ? 'true' : 'false'),
+//                        )));
+//                        ?>
                     </div>
                 </div>
                 <?php

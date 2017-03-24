@@ -61,7 +61,7 @@ class TraduccionModeloController extends GenericController {
         }
         $bote=array();
         
-        $schema = Yii::app()->db->getSchema();
+        $schema = Yii::$app->db->getSchema();
         foreach ($modelosbuena as $modelo) {
            $nombretabla="NTC_" . $modelo;
            $tabla = $schema->getTable($nombretabla);            
@@ -79,10 +79,10 @@ class TraduccionModeloController extends GenericController {
         }
         $sql = substr($sql,0,-6);
        
-        $result =Yii::app()->db->createCommand($sql)->queryAll();         
+        $result =Yii::$app->db->createCommand($sql)->queryAll();         
         foreach($result as $row){
             foreach($row as $campo){
-               $csv.=Yii::app()->db->quoteValue($campo).',';
+               $csv.=Yii::$app->db->quoteValue($campo).',';
             }
             $csv=substr($csv,0,-1);
             $csv.="\n\r";            
@@ -102,9 +102,9 @@ class TraduccionModeloController extends GenericController {
             * 
             * 
          * $modelos=array();
-        $tablas = Yii::app()->db->getSchema()->getTableNames();
+        $tablas = Yii::$app->db->getSchema()->getTableNames();
         foreach ($tablas as $tabla) {
-            $tabla = str_replace(Yii::app()->params['PrefijoTablas'], '', $tabla);
+            $tabla = str_replace(Yii::$app->params['PrefijoTablas'], '', $tabla);
             F::pre(get_declared_classes());
             echo ($tabla) ;
             echo class_exists($tabla) ;
@@ -122,7 +122,7 @@ class TraduccionModeloController extends GenericController {
         
         /*     
          * 
-         * Yii::app()->basePath . '/../¿INTRANET?'
+         * Yii::$app->basePath . '/../¿INTRANET?'
          * 
          * 
          */
@@ -136,7 +136,7 @@ class TraduccionModeloController extends GenericController {
          * 
          * TENIENDO EN CUENTA QUE LOS MODELOS QUE ME DEVUELVE PUEDEN SER 
          * 
-        $modelos = Yii::app()->db->createCommand('select distinct modelo from '.Yii::app()->params['PrefijoTablas'].'Modulo'.' where modelo IS NOT NULL and modelo <> ""')->queryAll();
+        $modelos = Yii::$app->db->createCommand('select distinct modelo from '.Yii::$app->params['PrefijoTablas'].'Modulo'.' where modelo IS NOT NULL and modelo <> ""')->queryAll();
         */
         
         

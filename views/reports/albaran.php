@@ -17,7 +17,7 @@ $simbolo = $documento->divisa()->Simbolo; ?>
 					<tr>
 						<td style="width: 50%">
 							<span style="font-weight: bold; font-size: 10pt; color: #9E9F9E">
-								<?php echo Yii::t('report', $documento->getAttributeLabel('fkNTC_DireccionEnvio'), array(), 'messages', Yii::app()->language) ?>
+								<?php echo Yii::t('report', $documento->getAttributeLabel('fkNTC_DireccionEnvio'), array(), 'messages', Yii::$app->language) ?>
 							</span><br />
 							<?php //DIRECCION DE ENVIO
 								echo $documento->DireccionEnvio.'<br />';
@@ -28,7 +28,7 @@ $simbolo = $documento->divisa()->Simbolo; ?>
 						</td>
 						<td style="width: 50%">
 							<span style="font-weight: bold; font-size: 10pt; color: #9E9F9E">
-								<?php echo Yii::t('report', 'Dirección Facturación', array(), 'messages', Yii::app()->language) ?>
+								<?php echo Yii::t('report', 'Dirección Facturación', array(), 'messages', Yii::$app->language) ?>
 							</span><br />
 							<?php //DIRECCION DE FACTURACION
 								echo $documento->DireccionFactura.'<br />';

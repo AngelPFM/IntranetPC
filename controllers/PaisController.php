@@ -15,7 +15,7 @@ class PaisController extends GenericController
 	}
 	
 	public function actionChange(){
-		if(Yii::app()->request->isAjaxRequest && isset($_GET['id']) && isset($_GET['model'])){
+		if(Yii::$app->request->isAjaxRequest && isset($_GET['id']) && isset($_GET['model'])){
 			$id = $_GET['id'];
 			$modelName = $_GET['model'];
 			$pais = Pais::model()->findByPk($id);
@@ -34,7 +34,7 @@ class PaisController extends GenericController
 				}
 			}
 		}
-		Yii::app()->end();
+		Yii::$app->end();
 	}
 	
 }

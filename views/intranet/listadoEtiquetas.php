@@ -38,9 +38,9 @@
 </script>
 <div class="form">
 	<?php 
-		$idiomaDefecto = Idioma::model()->findAllByPk(Yii::app()->sourceLanguage);
+		$idiomaDefecto = Idioma::model()->findAllByPk(Yii::$app->sourceLanguage);
 		$criterioIdioma = new CDbCriteria();
-		$criterioIdioma->addCondition("id".Yii::app()->params["prefijoTablasBd"]."Idioma != '".Yii::app()->sourceLanguage."'");
+		$criterioIdioma->addCondition("id".Yii::$app->params["prefijoTablasBd"]."Idioma != '".Yii::$app->sourceLanguage."'");
 		$idiomas = Idioma::model()->findAllByAttributes(array('Quitar'=>0), $criterioIdioma);
 		$idiomas = array_merge($idiomaDefecto, $idiomas);
 
@@ -57,7 +57,7 @@
 		var id = $(input).attr('id');
 		$(input).css('border-color','#eee');
 		$.post(
-			'<?php echo Yii::app()->createAbsoluteUrl('mensaje/updateAjax');?>',
+			'<?php echo Yii::$app->createAbsoluteUrl('mensaje/updateAjax');?>',
 			{
 				id: $(this).attr('idorigen'),
 				lang: $(this).attr('lang'),

@@ -112,7 +112,7 @@ class GenericController extends Controller
 		$url = $this->createUrl("site/login");
 
 		//Si no estoy logeado te llevo a la pantalla de login
-		if( !Yii::app()->user->isGuest )
+		if( !Yii::$app->user->isGuest )
 		{
 			$accion = $filterChain->action->getId();
 
@@ -141,27 +141,27 @@ class GenericController extends Controller
 				$this->_maxPorPagina = $mod->MaxPorPagina;
 			}
 
-			if (Yii::app()->user->compruebaAccesoAccion($idModulo, $accion))
+			if (Yii::$app->user->compruebaAccesoAccion($idModulo, $accion))
 			{
 				$filterChain->run();
 			}
 			else
 			{
-				if( Yii::app()->request->isAjaxRequest ){
-					Yii::app()->end();
+				if( Yii::$app->request->isAjaxRequest ){
+					Yii::$app->end();
 				}
 				else{
-					Yii::app()->request->redirect($url);
+					Yii::$app->request->redirect($url);
 				}
 			}
 		}
 		else
 		{
-			if( Yii::app()->request->isAjaxRequest ){
-				Yii::app()->end();
+			if( Yii::$app->request->isAjaxRequest ){
+				Yii::$app->end();
 			}
 			else {
-				Yii::app()->request->redirect($url);
+				Yii::$app->request->redirect($url);
 			}
 		}
 	}
@@ -219,7 +219,7 @@ class GenericController extends Controller
 			$arrayUrl = explode("/",$urlVolver);
 			$arrayUrl[0] = "";
 			$urlVolver = implode("/",$arrayUrl);
-			$urlVolver = str_replace(Yii::app()->getBaseUrl(),"",$urlVolver);
+			$urlVolver = str_replace(Yii::$app->getBaseUrl(),"",$urlVolver);
 
 			array_push($this->menu, array(
 					"linkOptions"=>array('class'=>'btnAccionesSobrelistado'),
@@ -248,7 +248,7 @@ class GenericController extends Controller
 
 		foreach($campos as $campo=>$valor){
 
-			if($campo == "id".Yii::app()->params["prefijoTablasBd"]."Video")
+			if($campo == "id".Yii::$app->params["prefijoTablasBd"]."Video")
 				$hayVideo = true;
 
 			$etiqueta = isset($etiquetas[$campo])?$etiquetas[$campo]:(isset($etiquetasExtra[$campo])?$etiquetasExtra[$campo]:$campo);
@@ -359,7 +359,7 @@ class GenericController extends Controller
 			$parametrosVista["idVideo"] = $model->idNTC_Video;
 
 		//TODO: ver si cambiar esto llamando a una acción similar a indexAjax del modelo
-		if(Yii::app()->request->isAjaxRequest){
+		if(Yii::$app->request->isAjaxRequest){
 			$this->renderPartial(
 					'/intranet/view',
 					$parametrosVista,
@@ -376,7 +376,7 @@ class GenericController extends Controller
 		}
 		else{
 			
-			Yii::app()->clientScript->registerScript(
+			Yii::$app->clientScript->registerScript(
 			'checks','
 				var ajaxGenerar;
 				function generarVariantes(boton){
@@ -440,7 +440,7 @@ class GenericController extends Controller
 			}
 
 			if($continuar){
-				if(Yii::app()->params["redireccionarAlPadre"] &&
+				if(Yii::$app->params["redireccionarAlPadre"] &&
 						$_GET["return"] != "" &&
 						$_GET["modRet"] != "" &&
 						$_GET["keyRet"] != "")
@@ -467,7 +467,7 @@ class GenericController extends Controller
 		$metadatos = $model->retornaMetaData(1);
 		
 		if($model->modelName == "ArticuloColor"){
-			Yii::app()->clientScript->registerScript(
+			Yii::$app->clientScript->registerScript(
 			'diarioProductos',
 			'$("select[name*=\'fkNTC_Articulo\']").each(function(){
 					$(this).on("change", function(event){
@@ -475,7 +475,7 @@ class GenericController extends Controller
 						$.ajax({
 							type: "GET",
 							dataType: "html",
-							url: "'.Yii::app()->createAbsoluteUrl('/Articulo/getColores').'/?id="+$(this).val(),
+							url: "'.Yii::$app->createAbsoluteUrl('/Articulo/getColores').'/?id="+$(this).val(),
 							success: function(data){
 								campo.html($(data).children("option"));
 							}
@@ -513,7 +513,7 @@ class GenericController extends Controller
 
 			if($model->save())
 			{
-				if(Yii::app()->params["redireccionarAlPadre"] &&
+				if(Yii::$app->params["redireccionarAlPadre"] &&
 						$_GET["return"] != "" &&
 						$_GET["modRet"] != "" &&
 						$_GET["keyRet"] != "")
@@ -533,7 +533,7 @@ class GenericController extends Controller
 			else
 			{
 				Yii::log("ERROR DE VALIDACIÓN:  " . print_r($model->getErrors(),1) );
-				//Yii::app()->end();
+				//Yii::$app->end();
 			}
 		}
 
@@ -544,7 +544,7 @@ class GenericController extends Controller
 		$this->registrarScriptsCodeMirror();
 		
 		if($model->modelName == "ArticuloColor"){
-			Yii::app()->clientScript->registerScript(
+			Yii::$app->clientScript->registerScript(
 			'diarioProductos',
 			'$("select[name*=\'fkNTC_Articulo\']").each(function(){
 					$(this).on("change", function(event){
@@ -552,7 +552,7 @@ class GenericController extends Controller
 						$.ajax({
 							type: "GET",
 							dataType: "html",
-							url: "'.Yii::app()->createAbsoluteUrl('/Articulo/getColores').'/?id="+$(this).val(),
+							url: "'.Yii::$app->createAbsoluteUrl('/Articulo/getColores').'/?id="+$(this).val(),
 							success: function(data){
 								campo.html($(data).children("option"));
 							}
@@ -564,7 +564,7 @@ class GenericController extends Controller
 				$.ajax({
 					type: "GET",
 					dataType: "html",
-					url: "'.Yii::app()->createAbsoluteUrl('/Articulo/getColores').'/?id="+$("select[name*=\'fkNTC_Articulo\'] option[selected]").val(),
+					url: "'.Yii::$app->createAbsoluteUrl('/Articulo/getColores').'/?id="+$("select[name*=\'fkNTC_Articulo\'] option[selected]").val(),
 					success: function(data){
 						campo.html($(data).children("option"));
 					}
@@ -720,7 +720,7 @@ class GenericController extends Controller
 
 
 		Yii::log("SEARCH: ".print_r($search,1));
-		// 		Yii::app()->end();
+		// 		Yii::$app->end();
 		$dataProviderParams = array();
 
 		if( isset($search["numRegistros"]) ){
@@ -832,7 +832,7 @@ class GenericController extends Controller
 		if(isset($_POST['ajax']) && $_POST['ajax']==='pais-form')
 		{
 			echo CActiveForm::validate($model);
-			Yii::app()->end();
+			Yii::$app->end();
 		}
 	}
 
@@ -878,7 +878,7 @@ class GenericController extends Controller
 					$modelTmp = new $relacion[1]();
 					$metadata = $modelTmp->retornaMetaData();
 					$modelo = $metadata['name'];
-					$modelo = str_replace(Yii::app()->params['prefijoTablasBd'], '', $modelo);
+					$modelo = str_replace(Yii::$app->params['prefijoTablasBd'], '', $modelo);
 					$modelo = str_replace("_", '', $modelo);
 					$modulo = Modulo::model()->findAllByAttributes(array('Modelo'=>$modelo));
 					
@@ -887,7 +887,7 @@ class GenericController extends Controller
 						if(in_array($modulo[0]->idNTC_Modulo, $subModulos) ){
 							
 							// Comprobar permisos VIEW del modulo
-							$acciones = $modulo[0]->accions(array('condition'=>'Quitar=false AND Nombre="view" AND fkNTC_Rol='.Yii::app()->user->usuario->fkNTC_Rol));
+							$acciones = $modulo[0]->accions(array('condition'=>'Quitar=false AND Nombre="view" AND fkNTC_Rol='.Yii::$app->user->usuario->fkNTC_Rol));
 							// 							Yii::log('1:M acciones: '.print_r($acciones,1));
 							if(sizeof($acciones)>0){								
 								if(!isset($relacion['through'])){
@@ -934,7 +934,7 @@ class GenericController extends Controller
 								// 								Yii::log("key: ". $_GET['key']);
 								if( isset($_GET['mod'], $_GET['key']) ){
 									if( $relacion[1] == $_GET['mod'] && $relacion[2] == $_GET['key'] ){
-										Yii::app()->clientScript->registerScript(
+										Yii::$app->clientScript->registerScript(
 												'abrir_sublistado',
 												'mostrarSubListado("' . $this->createUrl("/".$relacion[1]) . '", "' . $relacion[2] . '", ' . $model->getPkValue() .', "' . $miOn. '");',
 												CClientScript::POS_READY
@@ -957,13 +957,13 @@ class GenericController extends Controller
 					$modelTmp = new $relacion[1]();
 					$metadata = $modelTmp->retornaMetaData();
 					$modelo = $metadata['name'];
-					$modelo = str_replace(Yii::app()->params['prefijoTablasBd'], '', $modelo);
+					$modelo = str_replace(Yii::$app->params['prefijoTablasBd'], '', $modelo);
 					$modelo = str_replace("_", '', $modelo);
 					//Yii::log("MODELO: ".$modelo);
 					$modulo = Modulo::model()->findAllByAttributes(array('Modelo'=>$modelo));
 					if( count($modulo) > 0 ){
 						if(in_array($modulo[0]->idNTC_Modulo,$subModulos) ){
-							$acciones = $modulo[0]->accions(array('condition'=>'Quitar=false AND Nombre="view" AND fkNTC_Rol='.Yii::app()->user->usuario->fkNTC_Rol));
+							$acciones = $modulo[0]->accions(array('condition'=>'Quitar=false AND Nombre="view" AND fkNTC_Rol='.Yii::$app->user->usuario->fkNTC_Rol));
 							// 	Yii::log('M:M acciones: '.print_r($acciones,1));
 							if(sizeof($acciones)>0){
 								array_push(
@@ -998,13 +998,13 @@ class GenericController extends Controller
 	 * Registrar los scripts necesarios para usar CodeMirror
 	 */
 	public function registrarScriptsCodeMirror(){
-		$cs=Yii::app()->getClientScript();
-		$cs->registerScriptFile(Yii::app()->theme->baseUrl.'/codemirror/lib/codemirror.js');
-		$cs->registerScriptFile(Yii::app()->theme->baseUrl.'/codemirror/mode/javascript/javascript.js');
-		$cs->registerScriptFile(Yii::app()->theme->baseUrl.'/codemirror/mode/css/css.js');
-		$cs->registerScriptFile(Yii::app()->theme->baseUrl.'/codemirror/addon/edit/matchbrackets.js');
-		$cs->registerScriptFile(Yii::app()->theme->baseUrl.'/codemirror/addon/edit/closebrackets.js');
-		$cs->registerCssFile(Yii::app()->theme->baseUrl.'/codemirror/lib/codemirror.css');
+		$cs=Yii::$app->getClientScript();
+		$cs->registerScriptFile(Yii::$app->theme->baseUrl.'/codemirror/lib/codemirror.js');
+		$cs->registerScriptFile(Yii::$app->theme->baseUrl.'/codemirror/mode/javascript/javascript.js');
+		$cs->registerScriptFile(Yii::$app->theme->baseUrl.'/codemirror/mode/css/css.js');
+		$cs->registerScriptFile(Yii::$app->theme->baseUrl.'/codemirror/addon/edit/matchbrackets.js');
+		$cs->registerScriptFile(Yii::$app->theme->baseUrl.'/codemirror/addon/edit/closebrackets.js');
+		$cs->registerCssFile(Yii::$app->theme->baseUrl.'/codemirror/lib/codemirror.css');
 	}
 
 	/**
@@ -1012,7 +1012,7 @@ class GenericController extends Controller
 	 */
 
 	public function registrarScriptQuitarChecksBonitos(){
-		$cs=Yii::app()->getClientScript();
+		$cs=Yii::$app->getClientScript();
 		$cs->registerScript(
 				"quitar_checks_bonitos",
 				"$(window).on('quitarChecksBonitos', function(){ quitaChecksBonitos(); } );",
@@ -1023,7 +1023,7 @@ class GenericController extends Controller
 	 */
 	public function registrarScriptFotosPerfil($model)
 	{
-		Yii::app()->clientScript->registerScript(
+		Yii::$app->clientScript->registerScript(
 				'fotos_perfil',
 				"
 				$('#XUploadForm-form').on('fileuploaddone', function( e, data ){
@@ -1085,13 +1085,13 @@ class GenericController extends Controller
 	 */
 	public function registrarScriptFancyVideo()
 	{
-		Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/js/jquery.fancybox.pack.js', CClientScript::POS_HEAD);
+		Yii::$app->clientScript->registerScriptFile(Yii::$app->theme->baseUrl.'/js/jquery.fancybox.pack.js', CClientScript::POS_HEAD);
 
 		$js = <<<EOD
 		$(".fancy_video").fancybox({autoDimensions:true });
 EOD;
 
-		Yii::app()->clientScript->registerScript('fancy_video', $js, CClientScript::POS_READY);
+		Yii::$app->clientScript->registerScript('fancy_video', $js, CClientScript::POS_READY);
 	}
 
 	/**
@@ -1116,7 +1116,7 @@ EOD;
 		});
 EOD;
 
-		Yii::app()->clientScript->registerScript('search', $js);
+		Yii::$app->clientScript->registerScript('search', $js);
 	}
 
 	/**
@@ -1124,12 +1124,12 @@ EOD;
 	 */
 	public function registrarScriptSublistado($model)
 	{
-		Yii::app()->clientScript->registerScript(
+		Yii::$app->clientScript->registerScript(
 				'sublistados', "
 				function mostrarSubListado(modelo, campo, valor, filtro){
 				$(document).off('click.yiiGridView', '#buscador_listado .items > tbody > tr');
 				var cadena  = '<div style=\"text-align:center;\">';
-				cadena += '<img src=\"" . Yii::app()->request->baseUrl . "/images/ccs_bck_loading.gif\" border=\"0\" />';
+				cadena += '<img src=\"" . Yii::$app->request->baseUrl . "/images/ccs_bck_loading.gif\" border=\"0\" />';
 				cadena += '</div>';
 
 				var params = 'col='+campo+'&val='+valor;
@@ -1207,7 +1207,7 @@ EOD;
 
 					$nombre = '(!empty($data["' . $campo . '"]) )?'. $campos[$campo] . '::model()->findByPk($data["' . $campo . '"])->viewValue():"-";';
 
-					if($campo == "id".Yii::app()->params["prefijoTablasBd"]."Video"){
+					if($campo == "id".Yii::$app->params["prefijoTablasBd"]."Video"){
 						$nombre = '"<div style=\"display:none;\">
 						<div style=\"width:640px; height:365px;\" id=\"video_".$data["' . $model->getPkname() . '"]."\">".' . $campos[$campo] . '::model()->findByPk($data["' . $campo . '"])->mostrarReproductor()."</div>
 						</div>';
@@ -1222,7 +1222,7 @@ EOD;
 				}else{
 					//Yii::log("MODELO: ".print_r($model,1));
 
-					$nombre = '"<a href=\"'.Yii::app()->getBaseUrl()."/".$model->getModelname().'/".$data["'.$model->getPkname().'"]."?return='.$_SERVER["HTTP_REFERER"].'&modRet='.$model->getModelname().'&keyRet='.$model->getPkname().'\"><img src=\"'.Yii::app()->getBaseUrl()."/themes/leadcatcher/images/img_lupa.png".'\"></a>"';
+					$nombre = '"<a href=\"'.Yii::$app->getBaseUrl()."/".$model->getModelname().'/".$data["'.$model->getPkname().'"]."?return='.$_SERVER["HTTP_REFERER"].'&modRet='.$model->getModelname().'&keyRet='.$model->getPkname().'\"><img src=\"'.Yii::$app->getBaseUrl()."/themes/leadcatcher/images/img_lupa.png".'\"></a>"';
 					$campo = array('type'=>'raw','name'=>$campo, 'value'=>$nombre, 'header'=>'', 'filter'=>$arrFilter );
 				}
 			}
@@ -1310,8 +1310,8 @@ EOD;
 		}
 		if(isset($ficheros)){
 			$dataProviderParams = array(
-					'keyField'=>'id'.Yii::app()->params["prefijoTablasBd"].'Fichero',
-					'id'=>'id'.Yii::app()->params["prefijoTablasBd"].'Fichero'
+					'keyField'=>'id'.Yii::$app->params["prefijoTablasBd"].'Fichero',
+					'id'=>'id'.Yii::$app->params["prefijoTablasBd"].'Fichero'
 			);
 			$dataProvider = new CArrayDataProvider(
 					$ficheros,
@@ -1322,7 +1322,7 @@ EOD;
 					array(
 							"name"=>"Fichero",
 							"type"=>"raw",
-							"value"=>'CHtml::link(CHtml::image("'.Yii::app()->request->baseUrl.Yii::app()->params["rutaWebFicheros"].'".$data["Nombre"],"", array("width"=>150) ), "'.Yii::app()->params["rutaWebFicheros"].'".$data["Nombre"], array("target"=>"_blank"))'
+							"value"=>'CHtml::link(CHtml::image("'.Yii::$app->request->baseUrl.Yii::$app->params["rutaWebFicheros"].'".$data["Nombre"],"", array("width"=>150) ), "'.Yii::$app->params["rutaWebFicheros"].'".$data["Nombre"], array("target"=>"_blank"))'
 					),
 
 					array(
@@ -1342,7 +1342,7 @@ EOD;
 					array(
 							"name"=>'TipoFichero',
 							"type"=>"raw",
-							"value"=>'TipoFichero::model()->findByPk($data["fk'.Yii::app()->params["prefijoTablasBd"].'TipoFichero"])->viewValue()',
+							"value"=>'TipoFichero::model()->findByPk($data["fk'.Yii::$app->params["prefijoTablasBd"].'TipoFichero"])->viewValue()',
 							"htmlOptions"=>array("style"=>"vertical-align:middle;")
 					),
 
@@ -1370,7 +1370,7 @@ EOD;
 
 			$this->widget('zii.widgets.grid.CGridView',
 					array(
-							'baseScriptUrl'=>Yii::app()->theme->baseUrl . '/gridview',
+							'baseScriptUrl'=>Yii::$app->theme->baseUrl . '/gridview',
 							'id'=>'buscador_ficheros',
 
 							'dataProvider'=>$dataProvider,

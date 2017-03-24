@@ -16,13 +16,13 @@ class RolController extends GenericController
 		$id = $_GET['id'];
 		$rol = Rol::model()->findByPk($id);
 		
-		$campoRol = 'fk'.Yii::app()->params['prefijoTablasBd'].'Rol';
-		$campoModulo = 'fk'.Yii::app()->params['prefijoTablasBd'].'Modulo';
+		$campoRol = 'fk'.Yii::$app->params['prefijoTablasBd'].'Rol';
+		$campoModulo = 'fk'.Yii::$app->params['prefijoTablasBd'].'Modulo';
 		
 		$acciones = Accion::model()->findAllByAttributes(array($campoRol=>$id));
 		$campos = Campo::model()->findAllByAttributes(array($campoRol=>$id));
 		
-		$transaction = Yii::app()->db->beginTransaction();
+		$transaction = Yii::$app->db->beginTransaction();
 		$ok = true;
 		
 		$nuevoRol = new Rol();
@@ -71,12 +71,12 @@ class RolController extends GenericController
 		if ($ok)
 		{
 			$transaction->commit();
-			$this->redirect(Yii::app()->createAbsoluteUrl('rol/view',array('id'=>$nuevoRol->getPkValue())));
+			$this->redirect(Yii::$app->createAbsoluteUrl('rol/view',array('id'=>$nuevoRol->getPkValue())));
 		}
 		else
 		{
 			$transaction->rollback();
-			$this->redirect(Yii::app()->createAbsoluteUrl('rol'));
+			$this->redirect(Yii::$app->createAbsoluteUrl('rol'));
 		}
 	}
 }

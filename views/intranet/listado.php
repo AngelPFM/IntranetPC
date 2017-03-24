@@ -1,7 +1,7 @@
 <?php
 $metadatos = $model->retornaMetaData();
 
-$this->menu = Yii::app()->user->obtieneBotonesOperaciones($this->modelName, array('create'), null, array($campoProcedencia => $valorProcedencia), $campoProcedencia, $this->mod);
+$this->menu = Yii::$app->user->obtieneBotonesOperaciones($this->modelName, array('create'), null, array($campoProcedencia => $valorProcedencia), $campoProcedencia, $this->mod);
 $this->pageTitle = "Listado de " . $this->modelName;
 
             if ($urlExportar != "") {
@@ -42,7 +42,7 @@ if (count($camposBusqueda) > 0) {
 
 $fnClick = "return(false);";
 if (!isset($campos["Fichero"])) {
-    $fnClick = "window.location='" . Yii::app()->urlManager->createUrl($modelName) . "/' + $.fn.yiiGridView.getSelection(id)";
+    $fnClick = "window.location='" . Yii::$app->urlManager->createUrl($modelName) . "/' + $.fn.yiiGridView.getSelection(id)";
     if ($esSubListado) {
         $arrReferrer = explode("?", $_SERVER["HTTP_REFERER"]);
         $fnClick .= "+'?return=" . $arrReferrer[0] . "&modRet=" . $model->modelName . "&keyRet=" . $campoProcedencia . "'";
@@ -52,7 +52,7 @@ if (!isset($campos["Fichero"])) {
 $modelName = $model->getModelName();
 
 $parametrosGridView = array(
-    'baseScriptUrl' => Yii::app()->theme->baseUrl . '/gridview',
+    'baseScriptUrl' => Yii::$app->theme->baseUrl . '/gridview',
     'id' => 'buscador_listado',
     'dataProvider' => $dataProvider,
     'columns' => $headers,
@@ -62,7 +62,7 @@ $parametrosGridView = array(
     'pager' => array(
         'class' => 'CLinkPager',
         'header' => 'Ir a la Página',
-        'cssFile' => Yii::app()->theme->baseUrl . '/css/pager.css'
+        'cssFile' => Yii::$app->theme->baseUrl . '/css/pager.css'
     ),
     //'selectionChanged'=>"function(id){" . $fnClick . "}",
     'afterAjaxUpdate' => "function(id, data) {quitaAutoFind(); manejaChecksBonitos();}",

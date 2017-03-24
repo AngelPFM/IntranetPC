@@ -27,14 +27,14 @@
 							"onChange"=>"
 								js:
 								var cadena  = '<div style=\"text-align:center;\">';
-								cadena += '<img src=\"" . Yii::app()->request->baseUrl . "/images/ccs_bck_loading.gif\" border=\"0\" />';
+								cadena += '<img src=\"" . Yii::$app->request->baseUrl . "/images/ccs_bck_loading.gif\" border=\"0\" />';
 								cadena += '</div>';
 								var mod = $(this).val();
 								if( mod != 0 ){
 									var d = new Date();
 									$('#contiene_permisos_modulo').html(cadena);
 									$.post(
-										'" . Yii::app()->request->baseUrl . "/Modulo/permisosAjax/?d=' + d.getTime() + '&rol=" . $rol . "&mod=' + mod,
+										'" . Yii::$app->request->baseUrl . "/Modulo/permisosAjax/?d=' + d.getTime() + '&rol=" . $rol . "&mod=' + mod,
 										'',
 										function(data){
 											if( data != '' ){

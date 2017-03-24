@@ -53,7 +53,7 @@
 	$criteria->limit = -1; //No limit
 	$this->widget('zii.widgets.grid.CGridView', 
 		array(
-				'baseScriptUrl'=>Yii::app()->theme->baseUrl . '/gridview',
+				'baseScriptUrl'=>Yii::$app->theme->baseUrl . '/gridview',
 				'id'=>'buscador_listado',				
 				'dataProvider'=> new CActiveDataProvider('LineaVenta', array(
 								    'criteria'=>$criteria,

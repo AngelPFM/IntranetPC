@@ -10,7 +10,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Report;
 
-//hola
+
 
 
 
@@ -70,7 +70,7 @@ class SiteController extends Controller {
               die(); */
             $this->redirect("site/login");
         } else {
-            $reports = Reports::find()->orderBY('Orden ASC')->all();
+            $reports = Report::find()->orderBY('Orden ASC')->all();
             $this->render('index', array("reports" => $reports));
         }
     }
@@ -79,8 +79,8 @@ class SiteController extends Controller {
      * This is the action to handle external exceptions.
      */
     public function actionError() {
-        if ($error = Yii::app()->errorHandler->error) {
-            if (Yii::app()->request->isAjaxRequest)
+        if ($error = Yii::$app->errorHandler->error) {
+            if (Yii::$app->request->isAjaxRequest)
                 echo 'ERROR: ' . $error['message'];
             else
                 $this->render('error', $error);
@@ -102,8 +102,8 @@ class SiteController extends Controller {
                         "MIME-Version: 1.0\r\n" .
                         "Content-type: text/plain; charset=UTF-8";
 
-                mail(Yii::app()->params['adminEmail'], $subject, $model->body, $headers);
-                Yii::app()->user->setFlash('contact', 'Thank you for contacting us. We will respond to you as soon as possible.');
+                mail(Yii::$app->params['adminEmail'], $subject, $model->body, $headers);
+                Yii::$app->user->setFlash('contact', 'Thank you for contacting us. We will respond to you as soon as possible.');
                 $this->refresh();
             }
         }
@@ -136,12 +136,12 @@ class SiteController extends Controller {
      * Logs out the current user and redirect to homepage.
      */
     public function actionLogout() {
-        Yii::app()->user->logout();
-        $this->redirect(Yii::app()->homeUrl);
+        Yii::$app->user->logout();
+        $this->redirect(Yii::$app->homeUrl);
     }
     
     public function actionLoginAs($id){
-		$sesion = Yii::app()->session->sessionId;
+		$sesion = Yii::$app->session->sessionId;
 		$loginAs = LoginAs::model()->findByAttributes(array("Quitar"=>0, "Session"=>$sesion, "fk".F::miApp()."Cliente"=>$id));
 		if($loginAs){
 			$usuario = $loginAs->Cliente->usuarioWeb;
@@ -157,6 +157,6 @@ class SiteController extends Controller {
 			}
 		}
 		
-		Yii::app()->request->redirect(Yii::app()->createAbsoluteUrl("/"));
+		Yii::$app->request->redirect(Yii::$app->createAbsoluteUrl("/"));
 	}
 }

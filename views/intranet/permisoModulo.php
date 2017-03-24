@@ -1,5 +1,5 @@
 				<?php 
-					$acciones = Yii::app()->params->acciones;
+					$acciones = Yii::$app->params->acciones;
 				?>
 				<span id="contenedor_marcar_todos"><span onclick="marcarPermisos()">Marcar todos</span> / <span onclick="desmarcarPermisos()">Desmarcar todos</span></span>
 				<fieldset style="border:1px dotted #ccc; border-radius:5px; padding:10px;" class="contenedor_marcar_permisos_tipo">
@@ -59,7 +59,7 @@
 					<?php
 					$criterioOrden = new CDbCriteria();
 					$criterioOrden->order = "Orden";
-					$misCampos = Campo::model()->findAllByAttributes(array("Quitar"=>0, "fk".Yii::app()->params['prefijoTablasBd']."Modulo"=>$modulo->$idModulo, "fk".Yii::app()->params['prefijoTablasBd']."Rol"=>$rol), $criterioOrden);
+					$misCampos = Campo::model()->findAllByAttributes(array("Quitar"=>0, "fk".Yii::$app->params['prefijoTablasBd']."Modulo"=>$modulo->$idModulo, "fk".Yii::$app->params['prefijoTablasBd']."Rol"=>$rol), $criterioOrden);
 					$camposModulo = $instancia->retornaMetaData();
 					$campos = array();
 					$labels = $instancia->attributeLabels();
@@ -75,7 +75,7 @@
 						if( true || $campo != $instancia->getPkName() )
 						{
 							$label = (isset($labels[$campo]))?$labels[$campo]:$campo;
-							$modCampo = Campo::model()->findByAttributes(array("Quitar"=>0, "fk".Yii::app()->params['prefijoTablasBd']."Modulo"=>$modulo->$idModulo, "fk".Yii::app()->params['prefijoTablasBd']."Rol"=>$rol, "Nombre"=>$campo));
+							$modCampo = Campo::model()->findByAttributes(array("Quitar"=>0, "fk".Yii::$app->params['prefijoTablasBd']."Modulo"=>$modulo->$idModulo, "fk".Yii::$app->params['prefijoTablasBd']."Rol"=>$rol, "Nombre"=>$campo));
 							if($modCampo)
 								$ordenCampo = $modCampo->Orden;
 							else
@@ -85,7 +85,7 @@
 								<legend style="margin:0;"><?=$label?></legend>
 					<?							
 							$tengoPermiso = false;
-							foreach(Yii::app()->params->escenarios as $escenario){
+							foreach(Yii::$app->params->escenarios as $escenario){
 								$tengoPermiso = false;
 								foreach($misCampos as $miCampo)
 								{
@@ -112,9 +112,9 @@
 					?>
 				</fieldset>
 				<?php 
-					Yii::app()->clientScript->registerScriptFile(Yii::app()->getTheme()->getBaseUrl()."/js/jquery-ui-1.10.3.sortable.min.js", CClientScript::POS_END);
+					Yii::$app->clientScript->registerScriptFile(Yii::$app->getTheme()->getBaseUrl()."/js/jquery-ui-1.10.3.sortable.min.js", CClientScript::POS_END);
 					
-					Yii::app()->clientScript->registerScript(
+					Yii::$app->clientScript->registerScript(
 					'hacerSortable', "
 						
 						$('fieldset[orden]').wrap('<li></li>');

@@ -11,7 +11,7 @@ class ClienteController extends GenericController
         
         public function actionLoginAs($id){
 		if($id != ""){
-			$sesion = Yii::app()->session->sessionId;
+			$sesion = Yii::$app->session->sessionId;
 			$loginsAs = LoginAs::model()->findAllByAttributes(array("Quitar"=>0, "Session"=>$sesion));
 			if($loginsAs)
 				foreach($loginsAs as $loginAs)
@@ -21,7 +21,7 @@ class ClienteController extends GenericController
 			$loginAs->Session = $sesion;
 			$loginAs->setAttribute("fk".F::miApp()."Cliente", $id);
 			if($loginAs->save()){
-				Yii::app()->request->redirect(Yii::app()->getBaseUrl(true)."/../site/LoginAs/".$id);
+				Yii::$app->request->redirect(Yii::$app->getBaseUrl(true)."/../site/LoginAs/".$id);
 			}else
 				F::pre($loginAs->getErrors());
 		}

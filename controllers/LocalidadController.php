@@ -15,7 +15,7 @@ class LocalidadController extends GenericController
 	}
 	
 	public function actionList(){
-		if(Yii::app()->request->isAjaxRequest && isset($_POST['term']))
+		if(Yii::$app->request->isAjaxRequest && isset($_POST['term']))
 		{
 			$name = $_POST['term'];
 			$criteria = new CDbCriteria();

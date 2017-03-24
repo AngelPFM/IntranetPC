@@ -34,14 +34,14 @@ class NewsletterController extends GenericController
 					$message->view = "newsletter";
 					$params = array('model'=>$model, 'items'=>$items);
 					
-					$message->subject    = Yii::t('newsletter', $model->Descripcion, array(), 'messages', Yii::app()->language);
+					$message->subject    = Yii::t('newsletter', $model->Descripcion, array(), 'messages', Yii::$app->language);
 					$message->setBody($params, 'text/html');
 					$message->addTo($suscriptor->Email);
-					Yii::log('FROM '.Yii::app()->params['Shop']['EmailNewsletters']);
-					$message->from = Yii::app()->params['Shop']['EmailNewsletters'];
+					Yii::log('FROM '.Yii::$app->params['Shop']['EmailNewsletters']);
+					$message->from = Yii::$app->params['Shop']['EmailNewsletters'];
 					Yii::log('FROM '.print_r($message->from,1));
 					
-					Yii::app()->mail->send($message);
+					Yii::$app->mail->send($message);
 					
 					$suscriptor->FechaUltimoEnvio = date('Y-m-d H:i:s');
 					$suscriptor->NombreUltimoEnvio = $model->Nombre;
@@ -61,14 +61,14 @@ class NewsletterController extends GenericController
 		
 				$foto = $variante->foto();
 				if(isset($foto)){
-					$foto = Yii::app()->request->baseUrl.'/../Havillio/images/'.$foto->Fichero;
+					$foto = Yii::$app->request->baseUrl.'/../Havillio/images/'.$foto->Fichero;
 					Yii::log('FOTO VARIANTE: '.print_r($foto->attributes,1));
 				}
 				else{
 					$fotos = $articulo->fotos();
 					if(sizeof($fotos)>0){
 						Yii::log('FOTO ARTICULO (v): '.print_r($fotos[0]->attributes,1));
-						$foto = Yii::app()->request->baseUrl.'/../Havillio/images/'.$fotos[0]->Fichero;
+						$foto = Yii::$app->request->baseUrl.'/../Havillio/images/'.$fotos[0]->Fichero;
 					}
 					else{
 						$foto = '';
@@ -89,7 +89,7 @@ class NewsletterController extends GenericController
 						
 					if(sizeof($fotos)>0){
 						Yii::log('FOTO ARTICULO: '.print_r($foto[0]->attributes,1));
-						$foto = Yii::app()->request->baseUrl.'/../Havillio/images/'.$fotos[0]->Fichero;
+						$foto = Yii::$app->request->baseUrl.'/../Havillio/images/'.$fotos[0]->Fichero;
 					}
 					else{
 						$foto = '';
@@ -108,7 +108,7 @@ class NewsletterController extends GenericController
 							$fotos = $articulo->fotos();
 							if(sizeof($fotos)>0){
 								Yii::log('FOTO ARTICULO (c): '.print_r($fotos[0]->attributes,1));
-								$foto = Yii::app()->request->baseUrl.'/../Havillio/images/'.$fotos[0]->Fichero;
+								$foto = Yii::$app->request->baseUrl.'/../Havillio/images/'.$fotos[0]->Fichero;
 							}
 							else{
 								$foto = '';

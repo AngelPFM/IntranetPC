@@ -23,10 +23,10 @@ class DocumentoVentaController extends GenericController {
         if (isset($_POST['EnviarPedidoForm'])) {
             $model->attributes = $_POST["EnviarPedidoForm"];
             // Ajax-based validation
-            if (Yii::app()->request->isAjaxRequest && isset($_POST['ajax']) && $_POST['ajax'] === 'enviar-form') {
+            if (Yii::$app->request->isAjaxRequest && isset($_POST['ajax']) && $_POST['ajax'] === 'enviar-form') {
                 Yii::log('Ajax');
                 echo CActiveForm::validate($model);
-                Yii::app()->end();
+                Yii::$app->end();
             }
 
             if ($model->validate()) {
@@ -76,10 +76,10 @@ class DocumentoVentaController extends GenericController {
             if (isset($_POST['FacturarPedidoForm'])) {
                 $model->attributes = $_POST["FacturarPedidoForm"];
                 // Ajax-based validation
-                if (Yii::app()->request->isAjaxRequest && isset($_POST['ajax']) && $_POST['ajax'] === 'enviar-form') {
+                if (Yii::$app->request->isAjaxRequest && isset($_POST['ajax']) && $_POST['ajax'] === 'enviar-form') {
                     Yii::log('Ajax');
                     echo CActiveForm::validate($model);
-                    Yii::app()->end();
+                    Yii::$app->end();
                 }
 
                 if ($model->validate()) {
@@ -102,12 +102,12 @@ class DocumentoVentaController extends GenericController {
 
     public function actionImprimirAlbaran($albaran) {
         if (isset($albaran)) {
-            $filename = Yii::app()->params['rutaDocumentos'] . $albaran->Numero . '.pdf';
+            $filename = Yii::$app->params['rutaDocumentos'] . $albaran->Numero . '.pdf';
 
-            $empresa = Empresa::model()->findByPk(Yii::app()->params['Shop']['fkNTC_Empresa']);
+            $empresa = Empresa::model()->findByPk(Yii::$app->params['Shop']['fkNTC_Empresa']);
             $report = $this->renderPartial('/reports/albaran', array('documento' => $albaran, 'empresa' => $empresa), true, false);
 
-            $html2pdf = Yii::app()->ePdf->HTML2PDF();
+            $html2pdf = Yii::$app->ePdf->HTML2PDF();
             $html2pdf->WriteHTML($report);
             $html2pdf->Output($filename, EYiiPdf::OUTPUT_TO_FILE);
 
@@ -116,8 +116,8 @@ class DocumentoVentaController extends GenericController {
             if (isset($_GET['id'])) {
                 $albaran = CabAlbaranVenta::model()->findByPk($id);
                 if (isset($albaran) && $albaran->Enviado) {
-                    if (file_exists(Yii::app()->params['rutaDocumentos'] . $albaran->Numero . '.pdf')) {
-                        $this->redirect(Yii::app()->params['rutaDocumentos'] . $albaran->Numero . '.pdf');
+                    if (file_exists(Yii::$app->params['rutaDocumentos'] . $albaran->Numero . '.pdf')) {
+                        $this->redirect(Yii::$app->params['rutaDocumentos'] . $albaran->Numero . '.pdf');
                     }
                 }
             }
@@ -126,12 +126,12 @@ class DocumentoVentaController extends GenericController {
 
     public function actionImprimirFactura($factura) {
         if (isset($albaran)) {
-            $filename = Yii::app()->params['rutaDocumentos'] . $factura->Numero . '.pdf';
+            $filename = Yii::$app->params['rutaDocumentos'] . $factura->Numero . '.pdf';
 
-            $empresa = Empresa::model()->findByPk(Yii::app()->params['Shop']['fkNTC_Empresa']);
+            $empresa = Empresa::model()->findByPk(Yii::$app->params['Shop']['fkNTC_Empresa']);
             $report = $this->renderPartial('/reports/factura', array('documento' => $factura, 'empresa' => $empresa), true, false);
 
-            $html2pdf = Yii::app()->ePdf->HTML2PDF();
+            $html2pdf = Yii::$app->ePdf->HTML2PDF();
             $html2pdf->WriteHTML($report);
             $html2pdf->Output($filename, EYiiPdf::OUTPUT_TO_FILE);
 
@@ -140,8 +140,8 @@ class DocumentoVentaController extends GenericController {
             if (isset($_GET['id'])) {
                 $factura = CabFacturaVenta::model()->findByPk($id);
                 if (isset($factura) && isset($factura->FechaRegistro)) {
-                    if (file_exists(Yii::app()->params['rutaDocumentos'] . $fatura->Numero . '.pdf')) {
-                        $this->redirect(Yii::app()->params['rutaDocumentos'] . $fatura->Numero . '.pdf');
+                    if (file_exists(Yii::$app->params['rutaDocumentos'] . $fatura->Numero . '.pdf')) {
+                        $this->redirect(Yii::$app->params['rutaDocumentos'] . $fatura->Numero . '.pdf');
                     }
                 }
             }

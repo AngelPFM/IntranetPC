@@ -4,7 +4,7 @@ if (isset($model)): ?>
 <?php
 	if(isset($model->Descripcion)): ?>
 		<tr style="border: 1px solid #000;">
-			<td style="padding:10px; text-align: center; color: #33CCCC"><?php echo Yii::t('newsletter', $model->Descripcion, array(), 'messages', Yii::app()->language) ?></td>
+			<td style="padding:10px; text-align: center; color: #33CCCC"><?php echo Yii::t('newsletter', $model->Descripcion, array(), 'messages', Yii::$app->language) ?></td>
 		</tr> <?php 
 	endif; 
 	$i = 0;
@@ -27,7 +27,7 @@ if (isset($model)): ?>
 						<td style="text-align: center; padding-bottom: 30px;"><span style="margin-right: 30px;font-size: 25px;font-family: 'Marcellus', 'serif'; color: #000;"><?php echo $item['precio'] ?></span><span style="color: #888;font-size: 25px;font-family: 'Marcellus';text-decoration: line-through;"><?php echo $item['preciobase']?></span></td>
 					</tr>
 					<tr>
-						<td style="text-align: center; padding-bottom: 25px;"><a href="#" style="padding: 10px 20px; background-color: #000; color: #FFF; font-weight: normal;text-decoration: none;"><?php echo Yii::t('newsletter', 'Añadir a mi cesta', array(), 'messages', Yii::app()->language)?></a></td>
+						<td style="text-align: center; padding-bottom: 25px;"><a href="#" style="padding: 10px 20px; background-color: #000; color: #FFF; font-weight: normal;text-decoration: none;"><?php echo Yii::t('newsletter', 'Añadir a mi cesta', array(), 'messages', Yii::$app->language)?></a></td>
 					</tr>
 				<?php else: ?>
 					<tr>
@@ -44,7 +44,7 @@ if (isset($model)): ?>
 									<td style="text-align: center; padding-bottom: 30px;"><span style="margin-right: 30px;font-size: 25px;font-family: 'Marcellus', 'serif'; color: #000;"><?php echo $item['precio'] ?></span><span style="color: #888;font-size: 25px;font-family: 'Marcellus';text-decoration: line-through;"><?php echo $item['preciobase']?></span></td>
 								</tr>
 								<tr>
-									<td style="text-align: center; padding-bottom: 25px;"><a href="#" style="padding: 10px 20px; background-color: #000; color: #FFF; font-weight: normal;text-decoration: none;"><?php echo Yii::t('newsletter', 'Añadir a mi cesta', array(), 'messages', Yii::app()->language)?></a></td>
+									<td style="text-align: center; padding-bottom: 25px;"><a href="#" style="padding: 10px 20px; background-color: #000; color: #FFF; font-weight: normal;text-decoration: none;"><?php echo Yii::t('newsletter', 'Añadir a mi cesta', array(), 'messages', Yii::$app->language)?></a></td>
 								</tr>
 							</table>
 						</td>

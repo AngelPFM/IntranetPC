@@ -20,7 +20,7 @@ class InactivoController extends GenericController
 				WHERE NTC_Articulo.Quitar = 0 AND (NTC_Articulo.Stock=0 or lote.Stock=0)
 				GROUP BY Referencia
 				ORDER BY idNTC_Articulo DESC";
-                $command = Yii::app()->db->createCommand($sql);
+                $command = Yii::$app->db->createCommand($sql);
                 $result = $command->queryAll();
 
         $this->render('/intranet/inactivo', array('articulos' => $result));

@@ -35,7 +35,7 @@ class ModuloController extends GenericController
 		$instancia = new $modelo();
 		$misAcciones = Accion::model()->findAllByAttributes(array("fkNTC_Modulo"=>$modulo->idNTC_Modulo, "fkNTC_Rol"=> $rol, "Quitar"=>0 ));
 		
-		Yii::app()->clientScript->registerScript(
+		Yii::$app->clientScript->registerScript(
 		'ordenarCamposPermisos', "
 			
 			var elems = $('fieldset[orden]').remove();
@@ -47,7 +47,7 @@ class ModuloController extends GenericController
 			
 		", CClientScript::POS_READY);
 		
-		Yii::app()->clientScript->registerScript(
+		Yii::$app->clientScript->registerScript(
 			'checks_de_accion',
 			"$('.chk_Accion').each(
 				function(index){
@@ -68,7 +68,7 @@ class ModuloController extends GenericController
 			CClientScript::POS_READY 
 		);
 		
-		Yii::app()->clientScript->registerScript(
+		Yii::$app->clientScript->registerScript(
 			'checks_de_campo',
 			"$('.chk_Campo').each(
 				function(index){

@@ -18,7 +18,7 @@ $simbolo = $documento->divisa()->Simbolo;
 					<tr>
 						<td style="width: 50%">
 							<span style="font-weight: bold; font-size: 10pt; color: #9E9F9E">
-								<?php echo Yii::t('report', $documento->getAttributeLabel('fkNTC_DireccionEnvio'), array(), 'messages', Yii::app()->language) ?>
+								<?php echo Yii::t('report', $documento->getAttributeLabel('fkNTC_DireccionEnvio'), array(), 'messages', Yii::$app->language) ?>
 							</span><br />
 							<?php //DIRECCION DE ENVIO
 								echo $documento->DireccionEnvio.'<br />';
@@ -29,7 +29,7 @@ $simbolo = $documento->divisa()->Simbolo;
 						</td>
 						<td style="width: 50%">
 							<span style="font-weight: bold; font-size: 10pt; color: #9E9F9E">
-								<?php echo Yii::t('report', $documento->getAttributeLabel('fkNTC_DireccionFacturacion'), array(), 'messages', Yii::app()->language) ?>
+								<?php echo Yii::t('report', $documento->getAttributeLabel('fkNTC_DireccionFacturacion'), array(), 'messages', Yii::$app->language) ?>
 							</span><br />
 							<?php //DIRECCION DE FACTURACION
 								echo $documento->DireccionFactura.'<br />';
@@ -80,7 +80,7 @@ $simbolo = $documento->divisa()->Simbolo;
 						<td style="background-color: #4D4D4D; color: #FFF; text-align: right; font-weight: bold; width: 10%; white-space: nowrap;"><?php echo $linea->getAttributeLabel('Descuento')?></td>
 						<td style="background-color: #4D4D4D; color: #FFF; text-align: center; font-weight: bold; width: 10%"><?php echo $linea->getAttributeLabel('Cantidad')?></td>
 						<td style="background-color: #4D4D4D; color: #FFF; text-align: right; font-weight: bold; width: <?php echo (($ivaIncluido)? '15%':'25%');?>">
-							<?php echo Yii::t('report', 'Subtotal', array(), 'messages', Yii::app()->language) ?>
+							<?php echo Yii::t('report', 'Subtotal', array(), 'messages', Yii::$app->language) ?>
 						</td>
 					</tr>
 					<!-- PRODUCTS -->
@@ -97,7 +97,7 @@ $simbolo = $documento->divisa()->Simbolo;
 							<td style="text-align: center; width: 10%"><?php echo $linea->Descuento; ?></td>				
 							<td style="text-align: center; width: 10%"><?php echo $linea->Cantidad; ?></td>
 							<td style="background-color: #4D4D4D; color: #FFF; text-align: right; font-weight: bold; width: <?php echo (($ivaIncluido)? '15%':'25%');?>">
-								<?php echo Yii::t('report', 'Subtotal', array(), 'messages', Yii::app()->language) ?>
+								<?php echo Yii::t('report', 'Subtotal', array(), 'messages', Yii::$app->language) ?>
 							</td>
 						</tr>						
 					<?php 

@@ -15,7 +15,7 @@ class ProvinciaController extends GenericController
 	}
 	
 	public function actionChange(){
-		if(Yii::app()->request->isAjaxRequest && isset($_GET['id']) && isset($_GET['model'])){
+		if(Yii::$app->request->isAjaxRequest && isset($_GET['id']) && isset($_GET['model'])){
 			$id = $_GET['id'];
 			$modelName = $_GET['model'];
 			$provincia = Provincia::model()->findByPk($id);
@@ -34,6 +34,6 @@ class ProvinciaController extends GenericController
 				}
 			}
 		}
-		Yii::app()->end();
+		Yii::$app->end();
 	}	
 }

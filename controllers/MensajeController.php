@@ -37,7 +37,7 @@ class MensajeController extends GenericController
 			$cont++;
 		}
 		$sql .= " FROM NTC_OrigenMensaje om ".$leftjoin. $cdw ." ORDER BY om.Category, om.Message";
-		$mensajes = Yii::app()->db->createCommand($sql)->queryAll();
+		$mensajes = Yii::$app->db->createCommand($sql)->queryAll();
 		
 		$listaMensajes = array();
 		foreach($mensajes as $mensaje)

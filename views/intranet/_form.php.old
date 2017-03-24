@@ -48,7 +48,7 @@
  }
 /*Yii::log('Campos a Controlar: '.print_r($watchFields,1));
 Yii::log('Campos Dependientes: '.print_r($camposDependientes,1));*/
- $cs = Yii::app()->clientScript;
+ $cs = Yii::$app->clientScript;
  foreach ($watchFields as $field=>$attrib){
  	foreach ($attrib as $index=>$campo){
  		$relatedModelKeys = array_keys($relatedModels);
@@ -63,7 +63,7 @@ Yii::log('Campos Dependientes: '.print_r($camposDependientes,1));*/
 	 					$.ajax({
 	 						type: "GET",
 	 						dataType: "html",
-	 						url: "'.Yii::app()->createAbsoluteUrl('/'.$relatedModel.'/change').'/?id="+$("#'.$model->getModelName().'_'.$field.'").val()+"&model='.$affectedModel.'",
+	 						url: "'.Yii::$app->createAbsoluteUrl('/'.$relatedModel.'/change').'/?id="+$("#'.$model->getModelName().'_'.$field.'").val()+"&model='.$affectedModel.'",
 	 						success: function(data){
 	 							$("#'.$model->getModelName().'_'.$campo.'").html($(data).children("option"));	
 	 						}
@@ -133,7 +133,7 @@ Yii::log('Campos Dependientes: '.print_r($camposDependientes,1));*/
 // 					//CUANDO VOY A MOSTRAR UN DESPLEGABLE DE APLICACION
 // 					//SOLO MUESTRO LA APLICACION PARA LA QUE ME HE LOGEADO
 // 					$filtroApp = array(
-// 								"IdAplicacion"=>Yii::app()->user->getAplicacion(),
+// 								"IdAplicacion"=>Yii::$app->user->getAplicacion(),
 // 							);
 // 					echo $form->dropDownList($model,$campo, CHtml::listData($tmp->findAllByAttributes($filtroApp), $tmp->getPkName(), $tmp->viewName()));
 // 				}
@@ -321,7 +321,7 @@ Yii::log('Campos Dependientes: '.print_r($camposDependientes,1));*/
 							echo $form->labelEx($model, $campo, array("style"=>"margin-top:5px; vertical-align:top; width:20%;"));
 							echo $form->textArea($model, $campo);
 							
-							Yii::app()->clientScript->registerScript(
+							Yii::$app->clientScript->registerScript(
 									"codemirror_update_create",
 									"
 										var myTextArea = $('#" . $model->getModelName() . "_" . $campo . "').get()[0];
@@ -389,7 +389,7 @@ Yii::log('Campos Dependientes: '.print_r($camposDependientes,1));*/
 								echo $form->labelEx($model, $campo, array("style"=>"margin-top:5px; vertical-align:top; width:18%;"));
 								echo $form->textArea($model, $campo);
 								
-								Yii::app()->clientScript->registerScript(
+								Yii::$app->clientScript->registerScript(
 										"codemirror_update_create",
 										"
 										var myTextArea = $('#" . $model->getModelName() . "_" . $campo . "').get()[0];

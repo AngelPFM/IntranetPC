@@ -20,7 +20,7 @@ class FicheroController extends GenericController
 			isset($_POST["modelId"]) &&
 			isset($_POST["tabla"])){
 			
-			$transaction = Yii::app()->db->beginTransaction();
+			$transaction = Yii::$app->db->beginTransaction();
 			
 			try
 			{
@@ -29,12 +29,12 @@ class FicheroController extends GenericController
 				$modelId = $_POST["modelId"];
 				$tabla = $_POST["tabla"];
 				
-	//  			$sql = "INSERT INTO ".Yii::app()->params["prefijoTablasBd"]."Fichero SET Fichero = '" . $fichero . "', 
-	//  					".Yii::app()->params["prefijoTablasBd"]."TipoFichero='" . $tipo . "',
+	//  			$sql = "INSERT INTO ".Yii::$app->params["prefijoTablasBd"]."Fichero SET Fichero = '" . $fichero . "', 
+	//  					".Yii::$app->params["prefijoTablasBd"]."TipoFichero='" . $tipo . "',
 	//  					Id".$tabla." = ".$modelId;
-	//  			$comando = Yii::app()->db->createCommand($sql);
+	//  			$comando = Yii::$app->db->createCommand($sql);
 	 			
-	 			$nombreCampoTipoFichero = "fk".Yii::app()->params["prefijoTablasBd"]."TipoFichero";
+	 			$nombreCampoTipoFichero = "fk".Yii::$app->params["prefijoTablasBd"]."TipoFichero";
 	 			$nombreCampoIdTabla = "fk".$tabla;
 	 			
 	 			$fichero = new Fichero();
@@ -50,11 +50,11 @@ class FicheroController extends GenericController
 	 			if($fichero->save()){
 					if( $fichero->getPkValue() > 0 ){
 						$tipoFichero = new TipoFichero();
-						$tipoFichero = $tipoFichero->findByAttributes(array("id".Yii::app()->params["prefijoTablasBd"]."TipoFichero" => $tipo));
+						$tipoFichero = $tipoFichero->findByAttributes(array("id".Yii::$app->params["prefijoTablasBd"]."TipoFichero" => $tipo));
 						
 						if ($tipoFichero->EsImagen == 1)
 						{
-							$image = Yii::app()->image->load(realpath(Yii::app()->getBasePath() . "/../uploads/".$nombreFichero));
+							$image = Yii::$app->image->load(realpath(Yii::$app->getBasePath() . "/../uploads/".$nombreFichero));
 							
 							if($tipoFichero->Width != "" || $tipoFichero->Height != ""){
 								if($tipoFichero->Width == "") $tipoFichero->Width = NULL;
@@ -73,22 +73,22 @@ class FicheroController extends GenericController
 		
 							$fichero->Nombre = md5($fichero->getPkValue().rand(0,100)."3dIdS").".".$image->__get("ext");
                                                         $fichero->Fichero = $fichero->Nombre;
-							$image->save(Yii::app()->getBasePath().Yii::app()->params["rutaFicheros"].$fichero->Nombre);
-							$image = Yii::app()->image->load(Yii::app()->getBasePath().Yii::app()->params["rutaFicheros"].$fichero->Nombre);
+							$image->save(Yii::$app->getBasePath().Yii::$app->params["rutaFicheros"].$fichero->Nombre);
+							$image = Yii::$app->image->load(Yii::$app->getBasePath().Yii::$app->params["rutaFicheros"].$fichero->Nombre);
 							$fichero->Width = $image->__get("width");
 							$fichero->Height = $image->__get("height");
 							$fichero->FechaIns = date("d/m/Y H:i:s");
 
                                                         if($tipoFichero->thumbWidth != "" || $tipoFichero->thumbHeight != "" ) {
-                                                            $imagethumb = Yii::app()->image->load(realpath(Yii::app()->getBasePath() . "/../uploads/".$nombreFichero));
+                                                            $imagethumb = Yii::$app->image->load(realpath(Yii::$app->getBasePath() . "/../uploads/".$nombreFichero));
                                                             $imagethumb->resize($tipoFichero->thumbWidth, $tipoFichero->thumbHeight);
-                                                            $imagethumb->save(Yii::app()->getBasePath().Yii::app()->params["rutaFicheros"]."thumb_".$fichero->Nombre);
+                                                            $imagethumb->save(Yii::$app->getBasePath().Yii::$app->params["rutaFicheros"]."thumb_".$fichero->Nombre);
                                                         }
                                                         
                                                         if($tipoFichero->midWidth != "" || $tipoFichero->midHeight != "" ) {
-                                                            $imagemid = Yii::app()->image->load(realpath(Yii::app()->getBasePath() . "/../uploads/".$nombreFichero));
+                                                            $imagemid = Yii::$app->image->load(realpath(Yii::$app->getBasePath() . "/../uploads/".$nombreFichero));
                                                             $imagemid->resize($tipoFichero->midWidth, $tipoFichero->midHeight);
-                                                            $imagemid->save(Yii::app()->getBasePath().Yii::app()->params["rutaFicheros"]."mid_".$fichero->Nombre);
+                                                            $imagemid->save(Yii::$app->getBasePath().Yii::$app->params["rutaFicheros"]."mid_".$fichero->Nombre);
                                                         }
                                                         
                                                 }
@@ -97,7 +97,7 @@ class FicheroController extends GenericController
 							$fichero->Nombre = $nombreFichero;
 							$fichero->FechaIns = date("d/m/Y H:i:s");
 							
-							copy(Yii::app()->getBasePath() . "/../uploads/".$fichero->Nombre, Yii::app()->getBasePath().Yii::app()->params["rutaFicheros"].$fichero->Nombre);
+							copy(Yii::$app->getBasePath() . "/../uploads/".$fichero->Nombre, Yii::$app->getBasePath().Yii::$app->params["rutaFicheros"].$fichero->Nombre);
 						}
 						
 						if (isset($_POST['idioma']))
@@ -106,7 +106,7 @@ class FicheroController extends GenericController
 						}
 						
 						$fichero->save();
-						unlink(Yii::app()->getBasePath() . "/../uploads/".$nombreFichero);
+						unlink(Yii::$app->getBasePath() . "/../uploads/".$nombreFichero);
 						
 						echo "OK#".$nombreCampoIdTabla."#".$modelId;
 						

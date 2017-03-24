@@ -132,7 +132,7 @@ class DiarioProductoController extends GenericController
 				'type'=>'raw',
 				'htmlOptions'=>array('style'=>'width: 20px;'),
 		);
-		Yii::app()->clientScript->registerScript('diarioProductos','
+		Yii::$app->clientScript->registerScript('diarioProductos','
 			function borrarDiarioTemporal(boton){
 				id = $(boton).parents("tr").find("input[name*=idNTC_DiarioProducto]").val();
 				$.post("'.$this->createUrl('/diarioProducto/quitarDiarioTemp').'/",
@@ -145,7 +145,7 @@ class DiarioProductoController extends GenericController
 			}
 			',CClientScript::POS_END);
 		
-		Yii::app()->clientScript->registerScript('diarioProductos',
+		Yii::$app->clientScript->registerScript('diarioProductos',
 				'var numLine = 0;
 				
 				$("#DiarioProducto-edit-form table td.empty").remove();
@@ -194,7 +194,7 @@ class DiarioProductoController extends GenericController
 						$.ajax({
 							type: "GET",
 							dataType: "html",
-							url: "'.Yii::app()->createAbsoluteUrl('/'.Articulo.'/change').'/?id="+$(this).val()+"&model=Variante",
+							url: "'.Yii::$app->createAbsoluteUrl('/'.Articulo.'/change').'/?id="+$(this).val()+"&model=Variante",
 							success: function(data){
 								campo.html($(data).children("option"));
 							}
@@ -264,10 +264,10 @@ class DiarioProductoController extends GenericController
 	}
 
 	public function actionQuitarDiarioTemp(){
-		if(Yii::app()->request->isAjaxRequest && isset($_POST['id'])){
+		if(Yii::$app->request->isAjaxRequest && isset($_POST['id'])){
 			$sqlBorrar = "DELETE FROM NTC_DiarioProducto WHERE idNTC_DiarioProducto = ".$_POST['id'];
 			
-			$command = Yii::app()->db->createCommand($sqlBorrar);
+			$command = Yii::$app->db->createCommand($sqlBorrar);
 			$enVenta = $command->execute();
 		}
 	}

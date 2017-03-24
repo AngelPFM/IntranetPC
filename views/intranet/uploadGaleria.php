@@ -1,9 +1,9 @@
 <?php
-$lang = Yii::app()->getLanguage();
-Yii::app()->setLanguage('es');
+$lang = Yii::$app->getLanguage();
+Yii::$app->setLanguage('es');
 $this->widget('xupload.XUpload', 
 				array(
-                    'url' => Yii::app()->createUrl("site/upload"),
+                    'url' => Yii::$app->createUrl("site/upload"),
 					
                     'model' => $model,
 					'formView' => 'formGaleria',
@@ -27,4 +27,4 @@ $this->widget('xupload.XUpload',
 						'uploadTemplateId' => 'template-upload-galeria',
 				),
 ));
-Yii::app()->setLanguage($lang);
+Yii::$app->setLanguage($lang);

@@ -7,13 +7,13 @@ class TextosController extends Controller {
     }
 
     public function actionImportar() {
-        $Usu = Yii::app()->user->usuario;
+        $Usu = Yii::$app->user->usuario;
         if ($Usu->fkNTC_Rol > 0) {
             $log = array();
 
             $model = new TextosForm();
             if (isset($_POST['TextosForm'])) {
-//      $urlFile = Yii::app()->basePath.'/../uploads/textos.csv';
+//      $urlFile = Yii::$app->basePath.'/../uploads/textos.csv';
                 $model->attributes = $_POST['TextosForm'];
                 $model->file = CUploadedFile::getInstance($model, 'file');
 
@@ -59,12 +59,12 @@ class TextosController extends Controller {
                             $identificador = $l['idModelo'];
                             unset($l['idModelo']);
                             foreach ($l as $campo => $valor) {
-                                $transaction = Yii::app()->db->beginTransaction();
+                                $transaction = Yii::$app->db->beginTransaction();
                                 try {
                                     $sql = "UPDATE TraduccionModelo SET Traduccion=:traduccion WHERE fkNTC_Idioma=:idioma AND Modelo=:modelo 
                 AND idModelo=:idmodelo AND Campo=:campo;";
 
-                                    $command = Yii::app()->db->createCommand($sql);
+                                    $command = Yii::$app->db->createCommand($sql);
 
                                     $command->bindParam(':traduccion', $valor);
                                     $command->bindParam(':idioma', $idioma);
@@ -121,7 +121,7 @@ class TextosController extends Controller {
                             $mensaje = $l['Message'];
                             $traduccion = $l['Translation'];
 
-                            $transaction = Yii::app()->db->beginTransaction();
+                            $transaction = Yii::$app->db->beginTransaction();
                             try {
                                 $sql = "UPDATE NTC_Mensaje m
                 JOIN NTC_OrigenMensaje om ON m.fkNTC_OrigenMensaje=om.idNTC_OrigenMensaje 
@@ -129,7 +129,7 @@ class TextosController extends Controller {
                 SET m.Translation=:traduccion
                 WHERE m.Language=:idioma;";
 
-                                $command = Yii::app()->db->createCommand($sql);
+                                $command = Yii::$app->db->createCommand($sql);
 
                                 $command->bindParam(':categoria', $categoria);
                                 $command->bindParam(':mensaje', $mensaje);
@@ -162,7 +162,7 @@ class TextosController extends Controller {
     }
 
     public function actionExportar() {
-        $Usu = Yii::app()->user->usuario;
+        $Usu = Yii::$app->user->usuario;
         if ($Usu->fkNTC_Rol > 0) {
             $sql = "";
             $csv = "";
@@ -253,8 +253,8 @@ class TextosController extends Controller {
                 "MetaDescription"
               ), "where"=>"WHERE Quitar = 0"),
             );*/
-            $pref = Yii::app()->params['prefijoTablasBd'];
-            $schema = Yii::app()->db->getSchema();
+            $pref = Yii::$app->params['prefijoTablasBd'];
+            $schema = Yii::$app->db->getSchema();
             $models = array_keys($modelos);
             foreach ($modelos as $key => $modelo) {
                 $firstrow = "";
@@ -271,10 +271,10 @@ class TextosController extends Controller {
                 if(isset($modelo["where"]))
                   $sql .= " ".$modelo["where"]." ";
                 
-                $result = Yii::app()->db->createCommand($sql)->queryAll();
+                $result = Yii::$app->db->createCommand($sql)->queryAll();
                 foreach ($result as $row) {
                     foreach ($row as $campo) {
-                        $csv.=Yii::app()->db->quoteValue($campo) . ';';
+                        $csv.=Yii::$app->db->quoteValue($campo) . ';';
                     }
                     $csv = substr($csv, 0, -1);
                     $csv.="\n\r";
@@ -288,10 +288,10 @@ class TextosController extends Controller {
             }
             $sql = 'select ' . $pref . 'OrigenMensaje.category,' . $pref . 'OrigenMensaje.message,' . $pref . 'Mensaje.translation from ' . $pref . 'OrigenMensaje 
 join ' . $pref . 'Mensaje on (' . $pref . 'Mensaje.fk' . $pref . 'OrigenMensaje=' . $pref . 'OrigenMensaje.id' . $pref . 'OrigenMensaje)';
-            $result = Yii::app()->db->createCommand($sql)->queryAll();
+            $result = Yii::$app->db->createCommand($sql)->queryAll();
             foreach ($result as $row) {
                 foreach ($row as $campo) {
-                    $csv.=Yii::app()->db->quoteValue($campo) . ';';
+                    $csv.=Yii::$app->db->quoteValue($campo) . ';';
                 }
                 $csv = substr($csv, 0, -1);
                 $csv.="\n\r";

@@ -3,7 +3,7 @@ $this->pageTitle = $this->modelName;
 
 $fnClick = "return(false);";
 if( !isset($campos["Fichero"]) ){
-	$fnClick = "window.location='" . Yii::app()->urlManager->createUrl($modelName) . "/' + $.fn.yiiGridView.getSelection(id)";
+	$fnClick = "window.location='" . Yii::$app->urlManager->createUrl($modelName) . "/' + $.fn.yiiGridView.getSelection(id)";
 	if($esSubListado){
 		$arrReferrer = explode("?", $_SERVER["HTTP_REFERER"]);
 		$fnClick .= "+'?return=".$arrReferrer[0]."&modRet=".$model->modelName."&keyRet=".$campoProcedencia."'";
@@ -14,7 +14,7 @@ if( !isset($campos["Fichero"]) ){
 $modelName = $model->getModelName();
 
 $parametrosGridView = array(
-		'baseScriptUrl'=>Yii::app()->theme->baseUrl . '/gridview',
+		'baseScriptUrl'=>Yii::$app->theme->baseUrl . '/gridview',
 		'id'=>'header-form',
 		'dataProvider'=>$headerDataProvider,
 		'columns'=>$headerColumns,
@@ -34,7 +34,7 @@ $form = $this->beginWidget('CActiveForm', array(
 ));
 	
 	$parametrosGridView = array(
-							'baseScriptUrl'=>Yii::app()->theme->baseUrl . '/gridview',
+							'baseScriptUrl'=>Yii::$app->theme->baseUrl . '/gridview',
 							'id'=>'diario_form',							
 							'dataProvider'=>$dataProvider,
 							'columns'=>$headers,

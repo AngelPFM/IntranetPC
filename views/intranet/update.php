@@ -1,5 +1,5 @@
 <?php
-	$this->menu=Yii::app()->user->obtieneBotonesOperaciones($this->modelName, array('index', 'create', 'view'),$model->getPkValue());
+	$this->menu=Yii::$app->user->obtieneBotonesOperaciones($this->modelName, array('index', 'create', 'view'),$model->getPkValue());
  
 	echo $this->renderPartial(
 		'/intranet/_form', 

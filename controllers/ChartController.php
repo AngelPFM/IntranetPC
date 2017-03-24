@@ -8,7 +8,7 @@
 class ChartController extends Controller
 {
 	public function actionGetData(){
-		if(Yii::app()->request->isAjaxRequest && isset($_POST['model']) && isset($_POST['columns'])){
+		if(Yii::$app->request->isAjaxRequest && isset($_POST['model']) && isset($_POST['columns'])){
 			if(isset($_POST['model']) && $_POST['model']!=''){
 				$model = $_POST['model'];
 				$dataModel = new $model;

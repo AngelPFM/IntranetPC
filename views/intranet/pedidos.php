@@ -157,7 +157,7 @@ $Estados = TipoEstadoPedido::model()->findAll();
     <section id="contenido">
         <div id="buscador_listado" class="grid-view">
             <div style="margin-bottom:15px;">
-                <a href="<?php echo Yii::app()->createAbsoluteUrl("/pedidos/tramites") ?>" class="boton fondo-azul" id="">Ver pedidos en tr&aacute;mite</a>
+                <a href="<?php echo Yii::$app->createAbsoluteUrl("/pedidos/tramites") ?>" class="boton fondo-azul" id="">Ver pedidos en tr&aacute;mite</a>
                 <span class="boton fondo-azul" id="tramit">Pasar marcados a tr&aacute;mite</span>
                 <?php
                 if ($urlExportar != "") {
@@ -195,7 +195,7 @@ $Estados = TipoEstadoPedido::model()->findAll();
 
                         echo '<td><input type="checkbox" id="pedido_' . $pedido->idNTC_DocumentoVenta . '" name="pedido_' . $pedido->idNTC_DocumentoVenta . '" /></td>';
                         if ($pedido->Look>0) {
-                            $equiv = '<img src="' . Yii::app()->getTheme()->getBaseUrl() . '/images/valido.png" />';
+                            $equiv = '<img src="' . Yii::$app->getTheme()->getBaseUrl() . '/images/valido.png" />';
                         } else {
                             $equiv = '';
                         }
@@ -219,7 +219,7 @@ $Estados = TipoEstadoPedido::model()->findAll();
                         
 
                         if ($equivc->fkNTC_ConfiguracionIva == 3) {
-                            $equiv = '<img src="' . Yii::app()->getTheme()->getBaseUrl() . '/images/valido.png" />';
+                            $equiv = '<img src="' . Yii::$app->getTheme()->getBaseUrl() . '/images/valido.png" />';
                         } else {
                             $equiv = '';
                         }
@@ -279,7 +279,7 @@ $Estados = TipoEstadoPedido::model()->findAll();
         };
         $.ajax({
             data: parametroscar,
-            url: '<?php echo Yii::app()->request->baseUrl ?>/es-ES/ajax/actu_EstadoPedido',
+            url: '<?php echo Yii::$app->request->baseUrl ?>/es-ES/ajax/actu_EstadoPedido',
             type: 'post',
             beforeSend: function () {
             },
@@ -297,7 +297,7 @@ $Estados = TipoEstadoPedido::model()->findAll();
         };
         $.ajax({
             data: parametroscar,
-            url: '<?php echo Yii::app()->baseUrl ?>/es-ES/ajax/actu_tramitar',
+            url: '<?php echo Yii::$app->baseUrl ?>/es-ES/ajax/actu_tramitar',
             type: 'post',
             beforeSend: function () {
             },
@@ -336,7 +336,7 @@ $Estados = TipoEstadoPedido::model()->findAll();
         };
         $.ajax({
             data: parametroscar,
-            url: '<?php echo Yii::app()->baseUrl ?>/es-ES/ajax/actu_tramitar_array',
+            url: '<?php echo Yii::$app->baseUrl ?>/es-ES/ajax/actu_tramitar_array',
             type: 'post',
             success: function (response) {
                 $("input:checkbox:checked").each(function () {
@@ -353,7 +353,7 @@ $Estados = TipoEstadoPedido::model()->findAll();
     function mostrarplus(idped) {
         $.ajax({
             data: {id: idped},
-            url: '<?php Yii::app()->getBaseUrl()?>/intranet/es-ES/ajax/DetallePedido',
+            url: '<?php Yii::$app->getBaseUrl()?>/intranet/es-ES/ajax/DetallePedido',
             type: 'post',
             beforeSend: function () {
             },

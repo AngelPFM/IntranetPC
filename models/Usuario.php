@@ -56,4 +56,67 @@ class Usuario extends \yii\db\ActiveRecord
             'Email' => 'Email',
         ];
     }
+    
+    public function menuPrincipal($padre = 0)
+	{
+	
+		$modulos = Modulo::find()->where(['Quitar'=>false,'Padre'=>$padre])->orderBy('Orden ASC')->all();
+		//Obtenemos los modulos
+		foreach ($modulos as $key=>$modulo)
+		{
+			$quitarlo = false;
+				
+			if ($padre != 0)
+			{
+				//Si se piden los módulos hijos de un padre se quitan los que no tengan
+				//permiso de Index
+				$accion = Accion::find()->where(array(
+						'fkNTC_Modulo'=>$modulo->idNTC_Modulo,
+						'fkNTC_Rol'=>Yii::$app->user->getUsuario()->fkNTC_Rol,
+						'Quitar'=>0,
+						'Nombre'=>'index'
+				))->all();
+	
+				if ($accion == null)
+				{
+					$quitarlo = true;
+				}
+			}
+			else
+			{
+				// Si se piden los módulos padres se quitan los que no tengan ningún
+				// hijo con permiso de index
+				$modulosHijos = Modulo::find()->where(array(
+						'Quitar' => 0,
+						'Padre' => $modulo->idNTC_Modulo
+				))->all();
+				
+				if (count($modulosHijos) > 0)
+				{
+					$aHijos = array();
+					foreach($modulosHijos as $modHijo)
+					{
+						$aHijos[] = $modHijo->idNTC_Modulo;
+					}
+						
+					$accion = Accion::find()->where(array('fkNTC_Modulo'=>$aHijos,'fkNTC_Rol'=>6, 'Quitar'=>0, 'Nombre'=>'index'));
+
+					if ($accion == null || count($accion) == 0)
+					{
+						$quitarlo = true;
+					}
+				}
+				else
+				{
+					$quitarlo = true;
+				}
+			}
+				
+			if ($quitarlo == true)
+			{
+				unset($modulos[$key]);
+			}
+		}
+		return $modulos;
+	}
 }

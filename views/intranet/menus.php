@@ -16,7 +16,7 @@
 					$.ajax({
 						type: "GET",
 						dataType: "html",
-						url: "'.Yii::app()->createAbsoluteUrl('/menu/view').'/?id="+id,
+						url: "'.Yii::$app->createAbsoluteUrl('/menu/view').'/?id="+id,
 						success: function(data){$("#contenido_seccion").html(data);}
 					});
 				}',
@@ -38,7 +38,7 @@
 					event.preventDefault(); // Por defecto evitar el movimiento.
 					$.ajax({						
 						type: "POST",
-						url: "'.Yii::app()->createAbsoluteUrl('/menu/move').'",
+						url: "'.Yii::$app->createAbsoluteUrl('/menu/move').'",
 						data: {"moved": moved_node.id, "to": target_node.id, "pos": position, "parent": previous_parent.id},
 						dataType: "json",
 						success: function(data){

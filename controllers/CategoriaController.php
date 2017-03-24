@@ -23,7 +23,7 @@ class CategoriaController extends GenericController {
     }
 
     public function actionMove2() {
-        if (Yii::app()->request->isAjaxRequest && isset($_POST['moved']) && isset($_POST['to']) && isset($_POST['pos']) && isset($_POST['parent'])) {
+        if (Yii::$app->request->isAjaxRequest && isset($_POST['moved']) && isset($_POST['to']) && isset($_POST['pos']) && isset($_POST['parent'])) {
             $moved = $_POST['moved']; //Id del elemento que movemos
             $to = $_POST['to']; //Id del elemento sobre el que posicionamos
             $pos = $_POST['pos']; //before / after / inside del que posicionamos
@@ -38,7 +38,7 @@ class CategoriaController extends GenericController {
                 if ($categoriaPadre != null) {
 // //Recorremos los hijos asignando ordenes
                     $ok = true;
-                    $transaction = Yii::app()->db->beginTransaction();
+                    $transaction = Yii::$app->db->beginTransaction();
                     try {
                         $orden = 1;
                         $hijos = $categoriaPadre->subCategorias2;
@@ -98,7 +98,7 @@ class CategoriaController extends GenericController {
     }
 
     public function actionMove() {
-        if (Yii::app()->request->isAjaxRequest && isset($_POST['moved']) && isset($_POST['to']) && isset($_POST['pos']) && isset($_POST['parent'])) {
+        if (Yii::$app->request->isAjaxRequest && isset($_POST['moved']) && isset($_POST['to']) && isset($_POST['pos']) && isset($_POST['parent'])) {
             $to = $_POST['to'];
             $pos = $_POST['pos'];
             $siblings = Categoria::model()->findAllByAttributes(array('fkNTC_padre'=>$_POST['parent']),array('order'=>'Orden ASC'));
@@ -137,7 +137,7 @@ class CategoriaController extends GenericController {
     }
 
     public function actionChange() {
-        if (Yii::app()->request->isAjaxRequest && isset($_GET['id']) && isset($_GET['model'])) {
+        if (Yii::$app->request->isAjaxRequest && isset($_GET['id']) && isset($_GET['model'])) {
             $id = $_GET['id'];
             $modelName = $_GET['model'];
             $categoria = Categoria::model()->findByPk($id);
@@ -156,7 +156,7 @@ class CategoriaController extends GenericController {
                 }
             }
         }
-        Yii::app()->end();
+        Yii::$app->end();
     }
 
 }
