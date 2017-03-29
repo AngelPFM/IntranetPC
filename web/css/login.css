@@ -82,7 +82,7 @@
 }
 .login .form .rememberMe input[type="checkbox"]{
 	margin:0px !important;
-	opacity: 0;
+	opacity: 1;
 	width: 0;
 }
 
@@ -92,8 +92,10 @@
 	background-color: white;
 }
 
-.login .form .buttons input{
+.login .form .buttons button{
+    
 	background-color: #000;
+        
 	border: 0px;
 	color: white;
 	font-size:25px;
@@ -106,12 +108,12 @@
 	margin-bottom:10px;
 	margin-top:20px;
 }
-.login .form .buttons input:hover{
+.login .form .buttons button:hover{
 	background-color: #666;
 }
 label[for=IntranetLoginForm_rememberMe]{font-size:18px !important;}
 .logo-empresa{background: url("../images/logo_intranet.png") no-repeat;width:360px;height:60px;margin: 10px auto 20px auto;border-bottom: 1px solid #EEE;padding-bottom: 10px;}
-.required{display:none;}
+
 .contenedor-errores{padding:10px 20px;}
 .contenedor-errores *{color: #F00;}
 /*.contenedor-errores{display:none;}*/

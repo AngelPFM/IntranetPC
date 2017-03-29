@@ -37,9 +37,9 @@ class SiteController extends Controller {
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
+//                'actions' => [
+//                    'logout' => ['post'],
+//                ],
             ],
         ];
     }
@@ -68,7 +68,7 @@ class SiteController extends Controller {
         if (Yii::$app->user->isGuest) {
             /* echo "<br>".$this->createUrl("site/login")."<br>";
               die(); */
-            $this->redirect("site/login");
+            $this->redirect("index.php?r=site/login");
         } else {
            
             $reports = Report::find()->orderBY('Orden ASC')->all();

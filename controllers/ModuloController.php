@@ -1,105 +1,134 @@
 <?php
 
-/**
- * Controlador para el modelo Modulo
- * @author Oscar Tordera
- *
- */
-class ModuloController extends GenericController
-{
-	/**
-	 * @param string $id Identificador del controlador
-	 */
-	public function __construct($id,$module=null) {
-		parent::__construct($id, $module, 'Modulo');
-	}
-	
-	public function actionVisitasAjax($mod=0){
-		$modulo = Modulo::model()->findByPk($mod);
-		
-		$modulo->Visitas++;
-		$retorno = '0';
-		
-		if( $modulo->Save() ){
-			$retorno = '1';
-		}
-		
-		echo $retorno;
-	}
-	
-	public function actionPermisosAjax($rol=0, $mod=null){
-		$aModulo = Modulo::model()->findAllByAttributes(array("idNTC_Modulo"=>$mod));
-		$modulo = $aModulo[0];
-		$modelo = $modulo->Modelo;	
-		
-		$instancia = new $modelo();
-		$misAcciones = Accion::model()->findAllByAttributes(array("fkNTC_Modulo"=>$modulo->idNTC_Modulo, "fkNTC_Rol"=> $rol, "Quitar"=>0 ));
-		
-		Yii::$app->clientScript->registerScript(
-		'ordenarCamposPermisos', "
-			
-			var elems = $('fieldset[orden]').remove();
-		    elems.sort(function(a,b){
-		        return parseInt($(a).attr('orden')) > parseInt($(b).attr('orden'));
-		    });
+namespace app\controllers;
 
-		    $('#contenedor_campos').append(elems);
-			
-		", CClientScript::POS_READY);
-		
-		Yii::$app->clientScript->registerScript(
-			'checks_de_accion',
-			"$('.chk_Accion').each(
-				function(index){
-					$(this).on(
-						'click',
-						function(event){
-							var modulo  = $(this).val().split('.')[0];
-							var rol     = $(this).val().split('.')[1];
-							var accion  = $(this).val().split('.')[2];
-							var checked = $(this).attr('checked');
-							var estado  = (checked!='checked')?1:0;
-							
-							$.get('" .  $this->createUrl('Accion/checkeaAjax') . "', 'mod=' + modulo + '&rol=' + rol + '&accion=' + accion + '&state='+estado);
-						}
-					);
-				}
-			);",
-			CClientScript::POS_READY 
-		);
-		
-		Yii::$app->clientScript->registerScript(
-			'checks_de_campo',
-			"$('.chk_Campo').each(
-				function(index){
-					$(this).on(
-						'click',
-						function(event){
-							var modulo    = $(this).val().split('.')[0];
-							var rol       = $(this).val().split('.')[1];
-							var campo     = $(this).val().split('.')[2];
-							var escenario = $(this).val().split('.')[3];
-							var checked   = $(this).attr('checked');
-							var estado = (checked!='checked')?1:0;
-				
-							$.get('" .  $this->createUrl('Campo/checkeaAjax') . "', 'mod=' + modulo + '&rol=' + rol + '&campo=' + campo + '&escenario='+escenario + '&state='+estado);
-						}
-					);
-				}
-			);",
-			CClientScript::POS_READY 
-		);
-		
-		$this->renderPartial(
-				'/intranet/permisoModulo',
-				array(
-						'modulo'=>$modulo,
-						'misAcciones'=>$misAcciones,
-						'instancia'=>$instancia,
-						'rol'=>$rol,
-				),
-				false,
-				true
-		);
-	}
+use Yii;
+use app\models\Modulo;
+use app\models\ModuloSearch;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
+
+/**
+ * Modulo2Controller implements the CRUD actions for Modulo model.
+ */
+class ModuloController extends Controller
+{
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+            'access'=> [
+                'class'=> \yii\filters\AccessControl::className(),
+                'only'=> ['index', 'create', 'update', 'view'],
+                'rules'=> [
+        [
+            'allow'=>true,
+            'roles'=> ['@']
+        ]
+                ]
+            ]
+        ];
+    }
+
+    /**
+     * Lists all Modulo models.
+     * @return mixed
+     */
+    public function actionIndex()
+    {
+        $searchModel = new ModuloSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Displays a single Modulo model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    /**
+     * Creates a new Modulo model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreate()
+    {
+        $model = new Modulo();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->idNTC_Modulo]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Updates an existing Modulo model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->idNTC_Modulo]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Deletes an existing Modulo model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * Finds the Modulo model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Modulo the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = Modulo::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
 }

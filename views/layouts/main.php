@@ -25,7 +25,7 @@ AppAsset::register($this);
 
         <link rel="stylesheet" type="text/css" media="screen" href="<?=  \yii\helpers\Url::base()?>/css/reset.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="<?=  \yii\helpers\Url::base()?>/css/form.css" />
-        <link rel="stylesheet" type="text/css" href="<?=  \yii\helpers\Url::base()?>/gridview/styles.css" />		
+        <link rel="stylesheet" type="text/css" href="<?=  \yii\helpers\Url::base()?>/css/gridview/styles.css" />		
         <!--[if lt IE 8]>
         <link rel="stylesheet" type="text/css" href="<?=  \yii\helpers\Url::base()?>/css/ie.css" media="screen, projection" />
         <![endif]-->
@@ -106,7 +106,7 @@ AppAsset::register($this);
                                 $modulos = $usuario->menuPrincipal();
                                    $usuario = app\models\User::findOne(["id"=>  Yii::$app->user->id]);
                                 foreach ($modulos as $modulo) {
-                                    $menuPrincipal = $usuario->obtieneBotonesMenuPrincipal("Intranet", 1);
+                                    $menuPrincipal = $usuario->obtieneBotonesMenuPrincipal( "Intranet",$modulo->idNTC_Modulo);
                                     if (sizeof($menuPrincipal["items"]) > 0) {
                                         ?>
                                         <li class="principal_nav">
@@ -120,7 +120,8 @@ AppAsset::register($this);
                                             </h5>
                                             <div class="menu_nav" style="display:none;" id="menu_nav_<?= $modulo->idNTC_Modulo ?>">
                                                 <?php
-                                                \yii\widgets\Menu::widget($menuPrincipal);
+                                                //print_r($menuPrincipal);
+                                                echo \yii\widgets\Menu::widget($menuPrincipal);
                                                  ?>
                                             </div>
                                         </li>

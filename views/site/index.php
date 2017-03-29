@@ -1,6 +1,6 @@
 <?php
 /* @var $this SiteController */
-
+use scotthuangzl\googlechart\GoogleChart;
 $this->title = Yii::$app->name;
 ?>
     <?php if (true) { ?>
@@ -27,18 +27,10 @@ $this->title = Yii::$app->name;
                         }
                         ?>			
                         //<?php
-//                        $arrColumnas = explode(',', $report->Columnas);
-//                        $this->widget('ext.googleCharts.components.widgets.GoogleChart', array('type' => $report->fkChartType,
-//                            'report' => $report->getPkValue(),
-//                            'containerId' => 'chart' . $thisChart,
-//// 																						'model'=>$report->Modelo,
-//// 																						'columns'=>$report->Columnas,
-//// 																						'condition'=>$report->Condition,
-//// 																						'order'=>$report->Order,
-//// 																						'group'=>$report->Group,
-//// 																						'having'=>$report->Having,
-//// 																						'limit'=>$report->Limit,
-//// 																						'offset'=>$report->Offset, 
+                        $arrColumnas = explode(',', $report->Columnas);
+//                        echo GoogleChart::widget(array('type' => $report->fkChartType,
+//                            'report' => $report->idNTC_Report,
+//                            'containerId' => 'chart' . $thisChart,																		'offset'=>$report->Offset, 
 //                            'options' => array($ejeV => array('title' => GoogleChartsHelper::removeCamelCase(($arrColumnas[0])),
 //                                    'titleTextStyle' => array('color' => 'red', 'lineheight: 20px;')),
 //                                $ejeH => array('title' => GoogleChartsHelper::removeCamelCase(($arrColumnas[1])),
@@ -47,7 +39,7 @@ $this->title = Yii::$app->name;
 //                                'height' => $report->Alto,
 //                                'allowHtml' => (($report->AllowHtml) ? 'true' : 'false'),
 //                        )));
-//                        ?>
+                        ?>
                     </div>
                 </div>
                 <?php

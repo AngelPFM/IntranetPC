@@ -228,17 +228,17 @@ class User extends ActiveRecord implements IdentityInterface
 						CClientScript::POS_READY);
 			}
 			
-			array_push(
-				$arrayItems, 
+			$arrayItems[]=
 				array(
-					'itemOptions'=>array(
-									'class'=>$claseli),
-					'linkOptions'=>array(
-									'class'=>$clase, 
-									'id'=>'mod_'.$modulo), 
+					//'itemOptions'=>array(
+									//'class'=>$claseli),
+					//'linkOptions'=>array(
+									//'class'=>$clase, 
+									//'id'=>'mod_'.$modulo), 
 				   'label'=>$moduloNombre, 
 				   'url'=>array('/'.$modelName."/mod_".$modulo),
-				   'visible'=>!Yii::$app->user->isGuest));
+                                    );
+				   //'visible'=>!Yii::$app->user->isGuest));
 		}
 		
 		$botonesMenu['items'] = $arrayItems;
