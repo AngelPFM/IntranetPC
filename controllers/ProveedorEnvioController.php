@@ -1,40 +1,124 @@
 <?php
 
-/**
- * Controlador para el modelo ProveedorEnvio
- * @author Jesús Mira
- *
- */
-class ProveedorEnvioController extends GenericController
-{
-	/**
-	 * @param string $id Identificador del controlador
-	 */
-	public function __construct($id,$module=null) {
-		parent::__construct($id, $module, 'ProveedorEnvio');
-	}
+namespace app\controllers;
 
-	public function actionChange(){
-		if(Yii::$app->request->isAjaxRequest && isset($_GET['id']) && isset($_GET['model'])){
-			$id = $_GET['id'];
-			$modelName = $_GET['model'];
-			$proveedor = ProveedorEnvio::model()->findByPk($id);
-	
-			if(isset($proveedor)){
-				$relaciones = $proveedor->relations();
-				foreach($relaciones as $relacion=>$attrib){
-					// 					Yii::log('relacion: '.print_r($attrib,1));
-					if($attrib[1]==$modelName){
-						$listaRelacionados = $proveedor->$relacion();
-						$model = new $modelName();
-						$data = CHtml::listData($listaRelacionados, $model->getPkName(), $model->viewName());
-						echo CHtml::activeDropDownList($model, $model->getPkName(), $data, array('empty'=>'seleccione...'));
-						break;
-					}
-				}
-			}
-		}
-		Yii::$app->end();
-	}	
-	
+use Yii;
+use app\models\ProveedorEnvio;
+use app\models\ProveedorEnvioSearch;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
+
+/**
+ * ProveedorEnvioController implements the CRUD actions for ProveedorEnvio model.
+ */
+class ProveedorEnvioController extends Controller
+{
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * Lists all ProveedorEnvio models.
+     * @return mixed
+     */
+    public function actionIndex()
+    {
+        $searchModel = new ProveedorEnvioSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Displays a single ProveedorEnvio model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    /**
+     * Creates a new ProveedorEnvio model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreate()
+    {
+        $model = new ProveedorEnvio();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->idNTC_ProveedorEnvio]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Updates an existing ProveedorEnvio model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->idNTC_ProveedorEnvio]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Deletes an existing ProveedorEnvio model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * Finds the ProveedorEnvio model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return ProveedorEnvio the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = ProveedorEnvio::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
 }

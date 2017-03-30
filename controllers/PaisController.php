@@ -1,40 +1,124 @@
 <?php
 
+namespace app\controllers;
+
+use Yii;
+use app\models\Pais;
+use app\models\PaisSearch;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
+
 /**
- * Controlador para el modelo Pais
- * @author Manuel Mestres
- *
+ * PaisController implements the CRUD actions for Pais model.
  */
-class PaisController extends GenericController
+class PaisController extends Controller
 {
-	/**
-	 * @param string $id Identificador del controlador
-	 */
-	public function __construct($id,$module=null) {
-		parent::__construct($id, $module, 'Pais');
-	}
-	
-	public function actionChange(){
-		if(Yii::$app->request->isAjaxRequest && isset($_GET['id']) && isset($_GET['model'])){
-			$id = $_GET['id'];
-			$modelName = $_GET['model'];
-			$pais = Pais::model()->findByPk($id);
-			
-			if(isset($pais)){
-				$relaciones = $pais->relations();
-				foreach($relaciones as $relacion=>$attrib){
-// 					Yii::log('relacion: '.print_r($attrib,1));
-					if($attrib[1]==$modelName){
-						$listaRelacionados = $pais->$relacion();
-						$model = new $modelName();
-						$data = CHtml::listData($listaRelacionados, $model->getPkName(), $model->viewName());
-						echo CHtml::activeDropDownList($model, $model->getPkName(), $data, array('empty'=>'seleccione...'));
-						break;
-					}
-				}
-			}
-		}
-		Yii::$app->end();
-	}
-	
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * Lists all Pais models.
+     * @return mixed
+     */
+    public function actionIndex()
+    {
+        $searchModel = new PaisSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Displays a single Pais model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    /**
+     * Creates a new Pais model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreate()
+    {
+        $model = new Pais();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->idNTC_Pais]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Updates an existing Pais model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->idNTC_Pais]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Deletes an existing Pais model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * Finds the Pais model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Pais the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = Pais::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
 }

@@ -1,93 +1,124 @@
 <?php
 
+namespace app\controllers;
+
+use Yii;
+use app\models\Mensaje;
+use app\models\MensajeSearch;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
+
 /**
- * Controlador para el modelo Mensaje
- * @author Manuel Mestres
- *
+ * MensajeController implements the CRUD actions for Mensaje model.
  */
-class MensajeController extends GenericController
+class MensajeController extends Controller
 {
-	/**
-	 * @param string $id Identificador del controlador
-	 */
-	public function __construct($id,$module=null) {
-		parent::__construct($id, $module, 'Mensaje');
-	}
-	
-	/**
-	 * Lista todos los modelos
-	 */
-	public function actionIndex($mod="")
-	{
-            if($mod==257){
-                $cdw=" WHERE om.Category LIKE '%look%'";
-            }else{
-                $cdw=" WHERE om.Category NOT LIKE '%look%'";
-            }
-		$idiomas = Idioma::model()->findAllByAttributes(array('Quitar'=>0));
-		
-		$sql = "SELECT DISTINCT om.idNTC_OrigenMensaje as id, om.Category as Categoria, om.Message as Original ";
-		$leftjoin = "";
-		$cont = 1;
-		foreach($idiomas as $idioma)
-		{
-			$sql .= ", m$cont.Translation as ".$idioma->idNTC_Idioma;
-			$leftjoin .= "LEFT JOIN NTC_Mensaje m$cont ON om.idNTC_OrigenMensaje=m$cont.fkNTC_OrigenMensaje AND m$cont.Language='".$idioma->idNTC_Idioma."' ";
-			
-			$cont++;
-		}
-		$sql .= " FROM NTC_OrigenMensaje om ".$leftjoin. $cdw ." ORDER BY om.Category, om.Message";
-		$mensajes = Yii::$app->db->createCommand($sql)->queryAll();
-		
-		$listaMensajes = array();
-		foreach($mensajes as $mensaje)
-		{
-			$listaMensajes[$mensaje['Categoria']][] = $mensaje;
-		}
-		
-		$this->render(
-			'/intranet/listadoEtiquetas',
-			array(
-				'categorias' => $listaMensajes,
-			)
-		);
-	}
-	
-	public function actionUpdateAjax()
-	{
-		$retorno = 'OK';
-		
-		try
-		{
-			if ($_POST['id'] != '' && $_POST['lang'] != '')
-			{
-				$mensaje = Mensaje::model()->findByAttributes(
-					array(
-						'fkNTC_OrigenMensaje' => $_POST['id'],
-						'Language' => $_POST['lang']
-					)
-				);
-				
-				if ($mensaje == null)
-				{
-					$mensaje = new Mensaje();
-					$mensaje->fkNTC_OrigenMensaje = $_POST['id'];
-					$mensaje->Language = $_POST['lang']; 
-				}
-				
-				$mensaje->Translation = $_POST['text'];
-				
-				if (!$mensaje->save())
-				{
-					$retorno = 'KO';
-				}
-			}
-		}
-		catch (Exception $ex)
-		{
-			$retorno = 'KO';
-		}
-		
-		echo $retorno;
-	}
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * Lists all Mensaje models.
+     * @return mixed
+     */
+    public function actionIndex()
+    {
+        $searchModel = new MensajeSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Displays a single Mensaje model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    /**
+     * Creates a new Mensaje model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreate()
+    {
+        $model = new Mensaje();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->idNTC_Mensaje]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Updates an existing Mensaje model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->idNTC_Mensaje]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Deletes an existing Mensaje model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * Finds the Mensaje model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Mensaje the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = Mensaje::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
 }
