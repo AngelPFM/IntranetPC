@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\MarcaAlmacenSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Marca Almacens';
+$this->title = 'Marca Almacenes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="marca-almacen-index">
@@ -16,16 +16,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Marca Almacen', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nueva Marca Almacen', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
             'idNTC_MarcaAlmacen',
-            'fkNTC_Marca',
+            //'fkNTC_Marca',
             'fkNTC_Almacen',
 
             ['class' => 'yii\grid\ActionColumn'],

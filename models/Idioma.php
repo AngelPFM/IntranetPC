@@ -57,40 +57,40 @@ class Idioma extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCClientes()
+    public function getClientes()
     {
-        return $this->hasMany(NTCCliente::className(), ['fkNTC_Idioma' => 'idNTC_Idioma']);
+        return $this->hasMany(Cliente::className(), ['fkNTC_Idioma' => 'idNTC_Idioma']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCEstaticosCMSs()
+    public function getEstaticosCMSs()
     {
-        return $this->hasMany(NTCEstaticosCMS::className(), ['fkNTC_Idioma' => 'idNTC_Idioma']);
+        return $this->hasMany(EstaticosCMS::className(), ['fkNTC_Idioma' => 'idNTC_Idioma']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCGetResponseConfigs()
+    public function getGetResponseConfigs()
     {
-        return $this->hasMany(NTCGetResponseConfig::className(), ['fkNTC_Idioma' => 'idNTC_Idioma']);
+        return $this->hasMany(GetResponseConfig::className(), ['fkNTC_Idioma' => 'idNTC_Idioma']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCPais()
+    public function getPais()
     {
-        return $this->hasMany(NTCPais::className(), ['fkNTC_Idioma' => 'idNTC_Idioma']);
+        return $this->hasMany(Pais::className(), ['fkNTC_Idioma' => 'idNTC_Idioma']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCScriptMarketings()
+    public function getScriptMarketings()
     {
-        return $this->hasMany(NTCScriptMarketing::className(), ['fkNTC_Idioma' => 'idNTC_Idioma']);
+        return $this->hasMany(ScriptMarketing::className(), ['fkNTC_Idioma' => 'idNTC_Idioma']);
     }
 }

@@ -69,32 +69,32 @@ class ProveedorEnvio extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabAlbaranVentas()
+    public function getCabAlbaranVentas()
     {
-        return $this->hasMany(NTCCabAlbaranVenta::className(), ['fkNTC_ProveedorEnvio' => 'idNTC_ProveedorEnvio']);
+        return $this->hasMany(CabAlbaranVenta::className(), ['fkNTC_ProveedorEnvio' => 'idNTC_ProveedorEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCuponDescuentos()
+    public function getCuponDescuentos()
     {
-        return $this->hasMany(NTCCuponDescuento::className(), ['fkNTC_ProveedorEnvio' => 'idNTC_ProveedorEnvio']);
+        return $this->hasMany(CuponDescuento::className(), ['fkNTC_ProveedorEnvio' => 'idNTC_ProveedorEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCMetodoEnvios()
+    public function getMetodoEnvios()
     {
-        return $this->hasMany(NTCMetodoEnvio::className(), ['fkNTC_ProveedorEnvio' => 'idNTC_ProveedorEnvio']);
+        return $this->hasMany(MetodoEnvio::className(), ['fkNTC_ProveedorEnvio' => 'idNTC_ProveedorEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCTarifaEnvios()
+    public function getTarifaEnvios()
     {
-        return $this->hasMany(NTCTarifaEnvio::className(), ['fkNTC_ProveedorEnvio' => 'idNTC_ProveedorEnvio']);
+        return $this->hasMany(TarifaEnvio::className(), ['fkNTC_ProveedorEnvio' => 'idNTC_ProveedorEnvio']);
     }
 }

@@ -16,16 +16,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Modulo Envio Provincia', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nuevo Modulo Envio Provincia', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
             'pkNTC_ModuloEnvioProvincia',
-            'fkNTC_Provincia',
+            //'fkNTC_Provincia',
             'fkNTC_ModuloEnvio',
 
             ['class' => 'yii\grid\ActionColumn'],

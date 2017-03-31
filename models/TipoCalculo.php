@@ -53,8 +53,8 @@ class TipoCalculo extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCMetodoEnvios()
+    public function getMetodoEnvios()
     {
-        return $this->hasMany(NTCMetodoEnvio::className(), ['fkNTC_TipoCalculo' => 'idNTC_TipoCalculo']);
+        return $this->hasMany(MetodoEnvio::className(), ['fkNTC_TipoCalculo' => 'idNTC_TipoCalculo']);
     }
 }

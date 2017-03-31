@@ -50,8 +50,8 @@ class TipoDatosAtributo extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCAtributos()
+    public function getAtributos()
     {
-        return $this->hasMany(NTCAtributo::className(), ['fkNTC_TipoDatosAtributo' => 'idNTC_TipoDatosAtributo']);
+        return $this->hasMany(Atributo::className(), ['fkNTC_TipoDatosAtributo' => 'idNTC_TipoDatosAtributo']);
     }
 }

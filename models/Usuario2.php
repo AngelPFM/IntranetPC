@@ -62,8 +62,8 @@ class Usuario2 extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDiarioProductos()
+    public function getDiarioProductos()
     {
-        return $this->hasMany(NTCDiarioProducto::className(), ['fkNTC_UsuarioIntranet' => 'idNTC_Usuario']);
+        return $this->hasMany(DiarioProducto::className(), ['fkNTC_UsuarioIntranet' => 'idNTC_Usuario']);
     }
 }

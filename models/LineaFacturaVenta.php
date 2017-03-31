@@ -76,40 +76,40 @@ class LineaFacturaVenta extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCabFacturaVenta()
+    public function getCabFacturaVenta()
     {
-        return $this->hasOne(NTCCabFacturaVenta::className(), ['idNTC_CabFacturaVenta' => 'fkNTC_CabFacturaVenta']);
+        return $this->hasOne(CabFacturaVenta::className(), ['idNTC_CabFacturaVenta' => 'fkNTC_CabFacturaVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCArticulo()
+    public function getArticulo()
     {
-        return $this->hasOne(NTCArticulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
+        return $this->hasOne(Articulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCVariante()
+    public function getVariante()
     {
-        return $this->hasOne(NTCVariante::className(), ['idNTC_Variante' => 'fkNTC_Variante']);
+        return $this->hasOne(Variante::className(), ['idNTC_Variante' => 'fkNTC_Variante']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCLineaVenta()
+    public function getLineaVenta()
     {
-        return $this->hasOne(NTCLineaVenta::className(), ['idNTC_LineaVenta' => 'fkNTC_LineaVenta']);
+        return $this->hasOne(LineaVenta::className(), ['idNTC_LineaVenta' => 'fkNTC_LineaVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCLineaAlbaranVenta()
+    public function getLineaAlbaranVenta()
     {
-        return $this->hasOne(NTCLineaAlbaranVenta::className(), ['idNTC_LineaAlbaranVenta' => 'fkNTC_LineaAlbaranVenta']);
+        return $this->hasOne(LineaAlbaranVenta::className(), ['idNTC_LineaAlbaranVenta' => 'fkNTC_LineaAlbaranVenta']);
     }
 }

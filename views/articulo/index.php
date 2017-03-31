@@ -22,14 +22,44 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+
 
             //'idNTC_Articulo',
             //'fkNTC_TipoArticulo',
+            ['label'=>'Imagen', 
+                'format'=>'raw',
+                'value'=>function($data){
+        
+                    $imagen = \app\models\Fichero::find()->where(['fkNTC_TipoFichero'=>40, 'fkNTC_Articulo'=>$data->idNTC_Articulo])->one();
+    
+                    return "<img src='https://www.poligonodecarrus.com/uploads/".$imagen->Fichero."' style='width:50px;'/>";
+                }],
             'Referencia',
-            'ReferenciaProveedor',
+            ['label'=>'Referencia provedor', 
+                'attribute'=>'ReferenciaProveedor']
+            ,
             'ReferenciaColor',
-            // 'Nombre',
+             'Nombre',
+            [
+                'label'=>'Almacen',
+                'attribute'=>'fkNTC_Almacen',
+                'value'=>function($data){
+                                   return $data->almacen->Nombre;
+                            },
+                'filter'=>  yii\helpers\ArrayHelper::map(app\models\Almacen::find()->where(['Quitar'=>0])->orderBy('Nombre')->all(),'idNTC_Almacen','Nombre')                    
+                                    
+                  ],
+            [
+                'label' => 'Marca',
+                'attribute' => 'fkNTC_Marca',
+                'value'=> function($data){
+                                return $data->marca->Nombre;
+                },
+                
+                 
+            ],
+                                    
+                                    
             // 'Descripcion',
             // 'DescripcionCorta',
             // 'Nuevo_DesdeFecha',

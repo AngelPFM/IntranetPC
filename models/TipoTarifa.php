@@ -53,8 +53,8 @@ class TipoTarifa extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCMetodoEnvios()
+    public function getMetodoEnvios()
     {
-        return $this->hasMany(NTCMetodoEnvio::className(), ['fkNTC_TipoTarifa' => 'idNTC_TipoTarifa']);
+        return $this->hasMany(MetodoEnvio::className(), ['fkNTC_TipoTarifa' => 'idNTC_TipoTarifa']);
     }
 }

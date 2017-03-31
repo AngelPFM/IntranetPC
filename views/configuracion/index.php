@@ -16,33 +16,45 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Configuracion', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nueva Configuracion', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
-            'idNTC_Configuracion',
-            'fkNTC_Empresa',
-            'fkNTC_TipoAltaUsuarios',
-            'AvisoAltas',
-            'MaxIntentosLogin',
+            //'idNTC_Configuracion',
+           
+            ['label'=>'Empresa', 
+                'attribute'=>'fkNTC_Empresa'],
+            //'fkNTC_TipoAltaUsuarios',
+            
+            //'AvisoAltas',
+            //'MaxIntentosLogin',
             // 'EdadMinimaUsuarios',
             // 'EdadMaximaUsuarios',
-            // 'PeriodoPrevioValidezCtas',
-            // 'PeriodoValidezCtas',
-            // 'fkNTC_PaisPorDefecto',
+             'PeriodoPrevioValidezCtas',
+             'PeriodoValidezCtas',
+             'EdadMinimaUsuarios',
+             'EdadMaximaUsuarios',
+             
+            ['label'=>'Pais por defecto', 
+                'attribute'=>'fkNTC_PaisPorDefecto'],
             // 'fkNTC_TiendaPorDefecto',
-            // 'fkNTC_FormaPago',
-            // 'fkNTC_MetodoEnvio',
+            
+            ['label'=>'Forma de pago por def', 
+                'attribute'=>'fkNTC_FormaPago'],
+            
+             
+            ['label'=>'Metodo Envio por Def.', 
+                'attribute'=>'fkNTC_MetodoEnvio'],
             // 'fkNTC_GrupoPrecioCliente',
             // 'fkNTC_GrupoDescuentoCliente',
             // 'VerArticulosSinPrecio',
             // 'VerArticulosSinStock',
             // 'VerVariantesSinStock',
-            // 'MinutosCaducidadCarritos',
+             'MinutosCaducidadCarritos',
             // 'EmailContacto:email',
             // 'fkNTC_Divisa',
             // 'Translate',

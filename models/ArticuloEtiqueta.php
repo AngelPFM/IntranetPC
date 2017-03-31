@@ -58,16 +58,16 @@ class ArticuloEtiqueta extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCArticulo()
+    public function getArticulo()
     {
-        return $this->hasOne(NTCArticulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
+        return $this->hasOne(Articulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCEtiqueta()
+    public function getEtiqueta()
     {
-        return $this->hasOne(NTCEtiqueta::className(), ['idNTC_Etiqueta' => 'fkNTC_Etiqueta']);
+        return $this->hasOne(Etiqueta::className(), ['idNTC_Etiqueta' => 'fkNTC_Etiqueta']);
     }
 }

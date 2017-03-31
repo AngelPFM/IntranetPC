@@ -69,72 +69,72 @@ class Localidad extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCAlmacens()
+    public function getAlmacens()
     {
-        return $this->hasMany(NTCAlmacen::className(), ['fkNTC_Localidad' => 'idNTC_Localidad']);
+        return $this->hasMany(Almacen::className(), ['fkNTC_Localidad' => 'idNTC_Localidad']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCClientes()
+    public function getClientes()
     {
-        return $this->hasMany(NTCCliente::className(), ['fkNTC_Localidad' => 'idNTC_Localidad']);
+        return $this->hasMany(Cliente::className(), ['fkNTC_Localidad' => 'idNTC_Localidad']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCClientes0()
+    public function getClientes0()
     {
-        return $this->hasMany(NTCCliente::className(), ['fkNTC_LocalidadFactura' => 'idNTC_Localidad']);
+        return $this->hasMany(Cliente::className(), ['fkNTC_LocalidadFactura' => 'idNTC_Localidad']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDireccionEmpresas()
+    public function getDireccionEmpresas()
     {
-        return $this->hasMany(NTCDireccionEmpresa::className(), ['fkNTC_Localidad' => 'idNTC_Localidad']);
+        return $this->hasMany(DireccionEmpresa::className(), ['fkNTC_Localidad' => 'idNTC_Localidad']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDireccionEnvios()
+    public function getDireccionEnvios()
     {
-        return $this->hasMany(NTCDireccionEnvio::className(), ['fkNTC_Localidad' => 'idNTC_Localidad']);
+        return $this->hasMany(DireccionEnvio::className(), ['fkNTC_Localidad' => 'idNTC_Localidad']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCProvincia()
+    public function getProvincia()
     {
-        return $this->hasOne(NTCProvincia::className(), ['idNTC_Provincia' => 'fkNTC_Provincia']);
+        return $this->hasOne(Provincia::className(), ['idNTC_Provincia' => 'fkNTC_Provincia']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCPais()
+    public function getPais()
     {
-        return $this->hasOne(NTCPais::className(), ['idNTC_Pais' => 'fkNTC_Pais']);
+        return $this->hasOne(Pais::className(), ['idNTC_Pais' => 'fkNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCPuntosVentas()
+    public function getPuntosVentas()
     {
-        return $this->hasMany(NTCPuntosVenta::className(), ['fkNTC_Localidad' => 'idNTC_Localidad']);
+        return $this->hasMany(PuntosVenta::className(), ['fkNTC_Localidad' => 'idNTC_Localidad']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCTiendas()
+    public function getTiendas()
     {
-        return $this->hasMany(NTCTienda::className(), ['fkNTC_Localidad' => 'idNTC_Localidad']);
+        return $this->hasMany(Tienda::className(), ['fkNTC_Localidad' => 'idNTC_Localidad']);
     }
 }

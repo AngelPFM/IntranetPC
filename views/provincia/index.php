@@ -16,20 +16,24 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Provincia', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nueva Provincia', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
             'idNTC_Provincia',
-            'fkNTC_Pais',
-            'Nombre',
-            'Quitar',
             'Codigo',
-            // 'fkNTC_TipoIvaNegocio',
+                      
+            //'Nombre',
+            'Quitar',
+            //'Codigo',
+            //PAIS
+           
+            ['label'=>'TipoIvaNegocio', 
+                'attribute'=>'fkNTC_TipoIvaNegocio'],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

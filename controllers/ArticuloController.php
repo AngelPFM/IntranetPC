@@ -35,7 +35,7 @@ class ArticuloController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ArticuloSearch();
+        $searchModel = new ArticuloSearch(['Quitar'=>0]);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

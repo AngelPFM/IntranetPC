@@ -57,16 +57,16 @@ class AtributoConjunto extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCAtributo()
+    public function getAtributo()
     {
-        return $this->hasOne(NTCAtributo::className(), ['idNTC_Atributo' => 'fkNTC_Atributo']);
+        return $this->hasOne(Atributo::className(), ['idNTC_Atributo' => 'fkNTC_Atributo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCConjuntoAtributos()
+    public function getConjuntoAtributos()
     {
-        return $this->hasOne(NTCConjuntoAtributos::className(), ['idNTC_ConjuntoAtributos' => 'fkNTC_ConjuntoAtributos']);
+        return $this->hasOne(ConjuntoAtributos::className(), ['idNTC_ConjuntoAtributos' => 'fkNTC_ConjuntoAtributos']);
     }
 }

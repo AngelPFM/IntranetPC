@@ -73,8 +73,8 @@ class EstaticosCMS extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCIdioma()
+    public function getIdioma()
     {
-        return $this->hasOne(NTCIdioma::className(), ['idNTC_Idioma' => 'fkNTC_Idioma']);
+        return $this->hasOne(Idioma::className(), ['idNTC_Idioma' => 'fkNTC_Idioma']);
     }
 }

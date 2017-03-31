@@ -58,8 +58,8 @@ class Coleccion extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCElementoColeccions()
+    public function getElementoColeccions()
     {
-        return $this->hasMany(NTCElementoColeccion::className(), ['fkNTC_Coleccion' => 'idNTC_Coleccion']);
+        return $this->hasMany(ElementoColeccion::className(), ['fkNTC_Coleccion' => 'idNTC_Coleccion']);
     }
 }

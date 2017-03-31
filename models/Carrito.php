@@ -85,32 +85,32 @@ class Carrito extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCDocumentoVenta()
+    public function getDocumentoVenta()
     {
-        return $this->hasOne(NTCDocumentoVenta::className(), ['idNTC_DocumentoVenta' => 'fkNTC_DocumentoVenta']);
+        return $this->hasOne(DocumentoVenta::className(), ['idNTC_DocumentoVenta' => 'fkNTC_DocumentoVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCuponCarritos()
+    public function getCuponCarritos()
     {
-        return $this->hasMany(NTCCuponCarrito::className(), ['fkNTC_Carrito' => 'idNTC_Carrito']);
+        return $this->hasMany(CuponCarrito::className(), ['fkNTC_Carrito' => 'idNTC_Carrito']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCuponDescuentos()
+    public function getuponDescuentos()
     {
-        return $this->hasMany(NTCCuponDescuento::className(), ['idNTC_CuponDescuento' => 'fkNTC_CuponDescuento'])->viaTable('NTC_CuponCarrito', ['fkNTC_Carrito' => 'idNTC_Carrito']);
+        return $this->hasMany(CuponDescuento::className(), ['idNTC_CuponDescuento' => 'fkNTC_CuponDescuento'])->viaTable('NTC_CuponCarrito', ['fkNTC_Carrito' => 'idNTC_Carrito']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLineaCarritos()
+    public function getLineaCarritos()
     {
-        return $this->hasMany(NTCLineaCarrito::className(), ['fkNTC_Carrito' => 'idNTC_Carrito']);
+        return $this->hasMany(LineaCarrito::className(), ['fkNTC_Carrito' => 'idNTC_Carrito']);
     }
 }

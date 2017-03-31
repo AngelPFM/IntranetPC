@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\FranjasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Franjas';
+$this->title = 'Franja';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="franja-index">
@@ -16,18 +16,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Franja', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nueva Franja', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
             //'idNTC_Franja',
-            'PrecioxPar',
+            
+            ['label'=>'Precio por par', 
+                'attribute'=>'PrecioxPar'],
             'Incremento',
-            'Quitar',
+            //'Quitar',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

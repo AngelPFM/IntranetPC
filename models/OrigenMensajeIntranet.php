@@ -49,8 +49,8 @@ class OrigenMensajeIntranet extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCMensajeIntranets()
+    public function getMensajeIntranets()
     {
-        return $this->hasMany(NTCMensajeIntranet::className(), ['fkNTC_OrigenMensajeIntranet' => 'idNTC_OrigenMensajeIntranet']);
+        return $this->hasMany(MensajeIntranet::className(), ['fkNTC_OrigenMensajeIntranet' => 'idNTC_OrigenMensajeIntranet']);
     }
 }

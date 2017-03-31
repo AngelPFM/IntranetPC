@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PaisSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pais';
+$this->title = 'Paises';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pais-index">
@@ -16,24 +16,31 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Pais', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear País', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
-            'idNTC_Pais',
+            //'idNTC_Pais',
+             
+            ['label'=>'TipoIvaNegocio', 
+                'attribute'=>'fkNTC_TipoIvaNegocio'],
             'Nombre',
-            'fkNTC_Idioma',
+            
+            ['label'=>'Idioma', 
+                'attribute'=>'fkNTC_Idioma'],
             'Iso2',
             'Iso3',
-            // 'Prefijo',
-            // 'ccTLD',
-            // 'fkNTC_Divisa',
+             'Prefijo',
+             'ccTLD',
+             
+            ['label'=>'Divisa', 
+                'attribute'=>'fkNTC_Divisa'],
             // 'fkNTC_TipoIvaNegocio',
-            // 'Quitar',
+            'Quitar',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

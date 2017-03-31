@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\ConjuntoAtributos */
 
-$this->title = 'Update Conjunto Atributos: ' . $model->idNTC_ConjuntoAtributos;
+$this->title = 'Actualizar Conjunto Atributos: ' . $model->idNTC_ConjuntoAtributos;
 $this->params['breadcrumbs'][] = ['label' => 'Conjunto Atributos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->idNTC_ConjuntoAtributos, 'url' => ['view', 'id' => $model->idNTC_ConjuntoAtributos]];
 $this->params['breadcrumbs'][] = 'Update';

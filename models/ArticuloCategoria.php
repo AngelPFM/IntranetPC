@@ -59,16 +59,16 @@ class ArticuloCategoria extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCArticulo()
+    public function getArticulo()
     {
-        return $this->hasOne(NTCArticulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
+        return $this->hasOne(Articulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCategoria()
+    public function getCategoria()
     {
-        return $this->hasOne(NTCCategoria::className(), ['idNTC_Categoria' => 'fkNTC_Categoria']);
+        return $this->hasOne(Categoria::className(), ['idNTC_Categoria' => 'fkNTC_Categoria']);
     }
 }

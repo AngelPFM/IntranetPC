@@ -16,29 +16,38 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Operacion', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nueva Operación', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
-            'idNTC_Operacion',
-            'fkNTC_Cliente',
-            'fkNTC_DocumentoVenta',
-            'fkNTC_FormaPago',
-            'fkNTC_Tienda',
+            //'idNTC_Operacion',
+            //'fkNTC_Cliente',
+            //'fkNTC_DocumentoVenta',
+            //'fkNTC_FormaPago',
+            //'fkNTC_Tienda',
             // 'fkNTC_Divisa',
-            // 'FechaOperacion',
+            
             // 'FechaEstado',
-            // 'ImporteMoneda',
-            // 'ImporteEur',
+             
+            ['label'=>'Importe Modeda', 
+                'attribute'=>'ImporteMoneda'],
+            
+             ['label'=>'Fecha Operación', 
+                'attribute'=>'FechaOperacion'],
+             
+            ['label'=>'Fecha Estado', 
+                'attribute'=>'FechaEstado'],
+             'ImporteEur',
             // 'Referencia',
-            // 'ReferenciaPago',
-            // 'Descripcion',
-            // 'EstadoPago',
-            // 'Aplicada',
+             'ReferenciaPago',
+             'Descripcion',
+             'EstadoPago',
+             'Referencia',
+             'Aplicada',
             // 'Quitar',
 
             ['class' => 'yii\grid\ActionColumn'],

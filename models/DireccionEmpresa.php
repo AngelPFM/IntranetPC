@@ -102,32 +102,32 @@ class DireccionEmpresa extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCEmpresa()
+    public function getEmpresa()
     {
-        return $this->hasOne(NTCEmpresa::className(), ['idNTC_Empresa' => 'fkNTC_Empresa']);
+        return $this->hasOne(Empresa::className(), ['idNTC_Empresa' => 'fkNTC_Empresa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCLocalidad()
+    public function getLocalidad()
     {
-        return $this->hasOne(NTCLocalidad::className(), ['idNTC_Localidad' => 'fkNTC_Localidad']);
+        return $this->hasOne(Localidad::className(), ['idNTC_Localidad' => 'fkNTC_Localidad']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCProvincia()
+    public function getProvincia()
     {
-        return $this->hasOne(NTCProvincia::className(), ['idNTC_Provincia' => 'fkNTC_Provincia']);
+        return $this->hasOne(Provincia::className(), ['idNTC_Provincia' => 'fkNTC_Provincia']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCPais()
+    public function getPais()
     {
-        return $this->hasOne(NTCPais::className(), ['idNTC_Pais' => 'fkNTC_Pais']);
+        return $this->hasOne(Pais::className(), ['idNTC_Pais' => 'fkNTC_Pais']);
     }
 }

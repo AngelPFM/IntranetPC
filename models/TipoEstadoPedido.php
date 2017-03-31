@@ -47,8 +47,8 @@ class TipoEstadoPedido extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDocumentoVentas()
+    public function getDocumentoVentas()
     {
-        return $this->hasMany(NTCDocumentoVenta::className(), ['fkNTC_TipoEstadoPedido' => 'idNTC_TipoEstadoPedido']);
+        return $this->hasMany(DocumentoVenta::className(), ['fkNTC_TipoEstadoPedido' => 'idNTC_TipoEstadoPedido']);
     }
 }

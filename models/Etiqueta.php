@@ -51,8 +51,8 @@ class Etiqueta extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCArticuloEtiquetas()
+    public function getArticuloEtiquetas()
     {
-        return $this->hasMany(NTCArticuloEtiqueta::className(), ['fkNTC_Etiqueta' => 'idNTC_Etiqueta']);
+        return $this->hasMany(ArticuloEtiqueta::className(), ['fkNTC_Etiqueta' => 'idNTC_Etiqueta']);
     }
 }

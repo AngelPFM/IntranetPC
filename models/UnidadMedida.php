@@ -49,24 +49,24 @@ class UnidadMedida extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCMetodoEnvios()
+    public function getMetodoEnvios()
     {
-        return $this->hasMany(NTCMetodoEnvio::className(), ['fkNTC_UnidadMedida' => 'idNTC_UnidadMedida']);
+        return $this->hasMany(MetodoEnvio::className(), ['fkNTC_UnidadMedida' => 'idNTC_UnidadMedida']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCRelacionUdMedidas()
+    public function getRelacionUdMedidas()
     {
-        return $this->hasMany(NTCRelacionUdMedida::className(), ['fkNTC_UdMedida1' => 'idNTC_UnidadMedida']);
+        return $this->hasMany(RelacionUdMedida::className(), ['fkNTC_UdMedida1' => 'idNTC_UnidadMedida']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCRelacionUdMedidas0()
+    public function getRelacionUdMedidas0()
     {
-        return $this->hasMany(NTCRelacionUdMedida::className(), ['fkNTC_UdMedida2' => 'idNTC_UnidadMedida']);
+        return $this->hasMany(RelacionUdMedida::className(), ['fkNTC_UdMedida2' => 'idNTC_UnidadMedida']);
     }
 }

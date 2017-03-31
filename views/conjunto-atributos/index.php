@@ -16,17 +16,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Conjunto Atributos', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Conjunto Atributos', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
-            'idNTC_ConjuntoAtributos',
+            //'idNTC_ConjuntoAtributos',
             'Nombre',
-            'Quitar',
+            //'Quitar',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

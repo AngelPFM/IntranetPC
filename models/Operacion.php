@@ -88,40 +88,40 @@ class Operacion extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCliente()
+    public function getCliente()
     {
-        return $this->hasOne(NTCCliente::className(), ['idNTC_Cliente' => 'fkNTC_Cliente']);
+        return $this->hasOne(Cliente::className(), ['idNTC_Cliente' => 'fkNTC_Cliente']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCDocumentoVenta()
+    public function getDocumentoVenta()
     {
-        return $this->hasOne(NTCDocumentoVenta::className(), ['idNTC_DocumentoVenta' => 'fkNTC_DocumentoVenta']);
+        return $this->hasOne(DocumentoVenta::className(), ['idNTC_DocumentoVenta' => 'fkNTC_DocumentoVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCTienda()
+    public function getTienda()
     {
-        return $this->hasOne(NTCTienda::className(), ['idNTC_Tienda' => 'fkNTC_Tienda']);
+        return $this->hasOne(Tienda::className(), ['idNTC_Tienda' => 'fkNTC_Tienda']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCDivisa()
+    public function getDivisa()
     {
-        return $this->hasOne(NTCDivisa::className(), ['idNTC_Divisa' => 'fkNTC_Divisa']);
+        return $this->hasOne(Divisa::className(), ['idNTC_Divisa' => 'fkNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCFormaPago()
+    public function getFormaPago()
     {
-        return $this->hasOne(NTCFormaPago::className(), ['idNTC_FormaPago' => 'fkNTC_FormaPago']);
+        return $this->hasOne(FormaPago::className(), ['idNTC_FormaPago' => 'fkNTC_FormaPago']);
     }
 }

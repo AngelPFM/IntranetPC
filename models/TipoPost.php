@@ -59,8 +59,8 @@ class TipoPost extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCPosts()
+    public function getPosts()
     {
-        return $this->hasMany(NTCPost::className(), ['fkNTC_TipoPost' => 'idNTC_TipoPost']);
+        return $this->hasMany(Post::className(), ['fkNTC_TipoPost' => 'idNTC_TipoPost']);
     }
 }

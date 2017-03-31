@@ -52,16 +52,16 @@ class CuponCarrito extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCarrito()
+    public function getCarrito()
     {
-        return $this->hasOne(NTCCarrito::className(), ['idNTC_Carrito' => 'fkNTC_Carrito']);
+        return $this->hasOne(Carrito::className(), ['idNTC_Carrito' => 'fkNTC_Carrito']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCuponDescuento()
+    public function getCuponDescuento()
     {
-        return $this->hasOne(NTCCuponDescuento::className(), ['idNTC_CuponDescuento' => 'fkNTC_CuponDescuento']);
+        return $this->hasOne(CuponDescuento::className(), ['idNTC_CuponDescuento' => 'fkNTC_CuponDescuento']);
     }
 }

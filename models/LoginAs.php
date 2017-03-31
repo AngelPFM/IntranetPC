@@ -52,8 +52,8 @@ class LoginAs extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCliente()
+    public function getCliente()
     {
-        return $this->hasOne(NTCCliente::className(), ['idNTC_Cliente' => 'fkNTC_Cliente']);
+        return $this->hasOne(Cliente::className(), ['idNTC_Cliente' => 'fkNTC_Cliente']);
     }
 }

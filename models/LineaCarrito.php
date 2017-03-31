@@ -73,56 +73,56 @@ class LineaCarrito extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCuponLineaCarritos()
+    public function getCuponLineaCarritos()
     {
-        return $this->hasMany(NTCCuponLineaCarrito::className(), ['fkNTC_LineaCarrito' => 'idNTC_LineaCarrito']);
+        return $this->hasMany(CuponLineaCarrito::className(), ['fkNTC_LineaCarrito' => 'idNTC_LineaCarrito']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCuponDescuentos()
+    public function getCuponDescuentos()
     {
-        return $this->hasMany(NTCCuponDescuento::className(), ['idNTC_CuponDescuento' => 'fkNTC_CuponDescuento'])->viaTable('NTC_CuponLineaCarrito', ['fkNTC_LineaCarrito' => 'idNTC_LineaCarrito']);
+        return $this->hasMany(CuponDescuento::className(), ['idNTC_CuponDescuento' => 'fkNTC_CuponDescuento'])->viaTable('NTC_CuponLineaCarrito', ['fkNTC_LineaCarrito' => 'idNTC_LineaCarrito']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCLote()
+    public function getLote()
     {
-        return $this->hasOne(NTCLote::className(), ['idNTC_Lote' => 'fkNTC_Lote']);
+        return $this->hasOne(Lote::className(), ['idNTC_Lote' => 'fkNTC_Lote']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCarrito()
+    public function getCarrito()
     {
-        return $this->hasOne(NTCCarrito::className(), ['idNTC_Carrito' => 'fkNTC_Carrito']);
+        return $this->hasOne(Carrito::className(), ['idNTC_Carrito' => 'fkNTC_Carrito']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCArticulo()
+    public function getArticulo()
     {
-        return $this->hasOne(NTCArticulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
+        return $this->hasOne(Articulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCVariante()
+    public function getVariante()
     {
-        return $this->hasOne(NTCVariante::className(), ['idNTC_Variante' => 'fkNTC_Variante']);
+        return $this->hasOne(Variante::className(), ['idNTC_Variante' => 'fkNTC_Variante']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCLineaVenta()
+    public function getLineaVenta()
     {
-        return $this->hasOne(NTCLineaVenta::className(), ['idNTC_LineaVenta' => 'fkNTC_LineaVenta']);
+        return $this->hasOne(LineaVenta::className(), ['idNTC_LineaVenta' => 'fkNTC_LineaVenta']);
     }
 }

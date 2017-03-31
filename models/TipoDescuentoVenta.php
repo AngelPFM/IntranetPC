@@ -50,8 +50,8 @@ class TipoDescuentoVenta extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCuponDescuentos()
+    public function getCuponDescuentos()
     {
-        return $this->hasMany(NTCCuponDescuento::className(), ['fkNTC_TipoDescuentoVenta' => 'idNTC_TipoDesuentoVenta']);
+        return $this->hasMany(CuponDescuento::className(), ['fkNTC_TipoDescuentoVenta' => 'idNTC_TipoDesuentoVenta']);
     }
 }

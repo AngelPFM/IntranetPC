@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\ModuloEnvioSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Modulo Envios';
+$this->title = 'Módulo Envíos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="modulo-envio-index">
@@ -16,17 +16,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Modulo Envio', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nuevo Módulo Envío', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+           
 
-            'idNTC_ModuloEnvio',
+            //'idNTC_ModuloEnvio',
             'Nombre',
-            'Quitar',
+           // 'Quitar',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

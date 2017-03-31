@@ -86,56 +86,56 @@ class TarifaEnvio extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDocumentoVentas()
+    public function getDocumentoVentas()
     {
-        return $this->hasMany(NTCDocumentoVenta::className(), ['fkNTC_TarifaEnvio' => 'idNTC_TarifaEnvio']);
+        return $this->hasMany(DocumentoVenta::className(), ['fkNTC_TarifaEnvio' => 'idNTC_TarifaEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCZonaEnvio()
+    public function getZonaEnvio()
     {
-        return $this->hasOne(NTCZonaEnvio::className(), ['idNTC_Zona' => 'fkNTC_ZonaEnvio']);
+        return $this->hasOne(ZonaEnvio::className(), ['idNTC_Zona' => 'fkNTC_ZonaEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCModuloEnvio()
+    public function getModuloEnvio()
     {
-        return $this->hasOne(NTCModuloEnvio::className(), ['idNTC_ModuloEnvio' => 'fkNTC_ModuloEnvio']);
+        return $this->hasOne(ModuloEnvio::className(), ['idNTC_ModuloEnvio' => 'fkNTC_ModuloEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCProveedorEnvio()
+    public function getProveedorEnvio()
     {
-        return $this->hasOne(NTCProveedorEnvio::className(), ['idNTC_ProveedorEnvio' => 'fkNTC_ProveedorEnvio']);
+        return $this->hasOne(ProveedorEnvio::className(), ['idNTC_ProveedorEnvio' => 'fkNTC_ProveedorEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCPais()
+    public function getPais()
     {
-        return $this->hasOne(NTCPais::className(), ['idNTC_Pais' => 'fkNTC_Pais']);
+        return $this->hasOne(Pais::className(), ['idNTC_Pais' => 'fkNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCProvincia()
+    public function getProvincia()
     {
-        return $this->hasOne(NTCProvincia::className(), ['idNTC_Provincia' => 'fkNTC_Provincia']);
+        return $this->hasOne(Provincia::className(), ['idNTC_Provincia' => 'fkNTC_Provincia']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCDivisa()
+    public function getDivisa()
     {
-        return $this->hasOne(NTCDivisa::className(), ['idNTC_Divisa' => 'fkNTC_Divisa']);
+        return $this->hasOne(Divisa::className(), ['idNTC_Divisa' => 'fkNTC_Divisa']);
     }
 }

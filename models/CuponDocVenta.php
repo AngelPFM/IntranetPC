@@ -52,16 +52,16 @@ class CuponDocVenta extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCDocumentoVenta()
+    public function getDocumentoVenta()
     {
-        return $this->hasOne(NTCDocumentoVenta::className(), ['idNTC_DocumentoVenta' => 'fkNTC_DocumentoVenta']);
+        return $this->hasOne(DocumentoVenta::className(), ['idNTC_DocumentoVenta' => 'fkNTC_DocumentoVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCuponDescuento()
+    public function getCuponDescuento()
     {
-        return $this->hasOne(NTCCuponDescuento::className(), ['idNTC_CuponDescuento' => 'fkNTC_CuponDescuento']);
+        return $this->hasOne(CuponDescuento::className(), ['idNTC_CuponDescuento' => 'fkNTC_CuponDescuento']);
     }
 }

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\NumSerieSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Num Series';
+$this->title = 'Número Series';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="num-serie-index">
@@ -16,20 +16,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Num Serie', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nuevo Número Serie', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
-            'idNTC_NumSerie',
+            //'idNTC_NumSerie',
             'Nombre',
             'Descripcion',
             'Desde',
             'Hasta',
-            // 'Ultimo',
+            'Ultimo',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

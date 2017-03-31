@@ -16,17 +16,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Tipo Iva Producto', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Tipo Iva Producto', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
-            'idNTC_TipoIvaProducto',
+            //'idNTC_TipoIvaProducto',
             'Nombre',
-            'Quitar',
+            //'Quitar',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

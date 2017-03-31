@@ -47,8 +47,8 @@ class TipoSeleccionCupon extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCSeleccionCupons()
+    public function getSeleccionCupons()
     {
-        return $this->hasMany(NTCSeleccionCupon::className(), ['fkNTC_TipoSeleccionCupon' => 'idNTC_TipoSeleccionCupon']);
+        return $this->hasMany(SeleccionCupon::className(), ['fkNTC_TipoSeleccionCupon' => 'idNTC_TipoSeleccionCupon']);
     }
 }

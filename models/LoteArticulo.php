@@ -60,24 +60,24 @@ class LoteArticulo extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCArticulo()
+    public function getArticulo()
     {
-        return $this->hasOne(NTCArticulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
+        return $this->hasOne(Articulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCLote()
+    public function getLote()
     {
-        return $this->hasOne(NTCLote::className(), ['idNTC_Lote' => 'fkNTC_Lote']);
+        return $this->hasOne(Lote::className(), ['idNTC_Lote' => 'fkNTC_Lote']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCVariante()
+    public function getVariante()
     {
-        return $this->hasOne(NTCVariante::className(), ['idNTC_Variante' => 'fkNTC_Variante']);
+        return $this->hasOne(Variante::className(), ['idNTC_Variante' => 'fkNTC_Variante']);
     }
 }

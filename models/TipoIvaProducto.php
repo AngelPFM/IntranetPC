@@ -50,8 +50,8 @@ class TipoIvaProducto extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCConfiguracionIvas()
+    public function getConfiguracionIvas()
     {
-        return $this->hasMany(NTCConfiguracionIva::className(), ['fkNTC_TipoIVAProducto' => 'idNTC_TipoIvaProducto']);
+        return $this->hasMany(ConfiguracionIva::className(), ['fkNTC_TipoIVAProducto' => 'idNTC_TipoIvaProducto']);
     }
 }

@@ -69,96 +69,96 @@ class Provincia extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCAlmacens()
+    public function getAlmacens()
     {
-        return $this->hasMany(NTCAlmacen::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
+        return $this->hasMany(Almacen::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCClientes()
+    public function getClientes()
     {
-        return $this->hasMany(NTCCliente::className(), ['fkNTC_ProvinciaFactura' => 'idNTC_Provincia']);
+        return $this->hasMany(Cliente::className(), ['fkNTC_ProvinciaFactura' => 'idNTC_Provincia']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCClientes0()
+    public function getClientes0()
     {
-        return $this->hasMany(NTCCliente::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
+        return $this->hasMany(Cliente::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDireccionEmpresas()
+    public function getDireccionEmpresas()
     {
-        return $this->hasMany(NTCDireccionEmpresa::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
+        return $this->hasMany(DireccionEmpresa::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDireccionEnvios()
+    public function getDireccionEnvios()
     {
-        return $this->hasMany(NTCDireccionEnvio::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
+        return $this->hasMany(DireccionEnvio::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDocumentoVentas()
+    public function getDocumentoVentas()
     {
-        return $this->hasMany(NTCDocumentoVenta::className(), ['fkNTC_ProvinciaFactura' => 'idNTC_Provincia']);
+        return $this->hasMany(DocumentoVenta::className(), ['fkNTC_ProvinciaFactura' => 'idNTC_Provincia']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLocalidads()
+    public function getLocalidads()
     {
-        return $this->hasMany(NTCLocalidad::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
+        return $this->hasMany(Localidad::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCModuloEnvioProvincias()
+    public function getModuloEnvioProvincias()
     {
-        return $this->hasMany(NTCModuloEnvioProvincia::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
+        return $this->hasMany(ModuloEnvioProvincia::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCPais()
+    public function getPais()
     {
-        return $this->hasOne(NTCPais::className(), ['idNTC_Pais' => 'fkNTC_Pais']);
+        return $this->hasOne(Pais::className(), ['idNTC_Pais' => 'fkNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCPuntosVentas()
+    public function getPuntosVentas()
     {
-        return $this->hasMany(NTCPuntosVenta::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
+        return $this->hasMany(PuntosVenta::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCTarifaEnvios()
+    public function getTarifaEnvios()
     {
-        return $this->hasMany(NTCTarifaEnvio::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
+        return $this->hasMany(TarifaEnvio::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCTiendas()
+    public function getTiendas()
     {
-        return $this->hasMany(NTCTienda::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
+        return $this->hasMany( Tienda::className(), ['fkNTC_Provincia' => 'idNTC_Provincia']);
     }
 }

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\ProveedorEnvioSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Proveedor Envios';
+$this->title = 'Proveedores Envíos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="proveedor-envio-index">
@@ -16,19 +16,19 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Proveedor Envio', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nuevo Proveedor Envio', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
-            'idNTC_ProveedorEnvio',
+            //'idNTC_ProveedorEnvio',
             'Nombre',
-            'UrlProduccion:url',
-            'UrlPruebas:url',
-            'IdCliente',
+            //'UrlProduccion:url',
+            //'UrlPruebas:url',
+            //'IdCliente',
             // 'CuentaCliente',
             // 'Key',
             // 'Password',

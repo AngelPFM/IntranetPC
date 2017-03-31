@@ -22,12 +22,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
             //'idNTC_Almacen',
             'Nombre',
-            'Titulo',
+            'CodigoPostal',
+            
             'Direccion',
+             'Contacto',
+             'Transito',
+             'Telefono',
+             'Email:email',
+            //'Titulo',
             //'fkNTC_Localidad',
             // 'fkNTC_Provincia',
             // 'CodigoPostal',

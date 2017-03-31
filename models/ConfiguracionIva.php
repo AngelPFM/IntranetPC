@@ -65,32 +65,32 @@ class ConfiguracionIva extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCClientes()
+    public function getClientes()
     {
-        return $this->hasMany(NTCCliente::className(), ['fkNTC_ConfiguracionIva' => 'idNTC_ConfiguracionIva']);
+        return $this->hasMany(Cliente::className(), ['fkNTC_ConfiguracionIva' => 'idNTC_ConfiguracionIva']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCTipoIVAProducto()
+    public function getTipoIVAProducto()
     {
-        return $this->hasOne(NTCTipoIvaProducto::className(), ['idNTC_TipoIvaProducto' => 'fkNTC_TipoIVAProducto']);
+        return $this->hasOne(TipoIvaProducto::className(), ['idNTC_TipoIvaProducto' => 'fkNTC_TipoIVAProducto']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCTipoIVANegocio()
+    public function getTipoIVANegocio()
     {
-        return $this->hasOne(NTCTipoIvaNegocio::className(), ['idNTC_TipoIvaNegocio' => 'fkNTC_TipoIVANegocio']);
+        return $this->hasOne(TipoIvaNegocio::className(), ['idNTC_TipoIvaNegocio' => 'fkNTC_TipoIVANegocio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCTipoCalculoIVA()
+    public function getTipoCalculoIVA()
     {
-        return $this->hasOne(NTCTipoCalculoIva::className(), ['idNTC_TipoCalculoIva' => 'fkNTC_TipoCalculoIVA']);
+        return $this->hasOne(TipoCalculoIva::className(), ['idNTC_TipoCalculoIva' => 'fkNTC_TipoCalculoIVA']);
     }
 }

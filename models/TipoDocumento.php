@@ -51,7 +51,7 @@ class TipoDocumento extends \yii\db\ActiveRecord
      */
     public function getNTCDiarioProductos()
     {
-        return $this->hasMany(NTCDiarioProducto::className(), ['fkNTC_TipoDocumento' => 'idNTC_TipoDocumento']);
+        return $this->hasMany(DiarioProducto::className(), ['fkNTC_TipoDocumento' => 'idNTC_TipoDocumento']);
     }
 
     /**
@@ -59,6 +59,6 @@ class TipoDocumento extends \yii\db\ActiveRecord
      */
     public function getNTCMovProductos()
     {
-        return $this->hasMany(NTCMovProducto::className(), ['fkNTC_TipoDocumento' => 'idNTC_TipoDocumento']);
+        return $this->hasMany(MovProducto::className(), ['fkNTC_TipoDocumento' => 'idNTC_TipoDocumento']);
     }
 }

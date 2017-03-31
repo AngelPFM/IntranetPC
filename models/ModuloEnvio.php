@@ -51,16 +51,16 @@ class ModuloEnvio extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCModuloEnvioProvincias()
+    public function getModuloEnvioProvincias()
     {
-        return $this->hasMany(NTCModuloEnvioProvincia::className(), ['fkNTC_ModuloEnvio' => 'idNTC_ModuloEnvio']);
+        return $this->hasMany(ModuloEnvioProvincia::className(), ['fkNTC_ModuloEnvio' => 'idNTC_ModuloEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCTarifaEnvios()
+    public function getTarifaEnvios()
     {
-        return $this->hasMany(NTCTarifaEnvio::className(), ['fkNTC_ModuloEnvio' => 'idNTC_ModuloEnvio']);
+        return $this->hasMany(TarifaEnvio::className(), ['fkNTC_ModuloEnvio' => 'idNTC_ModuloEnvio']);
     }
 }

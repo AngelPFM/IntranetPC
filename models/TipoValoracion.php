@@ -53,8 +53,8 @@ class TipoValoracion extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCMetodoEnvios()
+    public function getMetodoEnvios()
     {
-        return $this->hasMany(NTCMetodoEnvio::className(), ['fkNTC_TipoValoracion' => 'idNTC_TipoValoracion']);
+        return $this->hasMany(MetodoEnvio::className(), ['fkNTC_TipoValoracion' => 'idNTC_TipoValoracion']);
     }
 }

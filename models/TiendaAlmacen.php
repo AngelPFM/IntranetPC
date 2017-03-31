@@ -53,16 +53,16 @@ class TiendaAlmacen extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCTienda()
+    public function getTienda()
     {
-        return $this->hasOne(NTCTienda::className(), ['idNTC_Tienda' => 'fkNTC_Tienda']);
+        return $this->hasOne(Tienda::className(), ['idNTC_Tienda' => 'fkNTC_Tienda']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCAlmacen()
+    public function getAlmacen()
     {
-        return $this->hasOne(NTCAlmacen::className(), ['idNTC_Almacen' => 'fkNTC_Almacen']);
+        return $this->hasOne(Almacen::className(), ['idNTC_Almacen' => 'fkNTC_Almacen']);
     }
 }

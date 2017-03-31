@@ -16,18 +16,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Idioma', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nuevo Idioma', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+           
 
-            'idNTC_Idioma',
+            //'idNTC_Idioma',
             'Nombre',
-            'Activo',
-            'Quitar',
+            //'Activo',
+            //'Quitar',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

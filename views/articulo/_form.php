@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'fkNTC_TipoArticulo')->textInput() ?>
+    
 
     <?= $form->field($model, 'Referencia')->textInput(['maxlength' => true]) ?>
 

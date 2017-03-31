@@ -118,8 +118,8 @@ class UsuarioWeb extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCSuscripcions()
+    public function getSuscripcions()
     {
-        return $this->hasMany(NTCSuscripcion::className(), ['fkNTC_UsuarioWeb' => 'idNTC_UsuarioWeb']);
+        return $this->hasMany(Suscripcion::className(), ['fkNTC_UsuarioWeb' => 'idNTC_UsuarioWeb']);
     }
 }

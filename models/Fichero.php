@@ -88,40 +88,40 @@ class Fichero extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCEnlaceFicheroes()
+    public function getEnlaceFicheroes()
     {
-        return $this->hasMany(NTCEnlaceFichero::className(), ['fkNTC_Fichero' => 'idNTC_Fichero']);
+        return $this->hasMany(EnlaceFichero::className(), ['fkNTC_Fichero' => 'idNTC_Fichero']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCArchivos()
+    public function getArchivos()
     {
-        return $this->hasOne(NTCArchivos::className(), ['idNTC_Archivos' => 'fkNTC_Archivos']);
+        return $this->hasOne(Archivos::className(), ['idNTC_Archivos' => 'fkNTC_Archivos']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCArticulo()
+    public function getArticulo()
     {
-        return $this->hasOne(NTCArticulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
+        return $this->hasOne(Articulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCEmpresa()
+    public function getEmpresa()
     {
-        return $this->hasOne(NTCEmpresa::className(), ['idNTC_Empresa' => 'fkNTC_Empresa']);
+        return $this->hasOne(Empresa::className(), ['idNTC_Empresa' => 'fkNTC_Empresa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCMarca()
+    public function getMarca()
     {
-        return $this->hasOne(NTCMarca::className(), ['idNTC_Marca' => 'fkNTC_Marca']);
+        return $this->hasOne(Marca::className(), ['idNTC_Marca' => 'fkNTC_Marca']);
     }
 }

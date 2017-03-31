@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Carrito', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Carrito', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,13 +24,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idNTC_Carrito',
-            'fkNTC_UsuarioWeb',
-            'fkNTC_Cliente',
-            'SessionId',
-            'fkNTC_DocumentoVenta',
-            // 'Fecha',
-            // 'Abandonado',
+           // 'idNTC_Carrito',
+            //'fkNTC_UsuarioWeb',
+            
+            ['label'=>'Cliente', 
+                'attribute'=>'fkNTC_Cliente'],
+            
+            
+            
+            
+         
+             'Fecha',
+             'Abandonado',
             // 'Quitar',
 
             ['class' => 'yii\grid\ActionColumn'],

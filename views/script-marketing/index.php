@@ -16,23 +16,31 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Script Marketing', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nuevo Script Marketing', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
-            'idNTC_ScriptMarketing',
+           // 'idNTC_ScriptMarketing',
             'Nombre',
-            'fkNTC_Idioma',
-            'fkNTC_Pais',
+            
+            ['label'=>'Idioma', 
+                'attribute'=>'fkNTC_Idioma'],
+             'Footer',
             'Header',
+            ['label'=>'Idioma', 
+                'attribute'=>'fkNTC_Idioma'],
+            
+            ['label'=>'País', 
+                'attribute'=>'fkNTC_Pais'],
+            
             // 'Footer',
-            // 'PaginaPedidoOk',
-            // 'Home',
-            // 'Registro',
+             'PaginaPedidoOk',
+             'Home',
+             'Registro',
             // 'look',
             // 'Script:ntext',
             // 'Quitar',

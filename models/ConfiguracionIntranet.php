@@ -68,7 +68,7 @@ class ConfiguracionIntranet extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCEmpresa()
+    public function getEmpresa()
     {
         return $this->hasOne(NTCEmpresa::className(), ['idNTC_Empresa' => 'fkNTC_Empresa']);
     }

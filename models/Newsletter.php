@@ -58,8 +58,8 @@ class Newsletter extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCArticuloNewsletters()
+    public function getArticuloNewsletters()
     {
-        return $this->hasMany(NTCArticuloNewsletter::className(), ['fkNTC_Newsletter' => 'idNTC_Newsletter']);
+        return $this->hasMany(ArticuloNewsletter::className(), ['fkNTC_Newsletter' => 'idNTC_Newsletter']);
     }
 }

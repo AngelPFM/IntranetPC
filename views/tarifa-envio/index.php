@@ -16,27 +16,36 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Tarifa Envio', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nueva Tarifa Envio', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
-            'idNTC_TarifaEnvio',
-            'fkNTC_ProveedorEnvio',
-            'fkNTC_MetodoEnvio',
-            'fkNTC_Pais',
-            'fkNTC_Provincia',
+            //'idNTC_TarifaEnvio',
+            
+            ['label'=>'Proveedor', 
+                'attribute'=>'fkNTC_ProveedorEnvio'],
+            
+            
+            ['label'=>'Método de Envío', 
+                'attribute'=>'fkNTC_MetodoEnvio'],
+            
+            ['label'=>'País', 
+                'attribute'=>'fkNTC_Pais'],
+            
+            ['label'=>'Provincia', 
+                'attribute'=>'fkNTC_Provincia'],
             // 'fkNTC_ZonaEnvio',
             // 'fkNTC_ModuloEnvio',
-            // 'CodigoPostal',
-            // 'PesoDesde',
-            // 'PrecioEnvio',
+            'CodigoPostal',
+             'PesoDesde',
+             'PrecioEnvio',
             // 'PrecioEnvioPlus',
             // 'fkNTC_Divisa',
-            // 'DiasEnvio',
+             'DiasEnvio',
             // 'Quitar',
 
             ['class' => 'yii\grid\ActionColumn'],

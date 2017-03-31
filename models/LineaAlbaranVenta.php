@@ -82,41 +82,41 @@ class LineaAlbaranVenta extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCabAlbaranVenta()
+    public function getCabAlbaranVenta()
     {
-        return $this->hasOne(NTCCabAlbaranVenta::className(), ['idNTC_CabAlbaranVenta' => 'fkNTC_CabAlbaranVenta']);
+        return $this->hasOne(CabAlbaranVenta::className(), ['idNTC_CabAlbaranVenta' => 'fkNTC_CabAlbaranVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCArticulo()
+    public function getArticulo()
     {
-        return $this->hasOne(NTCArticulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
+        return $this->hasOne(Articulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCVariante()
+    public function getVariante()
     {
-        return $this->hasOne(NTCVariante::className(), ['idNTC_Variante' => 'fkNTC_Variante']);
+        return $this->hasOne(Variante::className(), ['idNTC_Variante' => 'fkNTC_Variante']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCAlmacen()
+    public function getAlmacen()
     {
-        return $this->hasOne(NTCAlmacen::className(), ['idNTC_Almacen' => 'fkNTC_Almacen']);
+        return $this->hasOne(Almacen::className(), ['idNTC_Almacen' => 'fkNTC_Almacen']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCLineaVenta()
+    public function getLineaVenta()
     {
-        return $this->hasOne(NTCLineaVenta::className(), ['idNTC_LineaVenta' => 'fkNTC_LineaVenta']);
+        return $this->hasOne(LineaVenta::className(), ['idNTC_LineaVenta' => 'fkNTC_LineaVenta']);
     }
 
     /**
@@ -124,6 +124,6 @@ class LineaAlbaranVenta extends \yii\db\ActiveRecord
      */
     public function getNTCLineaFacturaVentas()
     {
-        return $this->hasMany(NTCLineaFacturaVenta::className(), ['fkNTC_LineaAlbaranVenta' => 'idNTC_LineaAlbaranVenta']);
+        return $this->hasMany(LineaFacturaVenta::className(), ['fkNTC_LineaAlbaranVenta' => 'idNTC_LineaAlbaranVenta']);
     }
 }

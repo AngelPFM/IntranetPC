@@ -88,64 +88,64 @@ class MetodoEnvio extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabAlbaranVentas()
+    public function getCabAlbaranVentas()
     {
-        return $this->hasMany(NTCCabAlbaranVenta::className(), ['fkNTC_MetodoEnvio' => 'idNTC_MetodoEnvio']);
+        return $this->hasMany(CabAlbaranVenta::className(), ['fkNTC_MetodoEnvio' => 'idNTC_MetodoEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCConfiguracions()
+    public function getConfiguracions()
     {
-        return $this->hasMany(NTCConfiguracion::className(), ['fkNTC_MetodoEnvio' => 'idNTC_MetodoEnvio']);
+        return $this->hasMany(Configuracion::className(), ['fkNTC_MetodoEnvio' => 'idNTC_MetodoEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCuponDescuentos()
+    public function getCuponDescuentos()
     {
-        return $this->hasMany(NTCCuponDescuento::className(), ['fkNTC_MetodoEnvio' => 'idNTC_MetodoEnvio']);
+        return $this->hasMany(CuponDescuento::className(), ['fkNTC_MetodoEnvio' => 'idNTC_MetodoEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCProveedorEnvio()
+    public function getProveedorEnvio()
     {
-        return $this->hasOne(NTCProveedorEnvio::className(), ['idNTC_ProveedorEnvio' => 'fkNTC_ProveedorEnvio']);
+        return $this->hasOne(ProveedorEnvio::className(), ['idNTC_ProveedorEnvio' => 'fkNTC_ProveedorEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCUnidadMedida()
+    public function getUnidadMedida()
     {
-        return $this->hasOne(NTCUnidadMedida::className(), ['idNTC_UnidadMedida' => 'fkNTC_UnidadMedida']);
+        return $this->hasOne(UnidadMedida::className(), ['idNTC_UnidadMedida' => 'fkNTC_UnidadMedida']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCTipoValoracion()
+    public function getTipoValoracion()
     {
-        return $this->hasOne(NTCTipoValoracion::className(), ['idNTC_TipoValoracion' => 'fkNTC_TipoValoracion']);
+        return $this->hasOne(TipoValoracion::className(), ['idNTC_TipoValoracion' => 'fkNTC_TipoValoracion']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCTipoCalculo()
+    public function getTipoCalculo()
     {
-        return $this->hasOne(NTCTipoCalculo::className(), ['idNTC_TipoCalculo' => 'fkNTC_TipoCalculo']);
+        return $this->hasOne(TipoCalculo::className(), ['idNTC_TipoCalculo' => 'fkNTC_TipoCalculo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCTipoTarifa()
+    public function getTipoTarifa()
     {
-        return $this->hasOne(NTCTipoTarifa::className(), ['idNTC_TipoTarifa' => 'fkNTC_TipoTarifa']);
+        return $this->hasOne(TipoTarifa::className(), ['idNTC_TipoTarifa' => 'fkNTC_TipoTarifa']);
     }
 }

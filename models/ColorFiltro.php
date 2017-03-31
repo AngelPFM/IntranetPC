@@ -55,8 +55,8 @@ class ColorFiltro extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCArticuloColorFiltros()
+    public function getArticuloColorFiltros()
     {
-        return $this->hasMany(NTCArticuloColorFiltro::className(), ['fkNTC_ColorFiltro' => 'idNTC_ColorFiltro']);
+        return $this->hasMany(ArticuloColorFiltro::className(), ['fkNTC_ColorFiltro' => 'idNTC_ColorFiltro']);
     }
 }

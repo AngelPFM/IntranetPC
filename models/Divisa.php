@@ -74,128 +74,128 @@ class Divisa extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabAbonoVentas()
+    public function getCabAbonoVentas()
     {
-        return $this->hasMany(NTCCabAbonoVenta::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
+        return $this->hasMany(CabAbonoVenta::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabAlbaranVentas()
+    public function getCabAlbaranVentas()
     {
-        return $this->hasMany(NTCCabAlbaranVenta::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
+        return $this->hasMany(CabAlbaranVenta::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabDevolucionVentas()
+    public function getCabDevolucionVentas()
     {
-        return $this->hasMany(NTCCabDevolucionVenta::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
+        return $this->hasMany(CabDevolucionVenta::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabFacturaVentas()
+    public function getCabFacturaVentas()
     {
-        return $this->hasMany(NTCCabFacturaVenta::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
+        return $this->hasMany(CabFacturaVenta::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCambioDivisa()
+    public function getCambioDivisa()
     {
-        return $this->hasOne(NTCCambioDivisa::className(), ['fkNTC_Divisa1' => 'idNTC_Divisa']);
+        return $this->hasOne(CambioDivisa::className(), ['fkNTC_Divisa1' => 'idNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCambioDivisa0()
+    public function getCambioDivisa0()
     {
-        return $this->hasOne(NTCCambioDivisa::className(), ['fkNTC_Divisa2' => 'idNTC_Divisa']);
+        return $this->hasOne(CambioDivisa::className(), ['fkNTC_Divisa2' => 'idNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCDivisa2s()
+    public function getDivisa2s()
     {
-        return $this->hasMany(NTCDivisa::className(), ['idNTC_Divisa' => 'fkNTC_Divisa2'])->viaTable('NTC_CambioDivisa', ['fkNTC_Divisa1' => 'idNTC_Divisa']);
+        return $this->hasMany(Divisa::className(), ['idNTC_Divisa' => 'fkNTC_Divisa2'])->viaTable('NTC_CambioDivisa', ['fkNTC_Divisa1' => 'idNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCDivisa1s()
+    public function getDivisa1s()
     {
-        return $this->hasMany(NTCDivisa::className(), ['idNTC_Divisa' => 'fkNTC_Divisa1'])->viaTable('NTC_CambioDivisa', ['fkNTC_Divisa2' => 'idNTC_Divisa']);
+        return $this->hasMany(Divisa::className(), ['idNTC_Divisa' => 'fkNTC_Divisa1'])->viaTable('NTC_CambioDivisa', ['fkNTC_Divisa2' => 'idNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCConfiguracions()
+    public function getConfiguracions()
     {
-        return $this->hasMany(NTCConfiguracion::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
+        return $this->hasMany(Configuracion::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCuponDescuentos()
+    public function getCuponDescuentos()
     {
-        return $this->hasMany(NTCCuponDescuento::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
+        return $this->hasMany(CuponDescuento::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCuponDescuentos0()
+    public function getCuponDescuentos0()
     {
-        return $this->hasMany(NTCCuponDescuento::className(), ['fkNTC_DivisaImporteMinimo' => 'idNTC_Divisa']);
+        return $this->hasMany(CuponDescuento::className(), ['fkNTC_DivisaImporteMinimo' => 'idNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDocumentoVentas()
+    public function getDocumentoVentas()
     {
-        return $this->hasMany(NTCDocumentoVenta::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
+        return $this->hasMany(DocumentoVenta::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCOperacions()
+    public function getOperacions()
     {
-        return $this->hasMany(NTCOperacion::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
+        return $this->hasMany(Operacion::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCRelacionDivisas()
+    public function getRelacionDivisas()
     {
-        return $this->hasMany(NTCRelacionDivisa::className(), ['fkNTC_Divisa1' => 'idNTC_Divisa']);
+        return $this->hasMany(RelacionDivisa::className(), ['fkNTC_Divisa1' => 'idNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCRelacionDivisas0()
+    public function getRelacionDivisas0()
     {
-        return $this->hasMany(NTCRelacionDivisa::className(), ['fkNTC_Divisa2' => 'idNTC_Divisa']);
+        return $this->hasMany(RelacionDivisa::className(), ['fkNTC_Divisa2' => 'idNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCTarifaEnvios()
+    public function getTarifaEnvios()
     {
-        return $this->hasMany(NTCTarifaEnvio::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
+        return $this->hasMany(TarifaEnvio::className(), ['fkNTC_Divisa' => 'idNTC_Divisa']);
     }
 }

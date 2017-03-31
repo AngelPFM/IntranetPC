@@ -86,25 +86,25 @@ class Atributo extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCTipoDatosAtributo()
+    public function getTipoDatosAtributo()
     {
-        return $this->hasOne(NTCTipoDatosAtributo::className(), ['idNTC_TipoDatosAtributo' => 'fkNTC_TipoDatosAtributo']);
+        return $this->hasOne(TipoDatosAtributo::className(), ['idNTC_TipoDatosAtributo' => 'fkNTC_TipoDatosAtributo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCAtributoConjuntos()
+    public function getAtributoConjuntos()
     {
-        return $this->hasMany(NTCAtributoConjunto::className(), ['fkNTC_Atributo' => 'idNTC_Atributo']);
+        return $this->hasMany(AtributoConjunto::className(), ['fkNTC_Atributo' => 'idNTC_Atributo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCConjuntoAtributos()
+    public function getConjuntoAtributos()
     {
-        return $this->hasMany(NTCConjuntoAtributos::className(), ['idNTC_ConjuntoAtributos' => 'fkNTC_ConjuntoAtributos'])->viaTable('NTC_AtributoConjunto', ['fkNTC_Atributo' => 'idNTC_Atributo']);
+        return $this->hasMany(ConjuntoAtributos::className(), ['idNTC_ConjuntoAtributos' => 'fkNTC_ConjuntoAtributos'])->viaTable('NTC_AtributoConjunto', ['fkNTC_Atributo' => 'idNTC_Atributo']);
     }
 
     /**
@@ -112,6 +112,6 @@ class Atributo extends \yii\db\ActiveRecord
      */
     public function getNTCOpcionAtributos()
     {
-        return $this->hasMany(NTCOpcionAtributo::className(), ['fkNTC_Atributo' => 'idNTC_Atributo']);
+        return $this->hasMany(OpcionAtributo::className(), ['fkNTC_Atributo' => 'idNTC_Atributo']);
     }
 }

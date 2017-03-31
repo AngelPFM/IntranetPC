@@ -48,16 +48,16 @@ class TipoMovProducto extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDiarioProductos()
+    public function getDiarioProductos()
     {
-        return $this->hasMany(NTCDiarioProducto::className(), ['fkNTC_TipoMovProducto' => 'idNTC_TipoMovProducto']);
+        return $this->hasMany(DiarioProducto::className(), ['fkNTC_TipoMovProducto' => 'idNTC_TipoMovProducto']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCMovProductos()
+    public function getMovProductos()
     {
-        return $this->hasMany(NTCMovProducto::className(), ['fkNTC_TipoMovProducto' => 'idNTC_TipoMovProducto']);
+        return $this->hasMany(MovProducto::className(), ['fkNTC_TipoMovProducto' => 'idNTC_TipoMovProducto']);
     }
 }

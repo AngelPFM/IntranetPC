@@ -104,9 +104,9 @@ class Empresa extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCConfiguracion()
+    public function getConfiguracion()
     {
-        return $this->hasOne(NTCConfiguracion::className(), ['fkNTC_Empresa' => 'idNTC_Empresa']);
+        return $this->hasOne(Configuracion::className(), ['fkNTC_Empresa' => 'idNTC_Empresa']);
     }
 
     /**

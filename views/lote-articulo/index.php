@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\LoteArticuloSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Lote Articulos';
+$this->title = 'Lote Artículos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="lote-articulo-index">
@@ -16,20 +16,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Lote Articulo', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nuevo Lote Artículo', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
-            'idNTC_LoteArticulo',
-            'fkNTC_Lote',
-            'fkNTC_Articulo',
+           //'idNTC_LoteArticulo',
+            //'fkNTC_Lote',
+            //'fkNTC_Articulo',
             'Cantidad',
-            'fkNTC_Variante',
-            // 'Quitar',
+            //'fkNTC_Variante',
+            'Quitar',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

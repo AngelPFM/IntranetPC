@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Carrito */
 
-$this->title = 'Create Carrito';
+$this->title = 'Crear Carrito';
 $this->params['breadcrumbs'][] = ['label' => 'Carritos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

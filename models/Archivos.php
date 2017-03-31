@@ -46,8 +46,8 @@ class Archivos extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCFicheroes()
+    public function getFicheroes()
     {
-        return $this->hasMany(NTCFichero::className(), ['fkNTC_Archivos' => 'idNTC_Archivos']);
+        return $this->hasMany(Fichero::className(), ['fkNTC_Archivos' => 'idNTC_Archivos']);
     }
 }

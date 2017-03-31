@@ -58,16 +58,16 @@ class RelacionUdMedida extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCUdMedida1()
+    public function getUdMedida1()
     {
-        return $this->hasOne(NTCUnidadMedida::className(), ['idNTC_UnidadMedida' => 'fkNTC_UdMedida1']);
+        return $this->hasOne(UnidadMedida::className(), ['idNTC_UnidadMedida' => 'fkNTC_UdMedida1']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCUdMedida2()
+    public function getUdMedida2()
     {
-        return $this->hasOne(NTCUnidadMedida::className(), ['idNTC_UnidadMedida' => 'fkNTC_UdMedida2']);
+        return $this->hasOne(UnidadMedida::className(), ['idNTC_UnidadMedida' => 'fkNTC_UdMedida2']);
     }
 }

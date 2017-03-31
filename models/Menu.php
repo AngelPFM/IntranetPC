@@ -102,8 +102,8 @@ class Menu extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCBloqueCMSs()
+    public function getBloqueCMSs()
     {
-        return $this->hasMany(NTCBloqueCMS::className(), ['fkNTC_Menu' => 'idNTC_Menu']);
+        return $this->hasMany(BloqueCMS::className(), ['fkNTC_Menu' => 'idNTC_Menu']);
     }
 }

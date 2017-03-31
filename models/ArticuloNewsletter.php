@@ -60,32 +60,32 @@ class ArticuloNewsletter extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCategoria()
+    public function getCategoria()
     {
-        return $this->hasOne(NTCCategoria::className(), ['idNTC_Categoria' => 'fkNTC_Categoria']);
+        return $this->hasOne(Categoria::className(), ['idNTC_Categoria' => 'fkNTC_Categoria']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCArticulo()
+    public function getArticulo()
     {
-        return $this->hasOne(NTCArticulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
+        return $this->hasOne(Articulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCVariante()
+    public function getVariante()
     {
-        return $this->hasOne(NTCVariante::className(), ['idNTC_Variante' => 'fkNTC_Variante']);
+        return $this->hasOne(Variante::className(), ['idNTC_Variante' => 'fkNTC_Variante']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCNewsletter()
+    public function getNewsletter()
     {
-        return $this->hasOne(NTCNewsletter::className(), ['idNTC_Newsletter' => 'fkNTC_Newsletter']);
+        return $this->hasOne(Newsletter::className(), ['idNTC_Newsletter' => 'fkNTC_Newsletter']);
     }
 }

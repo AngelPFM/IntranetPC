@@ -68,8 +68,8 @@ class BloqueCMS extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCMenu()
+    public function getMenu()
     {
-        return $this->hasOne(NTCMenu::className(), ['idNTC_Menu' => 'fkNTC_Menu']);
+        return $this->hasOne(Menu::className(), ['idNTC_Menu' => 'fkNTC_Menu']);
     }
 }

@@ -63,24 +63,24 @@ class GetResponseConfig extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCIdioma()
+    public function getIdioma()
     {
-        return $this->hasOne(NTCIdioma::className(), ['idNTC_Idioma' => 'fkNTC_Idioma']);
+        return $this->hasOne(Idioma::className(), ['idNTC_Idioma' => 'fkNTC_Idioma']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCPais()
+    public function getPais()
     {
-        return $this->hasOne(NTCPais::className(), ['idNTC_Pais' => 'fkNTC_Pais']);
+        return $this->hasOne(Pais::className(), ['idNTC_Pais' => 'fkNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCSuscripcions()
+    public function getSuscripcions()
     {
-        return $this->hasMany(NTCSuscripcion::className(), ['fkNTC_GetResponseConfig' => 'idNTC_GetResponseConfig']);
+        return $this->hasMany(Suscripcion::className(), ['fkNTC_GetResponseConfig' => 'idNTC_GetResponseConfig']);
     }
 }

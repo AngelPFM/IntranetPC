@@ -22,17 +22,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
             //'idNTC_Usuario',
             'Nombre',
-            //'fkNTC_Rol',
+            ['label'=>'Rol', 
+                'attribute'=>'fkNTC_Rol'],
             'MaxIntentos',
             'FechaValidezIni',
-            // 'FechaValidezFin',
+            'Email:email',
+            'FechaValidezFin',
+             
             // 'Hash',
-            // 'Quitar',
-            // 'Email:email',
+             'Quitar',
+             
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

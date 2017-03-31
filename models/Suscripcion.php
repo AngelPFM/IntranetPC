@@ -71,24 +71,24 @@ class Suscripcion extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCGetResponseConfig()
+    public function getGetResponseConfig()
     {
-        return $this->hasOne(NTCGetResponseConfig::className(), ['idNTC_GetResponseConfig' => 'fkNTC_GetResponseConfig']);
+        return $this->hasOne(GetResponseConfig::className(), ['idNTC_GetResponseConfig' => 'fkNTC_GetResponseConfig']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCUsuarioWeb()
+    public function getUsuarioWeb()
     {
-        return $this->hasOne(NTCUsuarioWeb::className(), ['idNTC_UsuarioWeb' => 'fkNTC_UsuarioWeb']);
+        return $this->hasOne(UsuarioWeb::className(), ['idNTC_UsuarioWeb' => 'fkNTC_UsuarioWeb']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCliente()
+    public function getCliente()
     {
-        return $this->hasOne(NTCCliente::className(), ['idNTC_Cliente' => 'fkNTC_Cliente']);
+        return $this->hasOne(Cliente::className(), ['idNTC_Cliente' => 'fkNTC_Cliente']);
     }
 }

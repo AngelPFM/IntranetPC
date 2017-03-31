@@ -16,26 +16,29 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Usuario Web', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nuevo Usuario Web', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
-            'idNTC_UsuarioWeb',
-            'fkNTC_TipoUsuarioWeb',
-            'fkNTC_Cliente',
+           // 'idNTC_UsuarioWeb',
+           // 'fkNTC_TipoUsuarioWeb',
+           // 'fkNTC_Cliente',
+            'FechaRegistro',
             'Nombre',
             'Apellidos',
-            // 'Email:email',
+             'Email:email',
             // 'Hash',
             // 'MaxIntentos',
             // 'FechaValidezIni',
             // 'FechaValidezFin',
             // 'FechaRegistro',
-            // 'FechaUltimoAcceso',
+             'FechaUltimoAcceso',
+            ['label'=>'Nueva Contraseña', 
+                'attribute'=>'Hash'],
             // 'FechaActualAcceso',
             // 'Activo',
             // 'Quitar',

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\MetodoEnvioSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Metodo Envios';
+$this->title = 'Metodos Envíos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="metodo-envio-index">
@@ -16,26 +16,29 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Metodo Envio', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nuevo Método Envío', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
-            'idNTC_MetodoEnvio',
+           // 'idNTC_MetodoEnvio',
             'fkNTC_ProveedorEnvio',
             'Nombre',
             'Descripcion:ntext',
-            'fkNTC_TipoValoracion',
+            
+            ['label'=>'Proveedor Envío', 
+                'attribute'=>'fkNTC_ProveedorEnvio'],
+            //'fkNTC_TipoValoracion',
             // 'fkNTC_TipoCalculo',
             // 'PesoMaxPaquete',
-            // 'PesoMinPaquete',
+             'PesoMinPaquete',
             // 'fkNTC_TipoTarifa',
             // 'fkNTC_UnidadMedida',
             // 'TipoCosteManipulacion',
-            // 'CosteManipulacion',
+             'CosteManipulacion',
             // 'TiempoPreparacion',
             // 'ImporteMinEnvioGratuito',
             // 'Quitar',

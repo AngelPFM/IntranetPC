@@ -60,40 +60,40 @@ class NumSerie extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabAbonoVentas()
+    public function getCabAbonoVentas()
     {
-        return $this->hasMany(NTCCabAbonoVenta::className(), ['fkNTC_NumSerie' => 'idNTC_NumSerie']);
+        return $this->hasMany(CabAbonoVenta::className(), ['fkNTC_NumSerie' => 'idNTC_NumSerie']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabAlbaranVentas()
+    public function getCabAlbaranVentas()
     {
-        return $this->hasMany(NTCCabAlbaranVenta::className(), ['fkNTC_NumSerie' => 'idNTC_NumSerie']);
+        return $this->hasMany(CabAlbaranVenta::className(), ['fkNTC_NumSerie' => 'idNTC_NumSerie']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabDevolucionVentas()
+    public function getCabDevolucionVentas()
     {
-        return $this->hasMany(NTCCabDevolucionVenta::className(), ['fkNTC_NumSerie' => 'idNTC_NumSerie']);
+        return $this->hasMany(CabDevolucionVenta::className(), ['fkNTC_NumSerie' => 'idNTC_NumSerie']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabFacturaVentas()
+    public function getCabFacturaVentas()
     {
-        return $this->hasMany(NTCCabFacturaVenta::className(), ['fkNTC_NumSerie' => 'idNTC_NumSerie']);
+        return $this->hasMany(CabFacturaVenta::className(), ['fkNTC_NumSerie' => 'idNTC_NumSerie']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDocumentoVentas()
+    public function getDocumentoVentas()
     {
-        return $this->hasMany(NTCDocumentoVenta::className(), ['fkNTC_NumSerie' => 'idNTC_NumSerie']);
+        return $this->hasMany(DocumentoVenta::className(), ['fkNTC_NumSerie' => 'idNTC_NumSerie']);
     }
 }

@@ -232,184 +232,184 @@ class DocumentoVenta extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabAlbaranVentas()
+    public function getCabAlbaranVentas()
     {
-        return $this->hasMany(NTCCabAlbaranVenta::className(), ['fkNTC_DocumentoVenta' => 'idNTC_DocumentoVenta']);
+        return $this->hasMany(CabAlbaranVenta::className(), ['fkNTC_DocumentoVenta' => 'idNTC_DocumentoVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabFacturaVentas()
+    public function getCabFacturaVentas()
     {
-        return $this->hasMany(NTCCabFacturaVenta::className(), ['fkNTC_DocumentoVenta' => 'idNTC_DocumentoVenta']);
+        return $this->hasMany(CabFacturaVenta::className(), ['fkNTC_DocumentoVenta' => 'idNTC_DocumentoVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCarritos()
+    public function getCarritos()
     {
-        return $this->hasMany(NTCCarrito::className(), ['fkNTC_DocumentoVenta' => 'idNTC_DocumentoVenta']);
+        return $this->hasMany(Carrito::className(), ['fkNTC_DocumentoVenta' => 'idNTC_DocumentoVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCuponDocVentas()
+    public function getCuponDocVentas()
     {
-        return $this->hasMany(NTCCuponDocVenta::className(), ['fkNTC_DocumentoVenta' => 'idNTC_DocumentoVenta']);
+        return $this->hasMany(CuponDocVenta::className(), ['fkNTC_DocumentoVenta' => 'idNTC_DocumentoVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCuponDescuentos()
+    public function getCuponDescuentos()
     {
-        return $this->hasMany(NTCCuponDescuento::className(), ['idNTC_CuponDescuento' => 'fkNTC_CuponDescuento'])->viaTable('NTC_CuponDocVenta', ['fkNTC_DocumentoVenta' => 'idNTC_DocumentoVenta']);
+        return $this->hasMany(CuponDescuento::className(), ['idNTC_CuponDescuento' => 'fkNTC_CuponDescuento'])->viaTable('NTC_CuponDocVenta', ['fkNTC_DocumentoVenta' => 'idNTC_DocumentoVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCFormaPago()
+    public function getFormaPago()
     {
-        return $this->hasOne(NTCFormaPago::className(), ['idNTC_FormaPago' => 'fkNTC_FormaPago']);
+        return $this->hasOne(FormaPago::className(), ['idNTC_FormaPago' => 'fkNTC_FormaPago']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCNumSerie()
+    public function getNumSerie()
     {
-        return $this->hasOne(NTCNumSerie::className(), ['idNTC_NumSerie' => 'fkNTC_NumSerie']);
+        return $this->hasOne(NumSerie::className(), ['idNTC_NumSerie' => 'fkNTC_NumSerie']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCTerminosPago()
+    public function getTerminosPago()
     {
-        return $this->hasOne(NTCTerminoPago::className(), ['idNTC_TerminoPago' => 'fkNTC_TerminosPago']);
+        return $this->hasOne(TerminoPago::className(), ['idNTC_TerminoPago' => 'fkNTC_TerminosPago']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCTipoDocumentoVenta()
+    public function getTipoDocumentoVenta()
     {
-        return $this->hasOne(NTCTipoDocumentoVenta::className(), ['idNTC_TipoDocumentoVenta' => 'fkNTC_TipoDocumentoVenta']);
+        return $this->hasOne(TipoDocumentoVenta::className(), ['idNTC_TipoDocumentoVenta' => 'fkNTC_TipoDocumentoVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCTipoEstadoPedido()
+    public function getTipoEstadoPedido()
     {
-        return $this->hasOne(NTCTipoEstadoPedido::className(), ['idNTC_TipoEstadoPedido' => 'fkNTC_TipoEstadoPedido']);
+        return $this->hasOne(TipoEstadoPedido::className(), ['idNTC_TipoEstadoPedido' => 'fkNTC_TipoEstadoPedido']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCTarifaEnvio()
+    public function getTarifaEnvio()
     {
-        return $this->hasOne(NTCTarifaEnvio::className(), ['idNTC_TarifaEnvio' => 'fkNTC_TarifaEnvio']);
+        return $this->hasOne(TarifaEnvio::className(), ['idNTC_TarifaEnvio' => 'fkNTC_TarifaEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCGrupoPrecioCliente()
+    public function getGrupoPrecioCliente()
     {
-        return $this->hasOne(NTCGrupoPrecioCliente::className(), ['idNTC_GrupoPrecioCliente' => 'fkNTC_GrupoPrecioCliente']);
+        return $this->hasOne(GrupoPrecioCliente::className(), ['idNTC_GrupoPrecioCliente' => 'fkNTC_GrupoPrecioCliente']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCGrupoDtoCliente()
+    public function getGrupoDtoCliente()
     {
-        return $this->hasOne(NTCGrupoDescuentoCliente::className(), ['idNTC_GrupoDescuentoCliente' => 'fkNTC_GrupoDtoCliente']);
+        return $this->hasOne(GrupoDescuentoCliente::className(), ['idNTC_GrupoDescuentoCliente' => 'fkNTC_GrupoDtoCliente']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCProvinciaFactura()
+    public function getProvinciaFactura()
     {
-        return $this->hasOne(NTCProvincia::className(), ['idNTC_Provincia' => 'fkNTC_ProvinciaFactura']);
+        return $this->hasOne(Provincia::className(), ['idNTC_Provincia' => 'fkNTC_ProvinciaFactura']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCClienteVenta()
+    public function getClienteVenta()
     {
-        return $this->hasOne(NTCCliente::className(), ['idNTC_Cliente' => 'fkNTC_ClienteVenta']);
+        return $this->hasOne(Cliente::className(), ['idNTC_Cliente' => 'fkNTC_ClienteVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCPaisFactura()
+    public function getPaisFactura()
     {
-        return $this->hasOne(NTCPais::className(), ['idNTC_Pais' => 'fkNTC_PaisFactura']);
+        return $this->hasOne(Pais::className(), ['idNTC_Pais' => 'fkNTC_PaisFactura']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCClienteFactura()
+    public function getClienteFactura()
     {
-        return $this->hasOne(NTCCliente::className(), ['idNTC_Cliente' => 'fkNTC_ClienteFactura']);
+        return $this->hasOne(Cliente::className(), ['idNTC_Cliente' => 'fkNTC_ClienteFactura']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCTienda()
+    public function getTienda()
     {
-        return $this->hasOne(NTCTienda::className(), ['idNTC_Tienda' => 'fkNTC_Tienda']);
+        return $this->hasOne(Tienda::className(), ['idNTC_Tienda' => 'fkNTC_Tienda']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCDireccionEnvio()
+    public function getDireccionEnvio()
     {
-        return $this->hasOne(NTCDireccionEnvio::className(), ['idNTC_DireccionEnvio' => 'fkNTC_DireccionEnvio']);
+        return $this->hasOne(DireccionEnvio::className(), ['idNTC_DireccionEnvio' => 'fkNTC_DireccionEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCAlmacen()
+    public function getAlmacen()
     {
-        return $this->hasOne(NTCAlmacen::className(), ['idNTC_Almacen' => 'fkNTC_Almacen']);
+        return $this->hasOne(Almacen::className(), ['idNTC_Almacen' => 'fkNTC_Almacen']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCDivisa()
+    public function getDivisa()
     {
-        return $this->hasOne(NTCDivisa::className(), ['idNTC_Divisa' => 'fkNTC_Divisa']);
+        return $this->hasOne(Divisa::className(), ['idNTC_Divisa' => 'fkNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLineaVentas()
+    public function getLineaVentas()
     {
-        return $this->hasMany(NTCLineaVenta::className(), ['fkNTC_DocumentoVenta' => 'idNTC_DocumentoVenta']);
+        return $this->hasMany(CLineaVenta::className(), ['fkNTC_DocumentoVenta' => 'idNTC_DocumentoVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCOperacions()
+    public function getOperacions()
     {
-        return $this->hasMany(NTCOperacion::className(), ['fkNTC_DocumentoVenta' => 'idNTC_DocumentoVenta']);
+        return $this->hasMany(Operacion::className(), ['fkNTC_DocumentoVenta' => 'idNTC_DocumentoVenta']);
     }
 }

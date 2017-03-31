@@ -47,8 +47,8 @@ class TipoCalculoIva extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCConfiguracionIvas()
+    public function getConfiguracionIvas()
     {
-        return $this->hasMany(NTCConfiguracionIva::className(), ['fkNTC_TipoCalculoIVA' => 'idNTC_TipoCalculoIva']);
+        return $this->hasMany(ConfiguracionIva::className(), ['fkNTC_TipoCalculoIVA' => 'idNTC_TipoCalculoIva']);
     }
 }

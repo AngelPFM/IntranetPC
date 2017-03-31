@@ -68,24 +68,24 @@ class LineaAbonoVenta extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCabAbonoVenta()
+    public function getCabAbonoVenta()
     {
-        return $this->hasOne(NTCCabAbonoVenta::className(), ['idNTC_CabAbonoVenta' => 'fkNTC_CabAbonoVenta']);
+        return $this->hasOne(CabAbonoVenta::className(), ['idNTC_CabAbonoVenta' => 'fkNTC_CabAbonoVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCArticulo()
+    public function getArticulo()
     {
-        return $this->hasOne(NTCArticulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
+        return $this->hasOne(Articulo::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCVariante()
+    public function getVariante()
     {
-        return $this->hasOne(NTCVariante::className(), ['idNTC_Variante' => 'fkNTC_Variante']);
+        return $this->hasOne(Variante::className(), ['idNTC_Variante' => 'fkNTC_Variante']);
     }
 }

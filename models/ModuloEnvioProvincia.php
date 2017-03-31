@@ -52,16 +52,16 @@ class ModuloEnvioProvincia extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCModuloEnvio()
+    public function getModuloEnvio()
     {
-        return $this->hasOne(NTCModuloEnvio::className(), ['idNTC_ModuloEnvio' => 'fkNTC_ModuloEnvio']);
+        return $this->hasOne(ModuloEnvio::className(), ['idNTC_ModuloEnvio' => 'fkNTC_ModuloEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCProvincia()
+    public function getProvincia()
     {
-        return $this->hasOne(NTCProvincia::className(), ['idNTC_Provincia' => 'fkNTC_Provincia']);
+        return $this->hasOne(Provincia::className(), ['idNTC_Provincia' => 'fkNTC_Provincia']);
     }
 }

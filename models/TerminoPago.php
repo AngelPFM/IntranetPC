@@ -56,32 +56,32 @@ class TerminoPago extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabAbonoVentas()
+    public function getCabAbonoVentas()
     {
-        return $this->hasMany(NTCCabAbonoVenta::className(), ['fkNTC_TerminosPago' => 'idNTC_TerminoPago']);
+        return $this->hasMany(CabAbonoVenta::className(), ['fkNTC_TerminosPago' => 'idNTC_TerminoPago']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabFacturaVentas()
+    public function getCabFacturaVentas()
     {
-        return $this->hasMany(NTCCabFacturaVenta::className(), ['fkNTC_TerminosPago' => 'idNTC_TerminoPago']);
+        return $this->hasMany(CabFacturaVenta::className(), ['fkNTC_TerminosPago' => 'idNTC_TerminoPago']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDocumentoVentas()
+    public function getDocumentoVentas()
     {
-        return $this->hasMany(NTCDocumentoVenta::className(), ['fkNTC_TerminosPago' => 'idNTC_TerminoPago']);
+        return $this->hasMany(DocumentoVenta::className(), ['fkNTC_TerminosPago' => 'idNTC_TerminoPago']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCFormaPagos()
+    public function getFormaPagos()
     {
-        return $this->hasMany(NTCFormaPago::className(), ['fkNTC_TerminoPago' => 'idNTC_TerminoPago']);
+        return $this->hasMany(FormaPago::className(), ['fkNTC_TerminoPago' => 'idNTC_TerminoPago']);
     }
 }

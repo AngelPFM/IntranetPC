@@ -55,24 +55,24 @@ class Marca extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCArticulos()
+    public function getArticulos()
     {
-        return $this->hasMany(NTCArticulo::className(), ['fkNTC_Marca' => 'idNTC_Marca']);
+        return $this->hasMany(Articulo::className(), ['fkNTC_Marca' => 'idNTC_Marca']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCFicheroes()
+    public function getFicheroes()
     {
-        return $this->hasMany(NTCFichero::className(), ['fkNTC_Marca' => 'idNTC_Marca']);
+        return $this->hasMany(Fichero::className(), ['fkNTC_Marca' => 'idNTC_Marca']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCMarcaAlmacens()
+    public function getMarcaAlmacens()
     {
-        return $this->hasMany(NTCMarcaAlmacen::className(), ['fkNTC_Marca' => 'idNTC_Marca']);
+        return $this->hasMany(MarcaAlmacen::className(), ['fkNTC_Marca' => 'idNTC_Marca']);
     }
 }

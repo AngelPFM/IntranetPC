@@ -135,111 +135,111 @@ class CuponDescuento extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCuponCarritos()
+    public function getCuponCarritos()
     {
-        return $this->hasMany(NTCCuponCarrito::className(), ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
+        return $this->hasMany(CuponCarrito::className(), ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCarritos()
+    public function getCarritos()
     {
-        return $this->hasMany(NTCCarrito::className(), ['idNTC_Carrito' => 'fkNTC_Carrito'])->viaTable('NTC_CuponCarrito', ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
+        return $this->hasMany(Carrito::className(), ['idNTC_Carrito' => 'fkNTC_Carrito'])->viaTable('NTC_CuponCarrito', ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCGrupoPrecioCliente()
+    public function getGrupoPrecioCliente()
     {
-        return $this->hasOne(NTCGrupoPrecioCliente::className(), ['idNTC_GrupoPrecioCliente' => 'fkNTC_GrupoPrecioCliente']);
+        return $this->hasOne(GrupoPrecioCliente::className(), ['idNTC_GrupoPrecioCliente' => 'fkNTC_GrupoPrecioCliente']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCFormaPago()
+    public function getFormaPago()
     {
-        return $this->hasOne(NTCFormaPago::className(), ['idNTC_FormaPago' => 'fkNTC_FormaPago']);
+        return $this->hasOne(FormaPago::className(), ['idNTC_FormaPago' => 'fkNTC_FormaPago']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCCliente()
+    public function getCliente()
     {
-        return $this->hasOne(NTCCliente::className(), ['idNTC_Cliente' => 'fkNTC_Cliente']);
+        return $this->hasOne(Cliente::className(), ['idNTC_Cliente' => 'fkNTC_Cliente']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCProveedorEnvio()
+    public function getProveedorEnvio()
     {
-        return $this->hasOne(NTCProveedorEnvio::className(), ['idNTC_ProveedorEnvio' => 'fkNTC_ProveedorEnvio']);
+        return $this->hasOne(ProveedorEnvio::className(), ['idNTC_ProveedorEnvio' => 'fkNTC_ProveedorEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCMetodoEnvio()
+    public function getMetodoEnvio()
     {
-        return $this->hasOne(NTCMetodoEnvio::className(), ['idNTC_MetodoEnvio' => 'fkNTC_MetodoEnvio']);
+        return $this->hasOne(MetodoEnvio::className(), ['idNTC_MetodoEnvio' => 'fkNTC_MetodoEnvio']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCDivisa()
+    public function getDivisa()
     {
-        return $this->hasOne(NTCDivisa::className(), ['idNTC_Divisa' => 'fkNTC_Divisa']);
+        return $this->hasOne(Divisa::className(), ['idNTC_Divisa' => 'fkNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCDivisaImporteMinimo()
+    public function getDivisaImporteMinimo()
     {
-        return $this->hasOne(NTCDivisa::className(), ['idNTC_Divisa' => 'fkNTC_DivisaImporteMinimo']);
+        return $this->hasOne(Divisa::className(), ['idNTC_Divisa' => 'fkNTC_DivisaImporteMinimo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCArticuloDescuento()
+    public function getArticuloDescuento()
     {
-        return $this->hasOne(NTCArticulo::className(), ['idNTC_Articulo' => 'fkNTC_ArticuloDescuento']);
+        return $this->hasOne(Articulo::className(), ['idNTC_Articulo' => 'fkNTC_ArticuloDescuento']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCArticuloRegalo()
+    public function getArticuloRegalo()
     {
-        return $this->hasOne(NTCArticulo::className(), ['idNTC_Articulo' => 'fkNTC_ArticuloRegalo']);
+        return $this->hasOne(Articulo::className(), ['idNTC_Articulo' => 'fkNTC_ArticuloRegalo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCTipoDescuentoVenta()
+    public function getTipoDescuentoVenta()
     {
-        return $this->hasOne(NTCTipoDescuentoVenta::className(), ['idNTC_TipoDesuentoVenta' => 'fkNTC_TipoDescuentoVenta']);
+        return $this->hasOne(TipoDescuentoVenta::className(), ['idNTC_TipoDesuentoVenta' => 'fkNTC_TipoDescuentoVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCuponDocVentas()
+    public function getCuponDocVentas()
     {
-        return $this->hasMany(NTCCuponDocVenta::className(), ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
+        return $this->hasMany(CuponDocVenta::className(), ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCDocumentoVentas()
+    public function getDocumentoVentas()
     {
         return $this->hasMany(NTCDocumentoVenta::className(), ['idNTC_DocumentoVenta' => 'fkNTC_DocumentoVenta'])->viaTable('NTC_CuponDocVenta', ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
     }
@@ -249,38 +249,38 @@ class CuponDescuento extends \yii\db\ActiveRecord
      */
     public function getNTCCuponLineaCarritos()
     {
-        return $this->hasMany(NTCCuponLineaCarrito::className(), ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
+        return $this->hasMany(CuponLineaCarrito::className(), ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCLineaCarritos()
+    public function getLineaCarritos()
     {
-        return $this->hasMany(NTCLineaCarrito::className(), ['idNTC_LineaCarrito' => 'fkNTC_LineaCarrito'])->viaTable('NTC_CuponLineaCarrito', ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
+        return $this->hasMany(LineaCarrito::className(), ['idNTC_LineaCarrito' => 'fkNTC_LineaCarrito'])->viaTable('NTC_CuponLineaCarrito', ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCuponLineaVentas()
+    public function getCuponLineaVentas()
     {
-        return $this->hasMany(NTCCuponLineaVenta::className(), ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
+        return $this->hasMany(CuponLineaVenta::className(), ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCLineaVentas()
+    public function getLineaVentas()
     {
-        return $this->hasMany(NTCLineaVenta::className(), ['idNTC_LineaVenta' => 'fkNTC_LineaVenta'])->viaTable('NTC_CuponLineaVenta', ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
+        return $this->hasMany(LineaVenta::className(), ['idNTC_LineaVenta' => 'fkNTC_LineaVenta'])->viaTable('NTC_CuponLineaVenta', ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCSeleccionCupons()
+    public function getSeleccionCupons()
     {
-        return $this->hasMany(NTCSeleccionCupon::className(), ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
+        return $this->hasMany(SeleccionCupon::className(), ['fkNTC_CuponDescuento' => 'idNTC_CuponDescuento']);
     }
 }

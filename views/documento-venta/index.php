@@ -22,16 +22,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
             //'idNTC_DocumentoVenta',
-            //'fkNTC_TipoDocumentoVenta',
-            'Numero',
+           // 'fkNTC_TipoDocumentoVenta',
+            
+            ['label'=>'Pedido', 
+                'attribute'=>'Numero'],
             'Fecha',
             //'fkNTC_NumSerie',
-            // 'fkNTC_TipoEstadoPedido',
-            // 'fkNTC_ClienteVenta',
-            // 'NombreCliente',
+             
+            ['label'=>'Estado', 
+                'attribute'=>'fkNTC_TipoEstadoPedido'],
+            
+             
+            ['label'=>'Nombre', 
+                'attribute'=>'NombreCliente'],
+                
             // 'DireccionCliente',
             // 'CodPostalCliente',
             // 'LocalidadCliente',
@@ -57,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'EnviarFactura',
             // 'Look',
             // 'fkNTC_DireccionEnvio',
-            // 'DireccionEnvio',
+             'DireccionEnvio',
             // 'CodPostalEnvio',
             // 'LocalidadEnvio',
             // 'ProvinciaEnvio',

@@ -61,7 +61,7 @@ class ElementoColeccion extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCColeccion()
+    public function getColeccion()
     {
         return $this->hasOne(NTCColeccion::className(), ['idNTC_Coleccion' => 'fkNTC_Coleccion']);
     }

@@ -47,8 +47,8 @@ class TipoAltaUsuarios extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCConfiguracions()
+    public function getConfiguracions()
     {
-        return $this->hasMany(NTCConfiguracion::className(), ['fkNTC_TipoAltaUsuarios' => 'idNTC_TipoAltaUsuarios']);
+        return $this->hasMany(Configuracion::className(), ['fkNTC_TipoAltaUsuarios' => 'idNTC_TipoAltaUsuarios']);
     }
 }

@@ -74,16 +74,16 @@ class Modulo extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCAccions()
+    public function getAccions()
     {
-        return $this->hasMany(NTCAccion::className(), ['fkNTC_Modulo' => 'idNTC_Modulo']);
+        return $this->hasMany(Accion::className(), ['fkNTC_Modulo' => 'idNTC_Modulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCampos()
+    public function getCampos()
     {
-        return $this->hasMany(NTCCampo::className(), ['fkNTC_Modulo' => 'idNTC_Modulo']);
+        return $this->hasMany(Campo::className(), ['fkNTC_Modulo' => 'idNTC_Modulo']);
     }
 }

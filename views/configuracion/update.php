@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Configuracion */
 
-$this->title = 'Update Configuracion: ' . $model->idNTC_Configuracion;
+$this->title = 'Actualizar Configuracion: ' . $model->idNTC_Configuracion;
 $this->params['breadcrumbs'][] = ['label' => 'Configuracions', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->idNTC_Configuracion, 'url' => ['view', 'id' => $model->idNTC_Configuracion]];
 $this->params['breadcrumbs'][] = 'Update';

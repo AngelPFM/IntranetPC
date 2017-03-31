@@ -22,21 +22,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
            // 'idNTC_Modulo',
             'Nombre',
             'Modelo',
            // 'Sql',
             'Descripcion:ntext',
-            // 'MaxPorPagina',
-            // 'Padre',
-            // 'Visitas',
-            // 'Orden',
+            'MaxPorPagina',
+             'Padre',
+             'Visitas',
+             'Orden',
             // 'Ordenacion',
             // 'TraduccionMultiple',
             // 'Csv',
-            // 'Quitar',
+             'Quitar',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

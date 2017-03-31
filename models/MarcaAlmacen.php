@@ -51,16 +51,16 @@ class MarcaAlmacen extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCAlmacen()
+    public function getAlmacen()
     {
-        return $this->hasOne(NTCAlmacen::className(), ['idNTC_Almacen' => 'fkNTC_Almacen']);
+        return $this->hasOne(Almacen::className(), ['idNTC_Almacen' => 'fkNTC_Almacen']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCMarca()
+    public function getMarca()
     {
-        return $this->hasOne(NTCMarca::className(), ['idNTC_Marca' => 'fkNTC_Marca']);
+        return $this->hasOne(Marca::className(), ['idNTC_Marca' => 'fkNTC_Marca']);
     }
 }

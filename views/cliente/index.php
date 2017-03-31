@@ -16,33 +16,51 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Cliente', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Cliente', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
-            'idNTC_Cliente',
-            'NIF',
+            //'idNTC_Cliente',
+             'FechaRegistro',
+            
+            
             'Nombre',
             'Apellidos',
             'Direccion',
-            // 'fkNTC_Localidad',
-            // 'Localidad',
-            // 'fkNTC_Provincia',
-            // 'Provincia',
-            // 'CodigoPostal',
-            // 'fkNTC_Pais',
-            // 'PrefijoTelefono1',
+             
+            ['label'=>'.Localidad', 
+                'attribute'=>'fkNTC_Localidad'],
+             'Localidad',
+             
+            ['label'=>'.Provincia', 
+                'attribute'=>'fkNTC_Provincia'],
+             'Provincia',
+             'CodigoPostal',
+            
+            ['label'=>'.Pais', 
+                'attribute'=>'fkNTC_Pais'],
+             
+             
+            ['label'=>'Pref Tlf', 
+                'attribute'=>'PrefijoTelefono1'],
+            
+             
+            ['label'=>'Teléfono', 
+                'attribute'=>'Telefono1'],
+             
+            ['label'=>'CIF/NIF', 
+                'attribute'=>'CifFactura'],
             // 'Telefono1',
             // 'PrefijoTelefono2',
             // 'Telefono2',
-            // 'Sexo',
+             'Sexo',
             // 'fkNTC_FacturaACliente',
-            // 'Contacto',
-            // 'Email:email',
+             'Contacto',
+             'Email:email',
             // 'Fax',
             // 'fkNTC_TipoIvaNegocio',
             // 'PrecioIvaIncluido',

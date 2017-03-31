@@ -16,23 +16,23 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Escaparate', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nuevo Escaparate', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
-            'idNTC_Escaparate',
-            'fkNTC_Articulo',
-            'fkNTC_Categoria',
+            //'idNTC_Escaparate',
+            //'fkNTC_Articulo',
+            //'fkNTC_Categoria',
             'Titulo',
-            'Descripcion:ntext',
+            //'Descripcion:ntext',
             // 'TextoBoton',
             // 'TextoDerecha',
             // 'Url:url',
-            // 'Orden',
+             'Orden',
             // 'Quitar',
 
             ['class' => 'yii\grid\ActionColumn'],

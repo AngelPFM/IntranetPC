@@ -82,120 +82,124 @@ class Pais extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCAlmacens()
+    public function getAlmacens()
     {
-        return $this->hasMany(NTCAlmacen::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
+        return $this->hasMany(Almacen::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCClientes()
+    public function getClientes()
     {
-        return $this->hasMany(NTCCliente::className(), ['fkNTC_PaisFactura' => 'idNTC_Pais']);
+        return $this->hasMany(Cliente::className(), ['fkNTC_PaisFactura' => 'idNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCClientes0()
+    public function getClientes0()
     {
-        return $this->hasMany(NTCCliente::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
+        return $this->hasMany(Cliente::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCConfiguracions()
+    public function getConfiguracions()
     {
-        return $this->hasMany(NTCConfiguracion::className(), ['fkNTC_PaisPorDefecto' => 'idNTC_Pais']);
+        return $this->hasMany(Configuracion::className(), ['fkNTC_PaisPorDefecto' => 'idNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDireccionEmpresas()
+    public function getDireccionEmpresas()
     {
-        return $this->hasMany(NTCDireccionEmpresa::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
+        return $this->hasMany(DireccionEmpresa::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDireccionEnvios()
+    public function getDireccionEnvios()
     {
-        return $this->hasMany(NTCDireccionEnvio::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
+        return $this->hasMany(DireccionEnvio::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDocumentoVentas()
+    public function getDocumentoVentas()
     {
-        return $this->hasMany(NTCDocumentoVenta::className(), ['fkNTC_PaisFactura' => 'idNTC_Pais']);
+        return $this->hasMany(DocumentoVenta::className(), ['fkNTC_PaisFactura' => 'idNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCGetResponseConfigs()
+    public function getResponseConfigs()
     {
-        return $this->hasMany(NTCGetResponseConfig::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
+        return $this->hasMany(GetResponseConfig::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLocalidads()
+    public function getLocalidads()
     {
-        return $this->hasMany(NTCLocalidad::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
+        return $this->hasMany(Localidad::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCIdioma()
+    public function getIdioma()
     {
-        return $this->hasOne(NTCIdioma::className(), ['idNTC_Idioma' => 'fkNTC_Idioma']);
+        return $this->hasOne(Idioma::className(), ['idNTC_Idioma' => 'fkNTC_Idioma']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCProvincias()
+    public function getProvincias()
     {
-        return $this->hasMany(NTCProvincia::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
+        return $this->hasMany(Provincia::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCPuntosVentas()
+    public function getPuntosVentas()
     {
-        return $this->hasMany(NTCPuntosVenta::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
+        return $this->hasMany(PuntosVenta::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCScriptMarketings()
+    public function getScriptMarketings()
     {
-        return $this->hasMany(NTCScriptMarketing::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
+        return $this->hasMany(ScriptMarketing::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCTarifaEnvios()
+    public function getTarifaEnvios()
     {
-        return $this->hasMany(NTCTarifaEnvio::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
+        return $this->hasMany(TarifaEnvio::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCTiendas()
+    public function getTiendas()
     {
-        return $this->hasMany(NTCTienda::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
+        return $this->hasMany(Tienda::className(), ['fkNTC_Pais' => 'idNTC_Pais']);
+    }
+    public function getTarifaVenta()
+    {
+        return $this->hasMany(TarifaVenta::className(), ['idNTC_Articulo' => 'fkNTC_Articulo']);
     }
 }

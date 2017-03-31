@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Atributo */
 
-$this->title = 'Create Atributo';
+$this->title = 'Crear Atributo';
 $this->params['breadcrumbs'][] = ['label' => 'Atributos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

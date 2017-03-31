@@ -143,176 +143,177 @@ class Articulo extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCAlmacen()
+    public function getAlmacen()
     {
-        return $this->hasOne(NTCAlmacen::className(), ['idNTC_Almacen' => 'fkNTC_Almacen']);
+        return $this->hasOne(Almacen::className(), ['idNTC_Almacen' => 'fkNTC_Almacen']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCConjuntoAtributos()
+    public function getConjuntoAtributos()
     {
-        return $this->hasOne(NTCConjuntoAtributos::className(), ['idNTC_ConjuntoAtributos' => 'fkNTC_ConjuntoAtributos']);
+        return $this->hasOne(ConjuntoAtributos::className(), ['idNTC_ConjuntoAtributos' => 'fkNTC_ConjuntoAtributos']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCMarca()
+    public function getMarca()
     {
-        return $this->hasOne(NTCMarca::className(), ['idNTC_Marca' => 'fkNTC_Marca']);
+        return $this->hasOne(Marca::className(), ['idNTC_Marca' => 'fkNTC_Marca']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCArticuloCategorias()
+    public function getArticuloCategorias()
     {
-        return $this->hasMany(NTCArticuloCategoria::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(ArticuloCategoria::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCArticuloColors()
+    public function getArticuloColors()
     {
-        return $this->hasMany(NTCArticuloColor::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(ArticuloColor::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCArticuloColorFiltros()
+    public function getArticuloColorFiltros()
     {
-        return $this->hasMany(NTCArticuloColorFiltro::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(ArticuloColorFiltro::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCArticuloEtiquetas()
+    public function getArticuloEtiquetas()
     {
-        return $this->hasMany(NTCArticuloEtiqueta::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(ArticuloEtiqueta::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCArticuloNewsletters()
+    public function getArticuloNewsletters()
     {
-        return $this->hasMany(NTCArticuloNewsletter::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(ArticuloNewsletter::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCuponDescuentos()
+    public function getCuponDescuentos()
     {
-        return $this->hasMany(NTCCuponDescuento::className(), ['fkNTC_ArticuloDescuento' => 'idNTC_Articulo']);
+        return $this->hasMany(CuponDescuento::className(), ['fkNTC_ArticuloDescuento' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCuponDescuentos0()
+    public function getCuponDescuentos0()
     {
-        return $this->hasMany(NTCCuponDescuento::className(), ['fkNTC_ArticuloRegalo' => 'idNTC_Articulo']);
+        return $this->hasMany(CuponDescuento::className(), ['fkNTC_ArticuloRegalo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDiarioProductos()
+    public function getDiarioProductos()
     {
-        return $this->hasMany(NTCDiarioProducto::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(DiarioProducto::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCEscaparates()
+    public function getEscaparates()
     {
-        return $this->hasMany(NTCEscaparate::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(Escaparate::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCFicheroes()
+    public function getFicheros()
     {
-        return $this->hasMany(NTCFichero::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(Fichero::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLineaAbonoVentas()
+    public function getLineaAbonoVentas()
     {
-        return $this->hasMany(NTCLineaAbonoVenta::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(LineaAbonoVenta::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLineaAlbaranVentas()
+    public function getLineaAlbaranVentas()
     {
-        return $this->hasMany(NTCLineaAlbaranVenta::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(LineaAlbaranVenta::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLineaCarritos()
+    public function getLineaCarritos()
     {
-        return $this->hasMany(NTCLineaCarrito::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(LineaCarrito::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLineaDevolucionVentas()
+    public function getLineaDevolucionVentas()
     {
-        return $this->hasMany(NTCLineaDevolucionVenta::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(LineaDevolucionVenta::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLineaFacturaVentas()
+    public function getLineaFacturaVentas()
     {
-        return $this->hasMany(NTCLineaFacturaVenta::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(LineaFacturaVenta::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLineaVentas()
+    public function getLineaVentas()
     {
-        return $this->hasMany(NTCLineaVenta::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(LineaVenta::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLoteArticulos()
+    public function getLoteArticulos()
     {
-        return $this->hasMany(NTCLoteArticulo::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(LoteArticulo::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCMovProductos()
+    public function getMovProductos()
     {
-        return $this->hasMany(NTCMovProducto::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(MovProducto::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCTarifaVentas()
+    public function getTarifaVentas()
     {
-        return $this->hasMany(NTCTarifaVenta::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
+        return $this->hasMany(TarifaVenta::className(), ['fkNTC_Articulo' => 'idNTC_Articulo']);
     }
+   
 }

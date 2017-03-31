@@ -92,7 +92,7 @@ class Categoria extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCArticuloCategorias()
+    public function getArticuloCategorias()
     {
         return $this->hasMany(NTCArticuloCategoria::className(), ['fkNTC_Categoria' => 'idNTC_Categoria']);
     }
@@ -100,32 +100,32 @@ class Categoria extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCArticuloNewsletters()
+    public function getArticuloNewsletters()
     {
-        return $this->hasMany(NTCArticuloNewsletter::className(), ['fkNTC_Categoria' => 'idNTC_Categoria']);
+        return $this->hasMany(ArticuloNewsletter::className(), ['fkNTC_Categoria' => 'idNTC_Categoria']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCPadre()
+    public function getPadre()
     {
-        return $this->hasOne(NTCCategoria::className(), ['idNTC_Categoria' => 'fkNTC_padre']);
+        return $this->hasOne(Categoria::className(), ['idNTC_Categoria' => 'fkNTC_padre']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCategorias()
+    public function getCategorias()
     {
-        return $this->hasMany(NTCCategoria::className(), ['fkNTC_padre' => 'idNTC_Categoria']);
+        return $this->hasMany(Categoria::className(), ['fkNTC_padre' => 'idNTC_Categoria']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCEscaparates()
+    public function getEscaparates()
     {
-        return $this->hasMany(NTCEscaparate::className(), ['fkNTC_Categoria' => 'idNTC_Categoria']);
+        return $this->hasMany(Escaparate::className(), ['fkNTC_Categoria' => 'idNTC_Categoria']);
     }
 }

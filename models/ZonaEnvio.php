@@ -46,8 +46,8 @@ class ZonaEnvio extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCTarifaEnvios()
+    public function getTarifaEnvios()
     {
-        return $this->hasMany(NTCTarifaEnvio::className(), ['fkNTC_ZonaEnvio' => 'idNTC_Zona']);
+        return $this->hasMany(TarifaEnvio::className(), ['fkNTC_ZonaEnvio' => 'idNTC_Zona']);
     }
 }

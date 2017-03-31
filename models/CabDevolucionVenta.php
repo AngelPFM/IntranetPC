@@ -92,40 +92,40 @@ class CabDevolucionVenta extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCNumSerie()
+    public function getNumSerie()
     {
-        return $this->hasOne(NTCNumSerie::className(), ['idNTC_NumSerie' => 'fkNTC_NumSerie']);
+        return $this->hasOne(NumSerie::className(), ['idNTC_NumSerie' => 'fkNTC_NumSerie']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCClienteVenta()
+    public function getlienteVenta()
     {
-        return $this->hasOne(NTCCliente::className(), ['idNTC_Cliente' => 'fkNTC_ClienteVenta']);
+        return $this->hasOne(Cliente::className(), ['idNTC_Cliente' => 'fkNTC_ClienteVenta']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCAlmacen()
+    public function getAlmacen()
     {
-        return $this->hasOne(NTCAlmacen::className(), ['idNTC_Almacen' => 'fkNTC_Almacen']);
+        return $this->hasOne(Almacen::className(), ['idNTC_Almacen' => 'fkNTC_Almacen']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCDivisa()
+    public function getDivisa()
     {
-        return $this->hasOne(NTCDivisa::className(), ['idNTC_Divisa' => 'fkNTC_Divisa']);
+        return $this->hasOne(Divisa::className(), ['idNTC_Divisa' => 'fkNTC_Divisa']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLineaDevolucionVentas()
+    public function getLineaDevolucionVentas()
     {
-        return $this->hasMany(NTCLineaDevolucionVenta::className(), ['fkNTC_CabDevolucionVenta' => 'idNTC_CabDevolucionVenta']);
+        return $this->hasMany(LineaDevolucionVenta::className(), ['fkNTC_CabDevolucionVenta' => 'idNTC_CabDevolucionVenta']);
     }
 }

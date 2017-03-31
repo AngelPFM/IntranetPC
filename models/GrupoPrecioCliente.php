@@ -52,48 +52,48 @@ class GrupoPrecioCliente extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabAbonoVentas()
+    public function getCabAbonoVentas()
     {
-        return $this->hasMany(NTCCabAbonoVenta::className(), ['fkNTC_GrupoPrecioCliente' => 'idNTC_GrupoPrecioCliente']);
+        return $this->hasMany(CabAbonoVenta::className(), ['fkNTC_GrupoPrecioCliente' => 'idNTC_GrupoPrecioCliente']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabAlbaranVentas()
+    public function getCabAlbaranVentas()
     {
-        return $this->hasMany(NTCCabAlbaranVenta::className(), ['fkNTC_GrupoPrecioCliente' => 'idNTC_GrupoPrecioCliente']);
+        return $this->hasMany(CabAlbaranVenta::className(), ['fkNTC_GrupoPrecioCliente' => 'idNTC_GrupoPrecioCliente']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabFacturaVentas()
+    public function getCabFacturaVentas()
     {
-        return $this->hasMany(NTCCabFacturaVenta::className(), ['fkNTC_GrupoPrecioCliente' => 'idNTC_GrupoPrecioCliente']);
+        return $this->hasMany(CabFacturaVenta::className(), ['fkNTC_GrupoPrecioCliente' => 'idNTC_GrupoPrecioCliente']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCConfiguracions()
+    public function getConfiguracions()
     {
-        return $this->hasMany(NTCConfiguracion::className(), ['fkNTC_GrupoPrecioCliente' => 'idNTC_GrupoPrecioCliente']);
+        return $this->hasMany(Configuracion::className(), ['fkNTC_GrupoPrecioCliente' => 'idNTC_GrupoPrecioCliente']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCuponDescuentos()
+    public function getCuponDescuentos()
     {
-        return $this->hasMany(NTCCuponDescuento::className(), ['fkNTC_GrupoPrecioCliente' => 'idNTC_GrupoPrecioCliente']);
+        return $this->hasMany(CuponDescuento::className(), ['fkNTC_GrupoPrecioCliente' => 'idNTC_GrupoPrecioCliente']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDocumentoVentas()
+    public function getDocumentoVentas()
     {
-        return $this->hasMany(NTCDocumentoVenta::className(), ['fkNTC_GrupoPrecioCliente' => 'idNTC_GrupoPrecioCliente']);
+        return $this->hasMany(DocumentoVenta::className(), ['fkNTC_GrupoPrecioCliente' => 'idNTC_GrupoPrecioCliente']);
     }
 }

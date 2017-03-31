@@ -70,24 +70,25 @@ class Lote extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLineaCarritos()
+    public function getLineaCarritos()
     {
-        return $this->hasMany(NTCLineaCarrito::className(), ['fkNTC_Lote' => 'idNTC_Lote']);
+        return $this->hasMany(LineaCarrito::className(), ['fkNTC_Lote' => 'idNTC_Lote']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLineaVentas()
+    public function getLineaVentas()
     {
-        return $this->hasMany(NTCLineaVenta::className(), ['fkNTC_Lote' => 'idNTC_Lote']);
+        return $this->hasMany(LineaVenta::className(), ['fkNTC_Lote' => 'idNTC_Lote']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLoteArticulos()
+    public function getLoteArticulos()
     {
-        return $this->hasMany(NTCLoteArticulo::className(), ['fkNTC_Lote' => 'idNTC_Lote']);
+        return $this->hasMany(LoteArticulo::className(), ['fkNTC_Lote' => 'idNTC_Lote']);
     }
+    
 }

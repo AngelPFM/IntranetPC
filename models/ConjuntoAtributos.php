@@ -51,23 +51,23 @@ class ConjuntoAtributos extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCArticulos()
+    public function getArticulos()
     {
-        return $this->hasMany(NTCArticulo::className(), ['fkNTC_ConjuntoAtributos' => 'idNTC_ConjuntoAtributos']);
+        return $this->hasMany(Articulo::className(), ['fkNTC_ConjuntoAtributos' => 'idNTC_ConjuntoAtributos']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCAtributoConjuntos()
+    public function getAtributoConjuntos()
     {
-        return $this->hasMany(NTCAtributoConjunto::className(), ['fkNTC_ConjuntoAtributos' => 'idNTC_ConjuntoAtributos']);
+        return $this->hasMany(AtributoConjunto::className(), ['fkNTC_ConjuntoAtributos' => 'idNTC_ConjuntoAtributos']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCAtributos()
+    public function getAtributos()
     {
         return $this->hasMany(NTCAtributo::className(), ['idNTC_Atributo' => 'fkNTC_Atributo'])->viaTable('NTC_AtributoConjunto', ['fkNTC_ConjuntoAtributos' => 'idNTC_ConjuntoAtributos']);
     }

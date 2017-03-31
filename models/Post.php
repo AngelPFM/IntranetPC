@@ -81,8 +81,8 @@ class Post extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCTipoPost()
+    public function getTipoPost()
     {
-        return $this->hasOne(NTCTipoPost::className(), ['idNTC_TipoPost' => 'fkNTC_TipoPost']);
+        return $this->hasOne(TipoPost::className(), ['idNTC_TipoPost' => 'fkNTC_TipoPost']);
     }
 }

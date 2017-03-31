@@ -56,16 +56,16 @@ class Accion extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCModulo()
+    public function getModulo()
     {
-        return $this->hasOne(NTCModulo::className(), ['idNTC_Modulo' => 'fkNTC_Modulo']);
+        return $this->hasOne(Modulo::className(), ['idNTC_Modulo' => 'fkNTC_Modulo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCRol()
+    public function getRol()
     {
-        return $this->hasOne(NTCRol::className(), ['idNTC_Rol' => 'fkNTC_Rol']);
+        return $this->hasOne(Rol::className(), ['idNTC_Rol' => 'fkNTC_Rol']);
     }
 }

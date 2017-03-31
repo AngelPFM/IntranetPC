@@ -61,8 +61,8 @@ class EnlaceFichero extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFkNTCFichero()
+    public function getFichero()
     {
-        return $this->hasOne(NTCFichero::className(), ['idNTC_Fichero' => 'fkNTC_Fichero']);
+        return $this->hasOne(Fichero::className(), ['idNTC_Fichero' => 'fkNTC_Fichero']);
     }
 }
