@@ -110,7 +110,7 @@ class Atributo extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCOpcionAtributos()
+    public function getOpcionAtributos()
     {
         return $this->hasMany(OpcionAtributo::className(), ['fkNTC_Atributo' => 'idNTC_Atributo']);
     }

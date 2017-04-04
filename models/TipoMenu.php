@@ -44,4 +44,8 @@ class TipoMenu extends \yii\db\ActiveRecord
             'Quitar' => 'Quitar',
         ];
     }
+    
+    public function getMenu(){
+        return $this->
+    }
 }

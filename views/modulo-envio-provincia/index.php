@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\ModuloEnvioProvinciaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Modulo Envio Provincias';
+$this->title = 'Modulo Envío Provincias';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="modulo-envio-provincia-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Nuevo Modulo Envio Provincia', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nuevo Modulo Envío Provincia', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,9 +24,27 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             
 
-            'pkNTC_ModuloEnvioProvincia',
+            //'pkNTC_ModuloEnvioProvincia',
+           [
+                'label'=>'Provincia',
+                'attribute'=>'pkNTC_ModuloEnvioProvincia',
+                'value'=>function($data){
+                                   return $data->provincia->Nombre;
+                            },
+                'filter'=>  yii\helpers\ArrayHelper::map(app\models\Provincia::find()->all(),'idNTC_Provincia','Nombre')                   
+                                    
+                  ],
             //'fkNTC_Provincia',
-            'fkNTC_ModuloEnvio',
+            //'fkNTC_ModuloEnvio',
+             [
+                'label'=>'Modulo Envío',
+                'attribute'=>'fkNTC_ModuloEnvio',
+                'value'=>function($data){
+                                   return $data->moduloEnvio->Nombre;
+                            },
+                'filter'=>  yii\helpers\ArrayHelper::map(app\models\ModuloEnvio::find()->all(),'idNTC_ModuloEnvio','Nombre')                   
+                                    
+                  ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

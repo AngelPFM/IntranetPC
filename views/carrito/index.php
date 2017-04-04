@@ -22,13 +22,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+           
 
            // 'idNTC_Carrito',
             //'fkNTC_UsuarioWeb',
             
             ['label'=>'Cliente', 
                 'attribute'=>'fkNTC_Cliente'],
+            [
+                'label'=>'Cliente',
+                'attribute'=>'fkNTC_Cliente',
+                'value'=>function($data){
+                                   return $data->cliente->Nombre;
+                            },
+                'filter'=>  yii\helpers\ArrayHelper::map(app\models\Cliente::find()->all(),'idNTC_Cliente','Nombre')                   
+                                    
+                  ],
             
             
             
@@ -36,6 +45,16 @@ $this->params['breadcrumbs'][] = $this->title;
          
              'Fecha',
              'Abandonado',
+                                    
+             ['label'=>'Abandonado',
+                'value'=> function ($data){
+                    if($data->Abandonado==1)
+                        return "<span style='width=50px'; class='btn btn-success'>Sí</span>";
+                    else
+                        return  "<span style='width=50px'; class='btn btn-danger'>No</span>";
+                },
+                'format'=>'raw',
+                'attribute'=>'Abandonado'],
             // 'Quitar',
 
             ['class' => 'yii\grid\ActionColumn'],

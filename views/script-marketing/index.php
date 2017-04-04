@@ -27,20 +27,83 @@ $this->params['breadcrumbs'][] = $this->title;
            // 'idNTC_ScriptMarketing',
             'Nombre',
             
-            ['label'=>'Idioma', 
-                'attribute'=>'fkNTC_Idioma'],
-             'Footer',
-            'Header',
-            ['label'=>'Idioma', 
-                'attribute'=>'fkNTC_Idioma'],
+//            ['label'=>'Idioma', 
+//                'attribute'=>'fkNTC_Idioma'],
+            
+            ['label'=>'Footer',
+                'value'=> function ($data){
+                    if($data->Footer==1)
+                        return "<span style='width=50px'; class='btn btn-success'>Sí</span>";
+                    else
+                        return  "<span style='width=50px'; class='btn btn-danger'>No</span>";
+                },
+            
+           
+                        
+                'format'=>'raw',
+                'attribute'=>'Footer'],
+            
+            ['label'=>'Header',
+                'value'=> function ($data){
+                    if($data->Header==1)
+                        return "<span style='width=50px'; class='btn btn-success'>Sí</span>";
+                    else
+                        return  "<span style='width=50px'; class='btn btn-danger'>No</span>";
+                },
+                'format'=>'raw',
+                'attribute'=>'Header'],
+                        
+             ['label'=>'Idioma', 
+                'value'=> function ($data){
+                    if($data->fkNTC_Idioma)
+                        return $data->idioma->Nombre;
+                    else
+                        return '-';
+                },
+                'attribute'=>'fkNTC_Idioma'],       
+                        
             
             ['label'=>'País', 
+                'value'=> function ($data){
+                    if($data->fkNTC_Pais)
+                        return $data->pais->Nombre;
+                    else
+                        return '-';
+                },
                 'attribute'=>'fkNTC_Pais'],
             
             // 'Footer',
-             'PaginaPedidoOk',
-             'Home',
-             'Registro',
+             
+             ['label'=>'Pagina Pedido Ok',
+                'value'=> function ($data){
+                    if($data->PaginaPedidoOk==1)
+                        return "<span style='width=50px'; class='btn btn-success'>Sí</span>";
+                    else
+                        return  "<span style='width=50px'; class='btn btn-danger'>No</span>";
+                },
+                'format'=>'raw',
+                'attribute'=>'PaginaPedidoOk'],
+                                    
+             
+              ['label'=>'Home',
+                'value'=> function ($data){
+                    if($data->Home==1)
+                        return "<span style='width=50px'; class='btn btn-success'>Sí</span>";
+                    else
+                        return  "<span style='width=50px'; class='btn btn-danger'>No</span>";
+                },
+                'format'=>'raw',
+                'attribute'=>'Home'],          
+             
+             ['label'=>'Registro',
+                'value'=> function ($data){
+                    if($data->Registro==1)
+                        return "<span style='width=50px'; class='btn btn-success'>Sí</span>";
+                    else
+                        return  "<span style='width=50px'; class='btn btn-danger'>No</span>";
+                },
+                'format'=>'raw',
+                'attribute'=>'Registro'], 
             // 'look',
             // 'Script:ntext',
             // 'Quitar',

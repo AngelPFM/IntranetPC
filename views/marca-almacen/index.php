@@ -24,9 +24,27 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             
 
-            'idNTC_MarcaAlmacen',
+            //'idNTC_MarcaAlmacen',
+            [
+                'label'=>'Marca',
+                'attribute'=>'fkNTC_Marca',
+                'value'=>function($data){
+                                   return $data->marca->Nombre;
+                            },
+                'filter'=>  yii\helpers\ArrayHelper::map(app\models\Marca::find()->where(['Quitar'=>0])->orderBy('Nombre')->all(),'idNTC_Marca','Nombre')                    
+                                    
+                  ],
             //'fkNTC_Marca',
-            'fkNTC_Almacen',
+            //'fkNTC_Almacen',
+                                    [
+                'label'=>'Almacen',
+                'attribute'=>'fkNTC_Almacen',
+                'value'=>function($data){
+                                   return $data->almacen->Nombre;
+                            },
+                'filter'=>  yii\helpers\ArrayHelper::map(app\models\Almacen::find()->where(['Quitar'=>0])->orderBy('Nombre')->all(),'idNTC_Almacen','Nombre')                    
+                                    
+                  ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -25,6 +25,14 @@ $this->params['breadcrumbs'][] = $this->title;
             
 
             //'idNTC_Lote',
+            ['label'=>'Imagen', 
+                'format'=>'raw',
+                'value'=>function($data){
+        
+                    $imagen = \app\models\Fichero::find()->where(['fkNTC_TipoFichero'=>40, 'fkNTC_Articulo'=>$data->idNTC_Articulo])->one();
+    
+                    return "<img src='https://www.poligonodecarrus.com/uploads/".$imagen->Fichero."' style='width:50px;'/>";
+                }],
             'Nombre',
             
             'ReferenciaLote',
@@ -32,7 +40,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'Quitar',
             // 'Nuevo_DesdeFecha',
             // 'Nuevo_HastaFecha',
-            // 'surtido_libre',
+             'surtido_libre',
+            ['label'=>'Surtido Libre',
+                'value'=> function ($data){
+                    if($data->surtido_libre==1)
+                        return "<span style='width=50px'; class='btn btn-success'>Sí</span>";
+                    else
+                        return  "<span style='width=50px'; class='btn btn-danger'>No</span>";
+                },
+                        
+                'format'=>'raw',
+                'attribute'=>'surtido_libre'],
             // 'Stock',
             // 'Look',
             // 'Modificado',

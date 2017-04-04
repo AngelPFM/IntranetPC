@@ -30,8 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'fkNTC_TipoIvaNegocio'],
             'Nombre',
             
-            ['label'=>'Idioma', 
-                'attribute'=>'fkNTC_Idioma'],
+            
+            [
+                'label'=>'Idioma',
+                'attribute'=>'NTC_Idioma',
+                'value'=>function($data){
+                                   return $data->idioma->Nombre;
+                            },
+                'filter'=>  yii\helpers\ArrayHelper::map(app\models\Idioma::find()->all(),'idNTC_Idioma','Nombre')                   
+                                    
+                  ],
             'Iso2',
             'Iso3',
              'Prefijo',

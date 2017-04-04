@@ -131,7 +131,7 @@ class Almacen extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCArticulos()
+    public function getArticulos()
     {
         return $this->hasMany(Articulo::className(), ['fkNTC_Almacen' => 'idNTC_Almacen']);
     }
@@ -139,7 +139,7 @@ class Almacen extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabAlbaranVentas()
+    public function getCabAlbaranVentas()
     {
         return $this->hasMany(CabAlbaranVenta::className(), ['fkNTC_Almacen' => 'idNTC_Almacen']);
     }
@@ -147,7 +147,7 @@ class Almacen extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCCabDevolucionVentas()
+    public function getCabDevolucionVentas()
     {
         return $this->hasMany(CabDevolucionVenta::className(), ['fkNTC_Almacen' => 'idNTC_Almacen']);
     }
@@ -155,7 +155,7 @@ class Almacen extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCDiarioProductos()
+    public function getDiarioProductos()
     {
         return $this->hasMany(DiarioProducto::className(), ['fkNTC_Almacen' => 'idNTC_Almacen']);
     }
@@ -179,7 +179,7 @@ class Almacen extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLineaDevolucionVentas()
+    public function getLineaDevolucionVentas()
     {
         return $this->hasMany(LineaDevolucionVenta::className(), ['fkNTC_Almacen' => 'idNTC_Almacen']);
     }
@@ -187,7 +187,7 @@ class Almacen extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCLineaVentas()
+    public function getLineaVentas()
     {
         return $this->hasMany(LineaVenta::className(), ['fkNTC_Almacen' => 'idNTC_Almacen']);
     }
@@ -195,7 +195,7 @@ class Almacen extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCMarcaAlmacens()
+    public function getMarcaAlmacens()
     {
         return $this->hasMany(MarcaAlmacen::className(), ['fkNTC_Almacen' => 'idNTC_Almacen']);
     }
@@ -203,7 +203,7 @@ class Almacen extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCMovProductos()
+    public function getMovProductos()
     {
         return $this->hasMany(MovProducto::className(), ['fkNTC_Almacen' => 'idNTC_Almacen']);
     }
@@ -211,7 +211,7 @@ class Almacen extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCTiendas()
+    public function getTiendas()
     {
         return $this->hasMany(Tienda::className(), ['fkNTC_Almacen' => 'idNTC_Almacen']);
     }
@@ -219,7 +219,7 @@ class Almacen extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNTCTiendaAlmacens()
+    public function getTiendaAlmacens()
     {
         return $this->hasMany(TiendaAlmacen::className(), ['fkNTC_Almacen' => 'idNTC_Almacen']);
     }

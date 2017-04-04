@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'Nombre',
             'Quitar',
             //'Codigo',
-            //PAIS
+            'pais',
            
             ['label'=>'TipoIvaNegocio', 
                 'attribute'=>'fkNTC_TipoIvaNegocio'],

@@ -36,6 +36,15 @@ $this->params['breadcrumbs'][] = $this->title;
             
             ['label'=>'Artículo', 
                 'attribute'=>'fkNTC_Articulo'],
+            [
+                'label'=>'Artículo',
+                'attribute'=>'fkNTC_Articulo',
+                'value'=>function($data){
+                                   return $data->articulo->Nombre;
+                            },
+                'filter'=>  yii\helpers\ArrayHelper::map(app\models\Articulo::find()->where(['Quitar'=>0])->orderBy('Nombre')->all(),'idNTC_Articulo','Nombre')                    
+                                    
+                  ],
              
             ['label'=>'Unidad Medida', 
                 'attribute'=>'fkNTC_UnidadMedida'],
@@ -80,9 +89,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format'=>'raw',
                 'attribute'=>'PermiteDtoFactura'],
             
-             'PermiteDtoLinea',
-            ['label'=>'Permite Desc. Línea', 
-                'attribute'=>'PermiteDtoLinea'],
+             
+            ['label'=>'PermitirDesc.Linea',
+                'value'=> function ($data){
+                    if($data->PermiteDtoFactura==1)
+                        return "<span style='width=50px'; class='btn btn-success'>Sí</span>";
+                    else
+                        return  "<span style='width=50px'; class='btn btn-danger'>No</span>";
+                },
+                'format' => 'raw',
+                'attribute' => 'PermiteDtoLinea'],        
             
             // 'Quitar',
 

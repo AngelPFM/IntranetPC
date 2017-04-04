@@ -124,4 +124,7 @@ class Fichero extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Marca::className(), ['idNTC_Marca' => 'fkNTC_Marca']);
     }
+    public function getLote(){
+        return $this->hasOne(Lote::className(), [  'idNTC_Articulo'=> 'fkNTC_Articulo']);
+    }
 }

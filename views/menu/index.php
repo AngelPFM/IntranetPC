@@ -16,18 +16,19 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Menu', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nuevo Menú', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            
 
-            'idNTC_Menu',
+           //'idNTC_Menu',
             'Nombre',
-            'fkNTC_Padre',
+            //'fkNTC_Padre',
             'fkNTC_TipoMenu',
+           
             'fkNTC_Idioma',
             // 'Descripcion:ntext',
             // 'Frase',

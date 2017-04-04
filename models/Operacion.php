@@ -35,6 +35,18 @@ class Operacion extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public static $ESTADO_OPERACION_CREADA = 0;
+    public static $ESTADO_OPERACION_PENDIENTE = 1;
+    public static $ESTADO_OPERACION_PAGO_CORRECTO = 2;
+    public static $ESTADO_OPERACION_PAGO_INCORRECTO = -2;
+    public static $ESTADO_OPERACION_VALIDACION_CORRECTA = 3;
+    public static $ESTADO_OPERACION_VALIDACION_INCORRECTA = -3;
+   
+
+   
+            
+
+        
     public static function tableName()
     {
         return 'NTC_Operacion';

@@ -47,7 +47,17 @@ $this->params['breadcrumbs'][] = $this->title;
              'Descripcion',
              'EstadoPago',
              'Referencia',
-             'Aplicada',
+             
+             ['label'=>'Aplicada',
+                'value'=> function ($data){
+                    if($data->Aplicada==1)
+                        return "<span style='width=50px'; class='btn btn-success'>Sí</span>";
+                    else
+                        return  "<span style='width=50px'; class='btn btn-danger'>No</span>";
+                },
+                        
+                'format'=>'raw',
+                'attribute'=>'Aplicada'],
             // 'Quitar',
 
             ['class' => 'yii\grid\ActionColumn'],

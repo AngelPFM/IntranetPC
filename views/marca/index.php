@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Marca', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nueva Marca', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -26,8 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'idNTC_Marca',
             'Nombre',
-            'Imagen',
-            'Orden',
+            //'Imagen',
+            //'Orden',
             //'Quitar',
 
             ['class' => 'yii\grid\ActionColumn'],

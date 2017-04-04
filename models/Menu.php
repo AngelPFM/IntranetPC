@@ -106,4 +106,5 @@ class Menu extends \yii\db\ActiveRecord
     {
         return $this->hasMany(BloqueCMS::className(), ['fkNTC_Menu' => 'idNTC_Menu']);
     }
+    
 }

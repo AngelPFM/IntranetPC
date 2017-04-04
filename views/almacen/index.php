@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\AlmacenSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Almacens';
+$this->title = 'Almacenes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="almacen-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Almacen', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nuevo Almacen', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -30,7 +30,17 @@ $this->params['breadcrumbs'][] = $this->title;
             
             'Direccion',
              'Contacto',
-             'Transito',
+             
+             ['label'=>'Transito',
+                'value'=> function ($data){
+                    if($data->Transito==1)
+                        return "<span style='width=50px'; class='btn btn-success'>Sí</span>";
+                    else
+                        return  "<span style='width=50px'; class='btn btn-danger'>No</span>";
+                },
+                        
+                'format'=>'raw',
+                'attribute'=>'Transito'],
              'Telefono',
              'Email:email',
             //'Titulo',

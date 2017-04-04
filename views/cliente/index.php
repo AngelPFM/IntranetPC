@@ -36,8 +36,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'fkNTC_Localidad'],
              'Localidad',
              
-            ['label'=>'.Provincia', 
-                'attribute'=>'fkNTC_Provincia'],
+            [
+                'label'=>'.Provincia',
+                'attribute'=>'pkNTC_ModuloEnvioProvincia',
+                'value'=>function($data){
+                                   return $data->provincia->Nombre;
+                            },
+                'filter'=>  yii\helpers\ArrayHelper::map(app\models\Provincia::find()->all(),'idNTC_Provincia','Nombre')                   
+                                    
+                  ],
              'Provincia',
              'CodigoPostal',
             
@@ -57,7 +64,17 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'Telefono1',
             // 'PrefijoTelefono2',
             // 'Telefono2',
-             'Sexo',
+             
+                ['label'=>'Sexo',
+                'value'=> function ($data){
+                    if($data->Sexo==0)
+                        return "<span> M</span>";
+                    else
+                        return  "<span> F</span>";
+                },
+                        
+                'format'=>'raw',
+                'attribute'=>'Sexo'],
             // 'fkNTC_FacturaACliente',
              'Contacto',
              'Email:email',
