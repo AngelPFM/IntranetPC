@@ -86,7 +86,7 @@ class Lote extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getLoteArticulos()
+    public function getLotesArticulos()
     {
         return $this->hasMany(LoteArticulo::className(), ['fkNTC_Lote' => 'idNTC_Lote']);
     }

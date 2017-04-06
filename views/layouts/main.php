@@ -119,7 +119,7 @@ AppAsset::register($this);
                                                 <span class="menu-row"></span>
                                             </h5>
                                             <div class="menu_nav" style="display:none;" id="menu_nav_<?= $modulo->idNTC_Modulo ?>">
-                                                <?php
+                                                <?php 
                                                 //print_r($menuPrincipal);
                                                 echo \yii\widgets\Menu::widget($menuPrincipal);
                                                  ?>

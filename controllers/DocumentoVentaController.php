@@ -35,7 +35,7 @@ class DocumentoVentaController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new DocumentoVentaSearch();
+        $searchModel = new DocumentoVentaSearch(['fkNTC_TipoEstadoPedido'=>1]);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -44,6 +44,27 @@ class DocumentoVentaController extends Controller
         ]);
     }
 
+    public function actionCancelados()
+    {
+        $searchModel = new DocumentoVentaSearch(['fkNTC_TipoEstadoPedido'=>3]);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+    
+    public function actionFinalizados(){
+        
+        $searchModel = new DocumentoVentaSearch(['fkNTC_TipoEstadoPedido'=>6]);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
     /**
      * Displays a single DocumentoVenta model.
      * @param integer $id

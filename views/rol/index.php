@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\RolSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Rols';
+$this->title = 'Roles';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="rol-index">

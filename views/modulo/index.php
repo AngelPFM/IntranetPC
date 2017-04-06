@@ -26,9 +26,26 @@ $this->params['breadcrumbs'][] = $this->title;
 
            // 'idNTC_Modulo',
             'Nombre',
-            'Modelo',
+            
+           ['label'=>'Modelo', 
+                'value'=> function ($data){
+                    if($data->Modelo)
+                        return $data->Modelo->Nombre;
+                    else
+                        return '-';
+                },
+                'attribute'=>'Modelo'],
            // 'Sql',
-            'Descripcion:ntext',
+            
+                        
+                ['label'=>'Descripción', 
+                'value'=> function ($data){
+                    if($data->Descripcion)
+                        return $data->Descripcion->Nombre;
+                    else
+                        return '-';
+                },
+                'attribute'=>'Descripcion'],
             'MaxPorPagina',
              'Padre',
              'Visitas',

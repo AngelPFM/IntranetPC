@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format'=>'raw',
                 'value'=>function($data){
         
-                    $imagen = \app\models\Fichero::find()->where(['fkNTC_TipoFichero'=>40, 'fkNTC_Articulo'=>$data->idNTC_Articulo])->one();
+                    $imagen = \app\models\Fichero::find()->where(['fkNTC_TipoFichero'=>40, 'fkNTC_Articulo'=>$data->lotesArticulos[0]->articulo->idNTC_Articulo])->one();
     
                     return "<img src='https://www.poligonodecarrus.com/uploads/".$imagen->Fichero."' style='width:50px;'/>";
                 }],

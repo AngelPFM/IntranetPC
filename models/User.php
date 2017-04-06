@@ -236,7 +236,7 @@ class User extends ActiveRecord implements IdentityInterface
 									//'class'=>$clase, 
 									//'id'=>'mod_'.$modulo), 
 				   'label'=>$moduloNombre, 
-				   'url'=>array('/'.$modelName."/mod_".$modulo),
+				   'url'=>array('/'.$modelName),
                                     );
 				   //'visible'=>!Yii::$app->user->isGuest));
 		}

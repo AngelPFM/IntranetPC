@@ -34,8 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             
             //'fkNTC_Cliente',
             
-            ['label'=>'Artículo', 
-                'attribute'=>'fkNTC_Articulo'],
+            
             [
                 'label'=>'Artículo',
                 'attribute'=>'fkNTC_Articulo',
@@ -74,20 +73,23 @@ $this->params['breadcrumbs'][] = $this->title;
             ['label'=>'Activa desde', 
                 'attribute'=>'FechaInicial'],
              
+            
+                        
+                        
             ['label'=>'Activa hasta', 
+                'value'=> function ($data){
+                    if($data->FechaFinal)
+                        return $data->pais->Nombre;
+                    else
+                        return '-';
+                },
                 'attribute'=>'FechaFinal'],
+                        
              
             
-            ['label'=>'PermitirDesc.Factura',
-                'value'=> function ($data){
-                    if($data->PermiteDtoFactura==1)
-                        return "<span style='width=50px'; class='btn btn-success'>Sí</span>";
-                    else
-                        return  "<span style='width=50px'; class='btn btn-danger'>No</span>";
-                },
+            
                         
-                'format'=>'raw',
-                'attribute'=>'PermiteDtoFactura'],
+               
             
              
             ['label'=>'PermitirDesc.Linea',
