@@ -27,8 +27,28 @@ $this->params['breadcrumbs'][] = $this->title;
             //'idNTC_Atributo',
             'Codigo',
             'Etiqueta',
-            'Requerido',
-            'Buscable',
+            
+            ['label'=>'Requerido',
+                'value'=> function ($data){
+                    if($data->Requerido==1)
+                            return "<span style='width=50px'; class='btn btn-success'>Sí</span>";
+                    else
+                        return  "<span style='width=50px'; class='btn btn-danger'>No</span>";
+                },
+                'format'=>'raw',
+                'attribute'=>'Requerido'
+                        ],
+            
+            ['label'=>'Buscable',
+                'value'=> function ($data){
+                    if($data->Buscable==1)
+                            return "<span style='width=50px'; class='btn btn-success'>Sí</span>";
+                    else
+                        return  "<span style='width=50px'; class='btn btn-danger'>No</span>";
+                },
+                'format'=>'raw',
+                'attribute'=>'Buscable'
+                        ],
             // 'Comparable',
             // 'fkNTC_TipoDatosAtributo',
             // 'TieneOpciones',

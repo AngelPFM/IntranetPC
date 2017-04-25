@@ -25,10 +25,16 @@ $this->params['breadcrumbs'][] = $this->title;
             
 
            // 'idNTC_ScriptMarketing',
-            'Nombre',
             
-//            ['label'=>'Idioma', 
-//                'attribute'=>'fkNTC_Idioma'],
+            ['label'=>'Nombre', 
+                'value'=> function ($data){
+                    if($data->Nombre)
+                        return $data->Nombre;
+                    else
+                        return '-';
+                },
+                'attribute'=>'Nombre'],
+           
             
             ['label'=>'Footer',
                 'value'=> function ($data){

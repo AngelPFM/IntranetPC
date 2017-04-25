@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Nuevo Contacto', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Contacto', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -27,8 +27,35 @@ $this->params['breadcrumbs'][] = $this->title;
              'Asunto:ntext',
             //'idNTC_Contacto',
             'Nombre',
-            'Apellidos',
-            'Telefono',
+            ['label'=>'Nombre', 
+                'value'=> function ($data){
+                    if($data->Nombre)
+                        return $data->Nombre;
+                    else
+                        return '-';
+                },
+                'attribute'=>'Nombre'],
+            
+            
+            
+            ['label'=>'Apellidos', 
+                'value'=> function ($data){
+                    if($data->Apellidos)
+                        return $data->Apellidos;
+                    else
+                        return '-';
+                },
+                'attribute'=>'Apellidos'],            
+                        
+            
+            ['label'=>'Telefono', 
+                'value'=> function ($data){
+                    if($data->Telefono)
+                        return $data->Telefono;
+                    else
+                        return '-';
+                },
+                'attribute'=>'Telefono'],              
             'Email:email',
             // 'Asunto:ntext',
             // 'Comentario:ntext',

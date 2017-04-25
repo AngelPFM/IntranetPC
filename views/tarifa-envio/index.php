@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\TarifaEnvioSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tarifa Envios';
+$this->title = 'Tarifa Envíos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tarifa-envio-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Nueva Tarifa Envio', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nueva Tarifa Envío', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -33,14 +33,40 @@ $this->params['breadcrumbs'][] = $this->title;
             ['label'=>'Método de Envío', 
                 'attribute'=>'fkNTC_MetodoEnvio'],
             
+            
             ['label'=>'País', 
+                'value'=> function ($data){
+                    if($data->pais)
+                        return $data->pais->idNTC_Pais;
+                    else
+                        return '-';
+                },
                 'attribute'=>'fkNTC_Pais'],
             
+           
+            
+            
+                        
             ['label'=>'Provincia', 
-                'attribute'=>'fkNTC_Provincia'],
+                'value'=> function ($data){
+                    if($data->provincia)
+                        return $data->provincia->idNTC_Provincia;
+                    else
+                        return '-';
+                },
+                'attribute'=>'fkNTC_Provincia'],           
             // 'fkNTC_ZonaEnvio',
             // 'fkNTC_ModuloEnvio',
-            'CodigoPostal',
+            
+            ['label'=>'CondigoPostal', 
+                'value'=> function ($data){
+                    if($data->CodigoPostal)
+                        return $data->codigoPostal;
+                    else
+                        return '-';
+                },
+                'attribute'=>'CodigoPostal'],             
+                
              'PesoDesde',
              'PrecioEnvio',
             // 'PrecioEnvioPlus',

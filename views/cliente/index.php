@@ -38,8 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
              
             [
                 'label'=>'.Provincia',
-                'attribute'=>'pkNTC_ModuloEnvioProvincia',
-                'value'=>function($data){
+                'attribute'=>'NTC_Provincia',
+                'value'=>function($data ){
                                    return $data->provincia->Nombre;
                             },
                 'filter'=>  yii\helpers\ArrayHelper::map(app\models\Provincia::find()->all(),'idNTC_Provincia','Nombre')                   

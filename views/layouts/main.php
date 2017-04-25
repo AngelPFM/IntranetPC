@@ -4,6 +4,7 @@
 <?php
 
 use app\assets\AppAsset;
+use app\models\User;
 use app\models\Usuario;
 use yii\helpers\Html;
 
@@ -66,7 +67,10 @@ AppAsset::register($this);
                     <span class="icono-estilo-menu" onclick="javascript:cambiaTipoMenu();"></span>
                     <figure><a href="<?= Yii::$app->getUrlManager()->createUrl("/site/index") ?>"><img src="<?php echo \yii\helpers\Url::base() ?>/images/logo.png" width="100%" border="0"/></a></figure>
                     <section id="datos_usuario">
-                        <article><span class="header_nombre"><?= $usuario->username . " (" . $usuario->email . ")" ?></span></article>
+                        <article><span class="header_nombre"><?= 
+                                  
+                             
+                            $user->username . " (" . $user->email . ")" ?></span></article>
                         <section id="datos_usuario_ocultos">
                             <select id="selectIdioma">
                                 <?php

@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
            ['label'=>'Modelo', 
                 'value'=> function ($data){
                     if($data->Modelo)
-                        return $data->Modelo->Nombre;
+                        return $data->Modelo;
                     else
                         return '-';
                 },
@@ -53,7 +53,18 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'Ordenacion',
             // 'TraduccionMultiple',
             // 'Csv',
-             'Quitar',
+             
+             ['label'=>'Quitar',
+                'value'=> function ($data){
+                    if($data->Quitar==1)
+                            return '<span style="color: #5CB85C"; class="glyphicon glyphicon-ok"></span>';
+                    else
+                        return  '<span style="color: #D9534F"; class="glyphicon glyphicon-remove"></span>';
+                },
+                'format'=>'raw',
+                'attribute'=>'Quitar'
+                        ],
+                       
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

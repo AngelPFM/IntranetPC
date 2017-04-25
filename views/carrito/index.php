@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\CarritoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Carritos';
+$this->title = 'Carrito';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="carrito-index">
@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
             
          
              'Fecha',
-             'Abandonado',
+             
                                     
              ['label'=>'Abandonado',
                 'value'=> function ($data){

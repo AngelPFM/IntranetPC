@@ -25,12 +25,14 @@ $this->params['breadcrumbs'][] = $this->title;
             
 
            // 'idNTC_MetodoEnvio',
-            'fkNTC_ProveedorEnvio',
+           
             'Nombre',
             'Descripcion:ntext',
             
             ['label'=>'Proveedor Envío', 
                 'attribute'=>'fkNTC_ProveedorEnvio'],
+             
+            
             //'fkNTC_TipoValoracion',
             // 'fkNTC_TipoCalculo',
             // 'PesoMaxPaquete',
@@ -38,7 +40,15 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'fkNTC_TipoTarifa',
             // 'fkNTC_UnidadMedida',
             // 'TipoCosteManipulacion',
-             'CosteManipulacion',
+             
+            ['label'=>'CosteManipulacion', 
+                'value'=> function ($data){
+                    if($data->CosteManipulacion)
+                        return $data->CosteManipulacion;
+                    else
+                        return '-';
+                },
+                'attribute'=>'Apellidos'],  
             // 'TiempoPreparacion',
             // 'ImporteMinEnvioGratuito',
             // 'Quitar',

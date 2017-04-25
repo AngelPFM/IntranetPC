@@ -1,5 +1,6 @@
 <?php
 
+
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -41,7 +42,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         
                 'format'=>'raw',
                 'attribute'=>'Transito'],
-             'Telefono',
+             
+              ['label'=>'Telefono', 
+                'value'=> function ($data){
+                    if($data->Telefono)
+                        return $data->Telefono;
+                    else
+                        return '-';
+                },
+                'attribute'=>'Telefono'],
+                        
              'Email:email',
             //'Titulo',
             //'fkNTC_Localidad',

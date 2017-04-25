@@ -36,11 +36,31 @@ $this->params['breadcrumbs'][] = $this->title;
             'Nombre',
             
             'ReferenciaLote',
-            'Descripcion:ntext',
-            'Quitar',
+           
+                        
+            
+            ['label'=>'Descripción', 
+                'value'=> function ($data){
+                    if($data->Descripcion)
+                        return $data->Descripcion;
+                    else
+                        return '-';
+                },
+                'attribute'=>'Descripcion'],
+            
+             ['label'=>'Quitar',
+                'value'=> function ($data){
+                    if($data->Quitar==1)
+                            return '<span style="color: #5CB85C"; class="glyphicon glyphicon-ok"></span>';
+                    else
+                        return  '<span style="color: #D9534F"; class="glyphicon glyphicon-remove"></span>';
+                },
+                'format'=>'raw',
+                'attribute'=>'Quitar'
+                        ],
             // 'Nuevo_DesdeFecha',
             // 'Nuevo_HastaFecha',
-             'surtido_libre',
+             
             ['label'=>'Surtido Libre',
                 'value'=> function ($data){
                     if($data->surtido_libre==1)

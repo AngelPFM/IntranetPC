@@ -44,6 +44,14 @@ $this->params['breadcrumbs'][] = $this->title;
              'ImporteEur',
             // 'Referencia',
              'ReferenciaPago',
+            ['label'=>'Referencia Pago', 
+                'value'=> function ($data){
+                    if($data->Referencia)
+                        return $data->Referencia;
+                    else
+                        return '-';
+                },
+                'attribute'=>'ReferenciaPago'],
              'Descripcion',
              'EstadoPago',
              'Referencia',

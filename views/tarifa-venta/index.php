@@ -46,6 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                   ],
              
             ['label'=>'Unidad Medida', 
+                
                 'attribute'=>'fkNTC_UnidadMedida'],
              
             ['label'=>'País', 

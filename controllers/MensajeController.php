@@ -33,15 +33,40 @@ class MensajeController extends Controller
      * Lists all Mensaje models.
      * @return mixed
      */
-    public function actionIndex()
-    {
-        $searchModel = new MensajeSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+    public function actionIndex(){
+  
+          //if($mod==''){
+                $cdw=" WHERE om.Category LIKE '%look%'";
+            /*}else{
+                $cdw=" WHERE om.Category NOT LIKE '%look%'";
+            }*/
+		$idiomas = \app\models\Idioma::find()->where(array('Quitar'=>0))->all();
+		
+		$sql = "SELECT DISTINCT om.idNTC_OrigenMensaje as id, om.Category as Categoria, om.Message as Original ";
+		$leftjoin = "";
+		$cont = 1;
+		foreach($idiomas as $idioma)
+		{
+			$sql .= ", m$cont.Translation as ".$idioma->idNTC_Idioma;
+			$leftjoin .= "LEFT JOIN NTC_Mensaje m$cont ON om.idNTC_OrigenMensaje=m$cont.fkNTC_OrigenMensaje AND m$cont.Language='".$idioma->idNTC_Idioma."' ";
+			
+			$cont++;
+		}
+		$sql .= " FROM NTC_OrigenMensaje om ".$leftjoin. $cdw ." ORDER BY om.Category, om.Message";
+                
+		$mensajes = Yii::$app->db->createCommand($sql)->queryAll();
+		
+		$listaMensajes = array();
+		foreach($mensajes as $mensaje)
+		{
+			$listaMensajes[$mensaje['Categoria']][] = $mensaje;
+		}
+		return $this->render(
+			'index',
+			array(
+				'categorias' => $listaMensajes,
+			)
+		);
     }
 
     /**

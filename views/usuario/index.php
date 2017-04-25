@@ -34,7 +34,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'FechaValidezFin',
              
             // 'Hash',
-             'Quitar',
+            
+            ['label'=>'Quitar',
+                'value'=> function ($data){
+                    if($data->Quitar==1)
+                            return '<span style="color: #5CB85C"; class="glyphicon glyphicon-ok"></span>';
+                    else
+                        return  '<span style="color: #D9534F"; class="glyphicon glyphicon-remove"></span>';
+                },
+                'format'=>'raw',
+                'attribute'=>'Quitar'
+                        ],
              
 
             ['class' => 'yii\grid\ActionColumn'],

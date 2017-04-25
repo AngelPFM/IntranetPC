@@ -65,6 +65,19 @@ class DocumentoVentaController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    
+//    public function actionImprimir(){
+//        
+//        $searchmodel = new DocumentoVentaSearch();
+//        $dataprovider = $searchModel->search(Yii::$app->request->queryParams);
+//        
+//        return $thid->render('index', [
+//            'searchModel'=> $searchModel,
+//            'dataprovider'=>$dataprovider,
+//            
+//        ]);
+//    }
+   
     /**
      * Displays a single DocumentoVenta model.
      * @param integer $id
@@ -94,7 +107,7 @@ class DocumentoVentaController extends Controller
             ]);
         }
     }
-
+    
     /**
      * Updates an existing DocumentoVenta model.
      * If update is successful, the browser will be redirected to the 'view' page.

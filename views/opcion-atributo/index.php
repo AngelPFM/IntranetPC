@@ -18,31 +18,45 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Nueva Opción Atributo', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?= GridView::widget([
+    <?=
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+
 
             //'idNTC_OpcionAtributo',
             //'fkNTC_Atributo',
             [
-                'label'=>'Atributo',
-                'attribute'=>'fkNTC_Atributo',
-                'value'=>function($data){
-                                   return $data->atributo->Etiqueta;
-                            },
-                'filter'=>  yii\helpers\ArrayHelper::map(app\models\Atributo::find()->where(['Quitar'=>0])->orderBy('Etiqueta')->all(),'idNTC_Atributo','Etiqueta')                    
-                                    
-                  ],
+                'label' => 'Atributo',
+                'attribute' => 'fkNTC_Atributo',
+                'value' => function($data) {
+                    return $data->atributo->Etiqueta;
+                },
+                'filter' => yii\helpers\ArrayHelper::map(app\models\Atributo::find()->where(['Quitar' => 0])->orderBy('Etiqueta')->all(), 'idNTC_Atributo', 'Etiqueta')
+            ],
             'Nombre',
             'Opcion',
-            'Descripcion',
-             'Medida',
-             'Orden',
+            ['label' => 'Descripcion',
+                'value' => function ($data) {
+                    if ($data->Descripcion)
+                        return $data->Descripcion;
+                    else
+                        return '-';
+                },
+                'attribute' => 'Descripcion'],
+            ['label' => 'Medida',
+                'value' => function ($data) {
+                    if ($data->Medida)
+                        return $data->Medida;
+                    else
+                        return '-';
+                },
+                'attribute' => 'Medida'],
+            'Orden',
             // 'Quitar',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]);
+    ?>
 </div>
