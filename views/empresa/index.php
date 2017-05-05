@@ -23,12 +23,37 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             
+            ['label'=>'Ver',
+                'value'=> function ($data){
+                    if($data!=0)
+                            return "<a style='width=50px'; class='btn btn-info' href='index.php?r=empresa/view&id=".$data->idNTC_Empresa."'>Ver</a>";
+                    
+                },
+                'format'=>'raw',
+                
+                        ],
             'Agrupacion',
            // 'idNTC_Empresa',
             'Nombre',
             'Dominio',
-            'Descripcion',
-            'Slogan',
+            
+            ['label' => 'Descripcion',
+                'value' => function ($data) {
+                    if ($data->Descripcion)
+                        return $data->Descripcion;
+                    else
+                        return '-';
+                },
+                'attribute' => 'Descripcion'],
+           
+                        ['label' => 'Slogan',
+                'value' => function ($data) {
+                    if ($data->Slogan)
+                        return $data->Slogan;
+                    else
+                        return '-';
+                },
+                'attribute' => 'Slogan'],
              'HorarioContacto',
             // 'Latitud',
             // 'Longitud',
@@ -47,10 +72,21 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'metaTitle',
             // 'metaContent',
              'Telefono',
-             'Fax',
+             
+                        ['label' => 'Fax',
+                'value' => function ($data) {
+                    if ($data->Fax)
+                        return $data->Fax;
+                    else
+                        return '-';
+                },
+                'attribute' => 'Fax'],
             // 'Agrupacion',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+             'template'=>'{delete} {update}',
+                
+               ],
         ],
     ]); ?>
 </div>

@@ -60,7 +60,7 @@
 		var id = $(input).attr('id');
 		$(input).css('border-color','#eee');
 		$.post(
-			'<?php echo yii\helpers\Url::to('mensaje/updateAjax');?>',
+			'<?php echo yii\helpers\Url::to('index.php?r=mensaje/update-ajax');?>',
 			{
 				id: $(this).attr('idorigen'),
 				lang: $(this).attr('lang'),

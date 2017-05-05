@@ -68,7 +68,44 @@ class MensajeController extends Controller
 			)
 		);
     }
+    public function actionIndexTraduccion(){
+  
+          //if($mod==''){
+                //$cdw=" WHERE om.Category LIKE '%look%'";
+            //}else{
+                $cdw=" WHERE om.Category NOT LIKE '%look%'";
+            //
+		$idiomas = \app\models\Idioma::find()->where(array('Quitar'=>0))->all();
+		
+		$sql = "SELECT DISTINCT om.idNTC_OrigenMensaje as id, om.Category as Categoria, om.Message as Original ";
+		$leftjoin = "";
+		$cont = 1;
+		foreach($idiomas as $idioma)
+		{
+			$sql .= ", m$cont.Translation as ".$idioma->idNTC_Idioma;
+			$leftjoin .= "LEFT JOIN NTC_Mensaje m$cont ON om.idNTC_OrigenMensaje=m$cont.fkNTC_OrigenMensaje AND m$cont.Language='".$idioma->idNTC_Idioma."' ";
+			
+			$cont++;
+		}
+		$sql .= " FROM NTC_OrigenMensaje om ".$leftjoin. $cdw ." ORDER BY om.Category, om.Message";
+                
+		$mensajes = Yii::$app->db->createCommand($sql)->queryAll();
+		
+		$listaMensajes = array();
+		foreach($mensajes as $mensaje)
+		{
+			$listaMensajes[$mensaje['Categoria']][] = $mensaje;
+		}
+		return $this->render(
+			'index',
+			array(
+				'categorias' => $listaMensajes,
+			)
+		);
+    }
 
+    
+    
     /**
      * Displays a single Mensaje model.
      * @param integer $id
@@ -146,4 +183,45 @@ class MensajeController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    public function actionUpdateAjax()
+	{
+        
+      if (Yii::$app->request->isAjax) {
+		$retorno = 'OK';
+		
+		try
+		{
+                        
+			if ($_POST['id'] != '' && $_POST['lang'] != '')
+			{
+				$mensaje = Mensaje::find()->where(
+					array(
+						'fkNTC_OrigenMensaje' => $_POST['id'],
+						'Language' => $_POST['lang']
+					)
+				)->one();
+				
+				if (!$mensaje)
+				{
+					$mensaje = new Mensaje();
+					$mensaje->fkNTC_OrigenMensaje = $_POST['id'];
+					$mensaje->Language = $_POST['lang']; 
+				}
+				
+				$mensaje->Translation = $_POST['text'];
+				
+				if (!$mensaje->save())
+				{
+					$retorno = 'KO';
+				}
+			}
+		}
+		catch (Exception $ex)
+		{
+			$retorno = 'KO';
+		}
+		
+		echo $retorno;
+       }
+	}
 }
